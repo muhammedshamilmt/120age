@@ -1,0 +1,48 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "login_form_error": "Wrong password!",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    }
+  },
+  "sections": {
+    "header": {
+      "name": "Header"
+    },
+    "footer": {
+      "name": "Footer"
+    }
+  },
+  "templates": {
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "note": "Order notes",
+      "subtotal": "Subtotal",
+      "checkout": "Check out"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you requested does not exist.",
+      "link": "Continue shopping"
+    },
+    "collection": {
+      "title": "Collection",
+      "products_found_one": "{{ count }} product",
+      "products_found_other": "{{ count }} products"
+    },
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<section class="py-24 bg-[#1A1A1A]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 text-left">
+      <span class="font-ultra text-forest-green text-sm tracking-[0.3em] uppercase mb-4 block">
+        {{ section.settings.subheading }}
+      </span>
+      <h2 class="text-5xl md:text-8xl font-ultra text-vintage-cream uppercase leading-[0.85] tracking-tighter">
+        {{ section.settings.title_line_1 }} <br />
+        <span class="text-forest-green">{{ section.settings.title_line_2 }}</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {%- for block in section.blocks -%}
+        <div class="relative aspect-[4/5] overflow-hidden group border-2 border-vintage-cream/10 p-2 bg-vintage-cream" {{ block.shopify_attributes }}>
+          <div class="relative w-full h-full overflow-hidden">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110' }}
+              {%- else -%}
+                <img src="https://images.unsplash.com/photo-1544787210-2213d84ad2f2?auto=format&fit=crop&w=800&q=80" alt="Moment Image" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" />
+              {%- endif -%}
+          </div>
+          <div class="pt-4 pb-2 text-center">
+            <p class="font-ultra text-[10px] text-muted-brown/60 uppercase tracking-widest">
+              {{ block.settings.caption }}
+            </p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Shared Moments High",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The Gallery"
+    },
+    {
+      "type": "text",
+      "id": "title_line_1",
+      "label": "Title Line 1",
+      "default": "Shared"
+    },
+    {
+      "type": "text",
+      "id": "title_line_2",
+      "label": "Title Line 2",
+      "default": "Moments"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Captured Archive № 2024"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Shared Moments High",
+      "blocks": [
+        { "type": "moment", "settings": { "caption": "Captured Archive № 2024" } },
+        { "type": "moment", "settings": { "caption": "Captured Archive № 2025" } },
+        { "type": "moment", "settings": { "caption": "Captured Archive № 2026" } },
+        { "type": "moment", "settings": { "caption": "Captured Archive № 2027" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,240 @@
+<section class="bg-vintage-cream min-h-screen">
+  <!-- ── BREADCRUMB ── -->
+  <div class="px-6 md:px-12 lg:px-24 pt-8 pb-0">
+    <div class="max-w-7xl mx-auto">
+      <a href="{{ routes.all_products_collection_url }}" class="inline-flex items-center gap-2 font-ultra text-[10px] tracking-[0.3em] text-muted-brown/60 hover:text-muted-brown transition-colors uppercase no-underline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Shop
+      </a>
+    </div>
+  </div>
+
+  <!-- ── PRODUCT HERO ── -->
+  <section class="py-12 px-6 md:px-12 lg:px-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Image Gallery -->
+        <div class="space-y-4 lg:sticky lg:top-8">
+          <div class="relative aspect-square bg-white border-2 border-muted-brown/10 overflow-hidden group">
+            {%- if product.featured_media -%}
+              {{ product.featured_media | image_url: width: 1200 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 featured-img' }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover' }}
+            {%- endif -%}
+            
+            {%- if product.metafields.custom.badge_primary != blank -%}
+              <div class="absolute top-4 left-4 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1.5 z-10">
+                {{ product.metafields.custom.badge_primary }}
+              </div>
+            {%- endif -%}
+            
+            <div class="absolute top-4 right-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1.5 z-10">
+              {%- if product.available -%}
+                Only a few left
+              {%- else -%}
+                Sold Out
+              {%- endif -%}
+            </div>
+          </div>
+          
+          <!-- Thumbnails -->
+          {%- if product.media.size > 1 -%}
+            <div class="grid grid-cols-4 gap-3">
+              {%- for media in product.media -%}
+                <div class="aspect-square border-2 {% if forloop.first %}border-muted-brown{% else %}border-muted-brown/20{% endif %} overflow-hidden cursor-pointer hover:border-muted-brown transition-colors thumb-item" data-media-id="{{ media.id }}">
+                  {{ media | image_url: width: 400 | image_tag: class: 'w-full h-full object-cover' }}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- Product Details -->
+        <div class="space-y-8 text-left">
+
+          <!-- Category & Title -->
+          <div class="space-y-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="font-ultra text-[9px] tracking-[0.4em] text-forest-green uppercase border border-forest-green px-2 py-1">
+                {{ product.type | default: 'Wellness' }}
+              </span>
+              {%- for tag in product.tags limit: 2 -%}
+                <span class="font-ultra text-[9px] tracking-[0.4em] text-muted-brown/60 uppercase border border-muted-brown/20 px-2 py-1">{{ tag }}</span>
+              {%- endfor -%}
+            </div>
+            <h1 class="font-ultra text-4xl md:text-5xl lg:text-6xl text-muted-brown uppercase leading-[0.9] tracking-tight">
+               {%- assign title_parts = product.title | split: ' ' -%}
+               {%- for part in title_parts -%}
+                  {%- if forloop.last and title_parts.size > 1 -%}
+                    <span class="text-forest-green">{{ part }}</span>
+                  {%- else -%}
+                    {{ part }}<br />
+                  {%- endif -%}
+               {%- endfor -%}
+            </h1>
+            <p class="font-ultra text-xs tracking-widest text-muted-brown/50 uppercase">{{ product.vendor }}</p>
+          </div>
+
+          <!-- Rating (Mock) -->
+          <div class="flex items-center gap-3">
+            <div class="flex gap-0.5">
+              {% for i in (1..5) %}
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              {% endfor %}
+            </div>
+            <span class="font-ultra text-xs text-muted-brown/60 tracking-widest uppercase">43 Reviews</span>
+            <span class="w-1 h-1 bg-muted-brown/30 rounded-full"></span>
+            <span class="font-ultra text-xs {% if product.available %}text-forest-green{% else %}text-red-500{% endif %} tracking-widest uppercase">
+              {% if product.available %}In Stock{% else %}Out of Stock{% endif %}
+            </span>
+          </div>
+
+          <!-- Price -->
+          <div class="border-t border-b border-muted-brown/10 py-6">
+            <p class="font-ultra text-4xl text-muted-brown money-display">
+              {{ product.selected_or_first_available_variant.price | money }}
+            </p>
+            <p class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase mt-1">Inclusive of all taxes (GST 5%)</p>
+          </div>
+
+          <!-- Variant Selector (Custom Size Selector) -->
+          {%- form 'product', product, id: 'product-form' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            
+            {%- unless product.has_only_default_variant -%}
+              <div class="space-y-6 mb-8">
+                {%- for option in product.options_with_values -%}
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-ultra text-xs tracking-[0.3em] text-muted-brown uppercase">{{ option.name }}</h3>
+                      <span class="font-ultra text-xs text-forest-green tracking-widest uppercase option-selected-value">{{ option.selected_value }} selected</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                      {%- for value in option.values -%}
+                        <button type="button" 
+                          class="variant-btn font-ultra text-xs tracking-widest uppercase px-5 py-3 border-2 transition-all duration-200 cursor-pointer {% if option.selected_value == value %}bg-muted-brown text-vintage-cream border-muted-brown selected{% else %}border-muted-brown/30 text-muted-brown hover:border-muted-brown{% endif %}"
+                          data-value="{{ value | escape }}"
+                          data-option-index="{{ forloop.parentloop.index0 }}">
+                          {{ value }}
+                        </button>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+
+            <!-- CTA Buttons -->
+            <div class="space-y-3 pt-2">
+              <button type="submit" name="add" 
+                class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-5 uppercase tracking-[0.3em] hover:bg-forest-green transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(80,168,69,0.4)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 cursor-pointer border-none"
+                {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+              </button>
+              {{ form | payment_button }}
+            </div>
+          {%- endform -%}
+
+          <!-- Meta Info -->
+          <div class="space-y-3 pt-6 border-t border-muted-brown/10">
+            <div class="flex gap-3 items-start">
+              <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Type</span>
+              <span class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase">{{ product.type }}</span>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Categories</span>
+              <div class="flex flex-wrap gap-2">
+                {%- for collection in product.collections -%}
+                  <a href="{{ collection.url }}" class="font-ultra text-[9px] tracking-widest text-muted-brown/70 uppercase border border-muted-brown/20 px-2 py-0.5 no-underline hover:border-muted-brown">{{ collection.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Tags</span>
+              <div class="flex flex-wrap gap-2">
+                {%- for tag in product.tags -%}
+                  <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase">#{{ tag | replace: ' ', '' }}</span>
+                {%- endfor -%}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  .shopify-payment-button__button {
+    @apply w-full font-ultra! text-sm! text-muted-brown! bg-transparent! border-2! border-muted-brown! py-5! uppercase! tracking-[0.3em]! hover:bg-muted-brown! hover:text-vintage-cream! transition-all! duration-300 hex-button;
+    border-radius: 0 !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const product = {{ product | json }};
+    const form = document.getElementById('product-form');
+    const idInput = form.querySelector('input[name="id"]');
+    const priceDisplay = document.querySelector('.money-display');
+    const addToCartBtn = form.querySelector('button[name="add"]');
+    
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const optionIndex = this.dataset.optionIndex;
+        const value = this.dataset.value;
+        
+        // Update visual state
+        const container = this.closest('.flex');
+        container.querySelectorAll('.variant-btn').forEach(b => {
+           b.classList.remove('bg-muted-brown', 'text-vintage-cream', 'border-muted-brown', 'selected');
+           b.classList.add('border-muted-brown/30', 'text-muted-brown');
+        });
+        this.classList.add('bg-muted-brown', 'text-vintage-cream', 'border-muted-brown', 'selected');
+        this.classList.remove('border-muted-brown/30', 'text-muted-brown');
+        
+        // Update label
+        const section = this.closest('.space-y-4');
+        section.querySelector('.option-selected-value').textContent = value + ' selected';
+
+        // Find matched variant
+        const selectedOptions = Array.from(document.querySelectorAll('.variant-btn.selected')).map(b => b.dataset.value);
+        const matchedVariant = product.variants.find(v => {
+          return v.options.every((opt, index) => opt === selectedOptions[index]);
+        });
+        
+        if (matchedVariant) {
+          idInput.value = matchedVariant.id;
+          priceDisplay.textContent = Shopify.formatMoney(matchedVariant.price);
+          
+          if (matchedVariant.available) {
+            addToCartBtn.disabled = false;
+            addToCartBtn.textContent = 'Add to Cart';
+          } else {
+            addToCartBtn.disabled = true;
+            addToCartBtn.textContent = 'Sold Out';
+          }
+        }
+      });
+    });
+
+    // Thumbnail Switcher
+    document.querySelectorAll('.thumb-item').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('border-muted-brown'));
+        this.classList.add('border-muted-brown');
+        const imgSrc = this.querySelector('img').src.split('?')[0];
+        document.querySelector('.featured-img').src = imgSrc + '?width=1200';
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Main High",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+<div class="group flex flex-col space-y-6 cursor-pointer" {{ attr }}>
+  <a href="{{ product.url }}" class="block">
+    <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/5 overflow-hidden">
+      {%- if product.featured_media != blank -%}
+        {{ product.featured_media | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0' }}
+      {%- endif -%}
+      <div class="absolute inset-0 bg-forest-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      {%- if product.available == false -%}
+        <div class="absolute top-4 left-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1 z-10">
+          SOLD OUT
+        </div>
+      {%- elsif product.compare_at_price > product.price -%}
+        <div class="absolute top-4 left-4 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1 z-10">
+          SALE
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="flex justify-between items-start border-b border-muted-brown/20 py-4 text-left">
+      <div>
+        <span class="font-ultra text-[10px] tracking-[0.3em] text-forest-green uppercase mb-2 block">
+          {{ product.type | default: 'Collection' }}
+        </span>
+        <h3 class="font-ultra text-2xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">
+          {{ product.title }}
+        </h3>
+      </div>
+      <div class="text-right">
+        <p class="font-ultra text-xl text-muted-brown">
+          {{ product.price | money }}
+        </p>
+        {%- if product.compare_at_price > product.price -%}
+          <p class="font-ultra text-sm text-muted-brown/40 line-through">
+            {{ product.compare_at_price | money }}
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </a>
+
+  {%- if product.available -%}
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+      <button type="submit" class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors cursor-pointer border-none no-underline">
+        Add to Bag
+      </button>
+    </form>
+  {%- else -%}
+    <button disabled class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown/20 py-4 uppercase tracking-[0.2em] cursor-not-allowed border-none no-underline">
+      Out of Stock
+    </button>
+  {%- endif -%}
+</div>

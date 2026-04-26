@@ -1,0 +1,25 @@
+[
+  {
+    "name": "General settings",
+    "theme_name": "120ages Theme",
+    "theme_author": "Antigravity",
+    "theme_version": "1.0.0",
+    "theme_support_email": "hello@120ages.com",
+    "theme_support_url": "https://120ages.com"
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      { "type": "text", "id": "social_instagram_link", "label": "Instagram" },
+      { "type": "text", "id": "social_facebook_link", "label": "Facebook" },
+      { "type": "text", "id": "social_twitter_link", "label": "Twitter" }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo Image" },
+      { "type": "textarea", "id": "footer_text", "label": "Footer Text", "default": "Nourish your soul, one sip at a time." }
+    ]
+  }
+]

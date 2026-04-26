@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner-120ages",
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-120ages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

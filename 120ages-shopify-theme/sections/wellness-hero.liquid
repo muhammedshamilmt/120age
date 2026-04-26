@@ -1,0 +1,58 @@
+<section class="wellness-hero" style="background-color: #1A1A1A; color: #FFEAD3;">
+  <div class="max-w-screen-2xl mx-auto px-6 py-32 md:px-12 lg:px-24">
+    <h1 class="text-6xl md:text-9xl h-font uppercase leading-[0.85] mb-8 animate-fade-in">
+      {{ section.settings.title_line1 | escape }} <br />
+      {{ section.settings.title_line2 | escape }} <span style="color: var(--color-forest-green);">{{ section.settings.title_accent | escape }}</span>
+    </h1>
+    <p class="text-xl md:text-3xl h-font uppercase tracking-widest opacity-60">
+      {{ section.settings.subheading | escape }}
+    </p>
+  </div>
+</section>
+
+<style>
+  .text-6xl { font-size: clamp(3.5rem, 10vw, 6rem); }
+  @media (min-width: 768px) {
+    .text-9xl { font-size: clamp(6rem, 15vw, 12rem); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Wellness Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Heading Line 1",
+      "default": "NOURISH"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Heading Line 2",
+      "default": "YOUR"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Heading Accent",
+      "default": "BEING"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "WELLNESS / RITUALS / COMMUNITY"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Hero"
+    }
+  ]
+}
+{% endschema %}

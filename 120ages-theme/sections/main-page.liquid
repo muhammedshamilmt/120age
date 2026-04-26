@@ -1,0 +1,39 @@
+<section class="py-24 px-6 bg-vintage-cream text-muted-brown">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-24">
+      <span class="font-ultra text-xs tracking-[0.5em] text-forest-green uppercase mb-4 block">
+        {{ section.settings.subheading | default: 'LEGAL DOCUMENT' }}
+      </span>
+      <h1 class="font-ultra text-5xl md:text-7xl uppercase leading-none tracking-tighter mb-8">
+        {{ page.title }}
+      </h1>
+      <div class="h-1 w-24 bg-forest-green mx-auto mb-8"></div>
+    </div>
+
+    <div class="page-content font-medium text-lg leading-relaxed space-y-8">
+       {{ page.content }}
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-content h2 {
+    @apply font-ultra text-2xl uppercase tracking-widest mt-16 mb-6 flex items-center gap-4 text-black;
+  }
+  .page-content p {
+    @apply text-muted-brown/70 leading-relaxed mb-4;
+  }
+  .page-content ul {
+    @apply list-disc list-inside space-y-2 mb-8 text-muted-brown/70;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "General Page High",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "LEGAL DOCUMENT" }
+  ]
+}
+{% endschema %}

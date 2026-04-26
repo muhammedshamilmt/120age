@@ -1,0 +1,94 @@
+<section class="menu-list section-spacing bg-cream">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category' -%}
+          <div class="menu-category" {{ block.shopify_attributes }}>
+            <h2 class="h-font text-3xl text-forest-green border-b-2 border-forest-green/20 pb-4 uppercase tracking-wider mb-12">
+              {{ block.settings.title | escape }}
+            </h2>
+            <div class="space-y-10">
+              {%- assign category_id = block.id -%}
+              {%- for item_block in section.blocks -%}
+                {%- if item_block.type == 'item' and item_block.settings.category == category_id -%}
+                  <div class="menu-item group" {{ item_block.shopify_attributes }}>
+                    <div class="flex justify-between items-baseline mb-2">
+                       <h3 class="h-font text-xl md:text-2xl text-muted-brown group-hover:text-forest-green transition-colors duration-300 uppercase">
+                         {{ item_block.settings.title | escape }}
+                       </h3>
+                       <span class="h-font text-xl text-forest-green">{{ item_block.settings.price | escape }}</span>
+                    </div>
+                    <p class="text-muted-brown/70 font-medium leading-relaxed mb-2">{{ item_block.settings.description | escape }}</p>
+                    {%- if item_block.settings.note != blank -%}
+                      <p class="text-sm italic text-muted-brown/50 border-l-2 border-muted-brown/20 pl-4 mt-2">{{ item_block.settings.note | escape }}</p>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Menu List",
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "BREWS & SIPS"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "name": "Menu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category ID (Block ID)",
+          "info": "Copy the Block ID of the category this item belongs to."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Item Title",
+          "default": "HERBAL TEA"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$5"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "A soothing blend of chamomile and lavender."
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Optional Note"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Menu List"
+    }
+  ]
+}
+{% endschema %}

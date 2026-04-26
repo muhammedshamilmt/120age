@@ -1,0 +1,51 @@
+<section class="bg-vintage-cream pb-32 pt-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="relative border-4 border-muted-brown p-12 md:p-24 overflow-hidden rounded-[40px]">
+      <div class="absolute top-0 left-0 w-24 h-24 border-r-2 border-b-2 border-muted-brown/20 rounded-br-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-24 h-24 border-l-2 border-t-2 border-muted-brown/20 rounded-tl-3xl"></div>
+
+      <div class="relative z-10 text-center">
+        <span class="font-ultra text-xs md:text-sm tracking-[0.5em] text-forest-green uppercase mb-8 block">
+          {{ section.settings.subheading }}
+        </span>
+
+        <h2 class="font-ultra text-7xl md:text-[120px] lg:text-[150px] leading-[0.85] text-muted-brown uppercase tracking-tighter mb-12 relative inline-block">
+          {{ section.settings.title }}
+          <span class="absolute -inset-1 text-muted-brown/10 blur-[2px] -z-10 translate-x-2 translate-y-2">{{ section.settings.title }}</span>
+        </h2>
+
+        <div class="max-w-2xl mx-auto mb-16">
+          <p class="text-xl md:text-2xl font-ultra text-muted-brown/80 uppercase tracking-tight leading-snug">
+            {{ section.settings.text }}
+          </p>
+        </div>
+
+        <a href="{{ section.settings.link }}" class="inline-block group relative px-12 py-6 bg-forest-green text-vintage-cream font-ultra text-lg uppercase tracking-widest transition-transform hover:scale-105 active:scale-95 shadow-[8px_8px_0px_0px_rgba(158,117,86,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 cursor-pointer no-underline">
+          {{ section.settings.link_text }}
+        </a>
+      </div>
+
+      <div class="hidden lg:block absolute left-12 top-1/2 -translate-y-1/2 [writing-mode:vertical-lr] font-ultra text-muted-brown/20 text-4xl uppercase tracking-[0.5em]">
+        {{ section.settings.side_text_1 }}
+      </div>
+      <div class="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 [writing-mode:vertical-lr] font-ultra text-muted-brown/20 text-4xl uppercase tracking-[0.5em] rotate-180">
+        {{ section.settings.side_text_2 }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Book Now High",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Experience the longevity" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Book Now" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Join us at our sanctuary for a curated wellness experience. Limited tables available daily for the 120 Ages ritual." },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "text", "id": "link_text", "label": "Link Text", "default": "Reserve Your Table" },
+    { "type": "text", "id": "side_text_1", "label": "Side Text 1", "default": "Nourishment" },
+    { "type": "text", "id": "side_text_2", "label": "Side Text 2", "default": "Sanctuary" }
+  ]
+}
+{% endschema %}

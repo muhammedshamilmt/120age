@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#9E7556">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN (browser build) -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- Tailwind theme config -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-ultra: "Ultra", serif;
+        --color-muted-brown: #9E7556;
+        --color-forest-green: #50A845;
+        --color-vintage-cream: #FFEAD3;
+      }
+
+      @layer base {
+        ul, ol { list-style: revert; }
+        body { @apply bg-[#FFEAD3] text-[#2D2D2D]; }
+        a { text-decoration: none; }
+      }
+
+      @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        animation: marquee 30s linear infinite;
+      }
+
+      @keyframes fade-in {
+        0%   { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out forwards;
+      }
+
+      .ultra-regular {
+        font-family: var(--font-ultra), serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .tab-panel { display: none; }
+      .tab-panel.active { display: block; }
+
+      .tab-btn.active {
+        border-bottom-color: #9E7556;
+        color: #9E7556;
+      }
+
+      .size-btn.selected,
+      .variant-btn.selected {
+        background-color: #9E7556;
+        color: #FFEAD3;
+        border-color: #9E7556;
+      }
+    </style>
+
+    <!-- Theme base styles -->
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (window.Shopify && Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+  </head>
+
+  <body class="bg-vintage-cream text-[#2D2D2D] overflow-x-hidden antialiased">
+
+    {%- section 'header' -%}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {%- section 'footer' -%}
+
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  </body>
+</html>

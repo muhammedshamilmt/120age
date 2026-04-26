@@ -1,0 +1,16 @@
+<div class="customer-login section-spacing container--narrow text-center">
+  <h1 class="h-font text-5xl mb-12">LOGIN</h1>
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <div class="mb-6">
+      <input type="email" name="customer[email]" placeholder="EMAIL" class="footer__input w-full" style="max-width: 400px; margin: 0 auto; display: block;">
+    </div>
+    <div class="mb-8">
+      <input type="password" name="customer[password]" placeholder="PASSWORD" class="footer__input w-full" style="max-width: 400px; margin: 0 auto; display: block;">
+    </div>
+    <button type="submit" class="btn">SIGN IN</button>
+    <div class="mt-6">
+      <a href="{{ routes.account_register_url }}" class="text-xs decoration-underline">CREATE ACCOUNT</a>
+    </div>
+  {% endform %}
+</div>

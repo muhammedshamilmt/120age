@@ -1,0 +1,23 @@
+<section class="pt-32 pb-20 px-6 md:px-12 lg:px-24 bg-[#1A1A1A] text-vintage-cream animate-fade-in relative overflow-hidden">
+  <div class="max-w-screen-2xl mx-auto relative z-10">
+    <h1 class="text-6xl md:text-9xl font-ultra uppercase tracking-tighter leading-[0.85] mb-8 text-left">
+      {{ section.settings.title | replace: ' ', '<br />' }}
+    </h1>
+    <p class="text-xl md:text-3xl font-ultra uppercase tracking-widest text-vintage-cream/60 text-left">
+      {{ section.settings.tagline }}
+    </p>
+  </div>
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[100px] border-forest-green rounded-full w-[150%] h-[150%]"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wellness Hero High",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Nourish Your Being" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Wellness / Rituals / Community" }
+  ]
+}
+{% endschema %}

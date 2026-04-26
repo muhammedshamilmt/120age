@@ -1,0 +1,59 @@
+<section class="relative min-h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-vintage-cream">
+  <!-- Global Background Logo -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center z-0 overflow-hidden">
+    {%- if section.settings.bg_logo != blank -%}
+      {{ section.settings.bg_logo | image_url: width: 1200 | image_tag: class: 'w-full h-full object-contain scale-125 md:scale-150 rotate-12' }}
+    {%- else -%}
+      <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/df78dac5-7d8d-47bd-994b-90e733dd5e67/image-1769497755900.png?width=1200&height=1200&resize=contain" class="w-full h-full object-contain scale-125 md:scale-150 rotate-12" />
+    {%- endif -%}
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none opacity-10">
+      <div class="absolute inset-0 border-[40px] border-forest-green rounded-full animate-pulse"></div>
+      <div class="absolute inset-20 border-[20px] border-forest-green rounded-full"></div>
+    </div>
+
+    <!-- Central Graphic Placeholder -->
+    <div class="relative z-10 text-center flex justify-center mt-8">
+      <div class="w-64 h-64 md:w-96 md:h-96 border-4 border-muted-brown rounded-full flex items-center justify-center relative bg-vintage-cream shadow-[20px_20px_0px_0px_rgba(158,117,86,0.1)] overflow-hidden">
+        {%- if section.settings.center_logo != blank -%}
+          {{ section.settings.center_logo | image_url: width: 800 | image_tag: class: 'w-4/5 h-4/5 object-contain select-none' }}
+        {%- else -%}
+          <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/df78dac5-7d8d-47bd-994b-90e733dd5e67/image-1769497755900.png?width=8000&height=8000&resize=contain" class="w-4/5 h-4/5 object-contain select-none" />
+        {%- endif -%}
+      </div>
+      <div class="absolute top-0 right-0 md:-right-[-32px] bg-forest-green text-vintage-cream p-4 rotate-12 font-ultra text-xl border-2 border-vintage-cream">
+        {{ section.settings.est_text }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Title at the Bottom -->
+  <div class="relative w-full p-6 md:p-12 z-20">
+    <div class="flex flex-col items-center relative">
+      <h1 class="text-[13vw] md:text-[11vw] lg:text-[11vw] xl:text-[10vw] leading-[0.85] font-ultra text-[#1A1A1A] uppercase tracking-[-0.05em] text-center ultra-regular drop-shadow-sm [-webkit-text-stroke:6px_white]">
+        {{ section.settings.title_line_1 }}<br />
+        <span class="ml-[5vw] lg:ml-[3vw]">{{ section.settings.title_line_2 }}</span>
+      </h1>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero High",
+  "settings": [
+    { "type": "image_picker", "id": "bg_logo", "label": "Background Logo Texture" },
+    { "type": "image_picker", "id": "center_logo", "label": "Central Logo Graphic" },
+    { "type": "text", "id": "est_text", "label": "Established Text", "default": "EST. 2026" },
+    { "type": "text", "id": "title_line_1", "label": "Title Line 1", "default": "Sip Healthy" },
+    { "type": "text", "id": "title_line_2", "label": "Title Line 2", "default": "Live Longer" }
+  ],
+  "presets": [
+    { "name": "Hero High" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "hero": {
+      "type": "menu-hero-120ages",
+      "settings": {}
+    },
+    "ticker": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
+    "list": {
+      "type": "menu-list-120ages",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "title": "Brews & Sips",
+            "items": "Herbal Tea | $5 | A soothing blend of chamomile and lavender. | Our herbal teas are brewed fresh, perfect for calming your mind.\nGreen Smoothie | $7 | Spinach, kale, apple, and a hint of ginger.\nTurmeric Latte | $5 | Warm almond milk with turmeric and cinnamon."
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "title": "Nourishing Bowls & Toasts",
+            "items": "Quinoa Salad | $9 | Fresh veggies tossed with lemon vinaigrette.\nAvocado Toast | $6 | Whole grain bread topped with ripe avocado and seeds.\nBerry Bowl | $8 | Mixed berries, nuts, and a drizzle of honey."
+          }
+        }
+      },
+      "block_order": ["b1", "b2"]
+    },
+    "booking": {
+      "type": "book-now-120ages",
+      "settings": {}
+    },
+    "gallery": {
+      "type": "about-gallery-120ages",
+      "settings": {
+        "title_1": "Our",
+        "title_2": "Sanctuary"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "list",
+    "booking",
+    "gallery"
+  ]
+}

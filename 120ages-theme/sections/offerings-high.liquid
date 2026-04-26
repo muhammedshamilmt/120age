@@ -1,0 +1,91 @@
+<section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12">
+      <h2 class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown text-left">
+        {{ section.settings.title | replace: ' ', '<br />' }}
+      </h2>
+      <p class="text-xl md:text-2xl lg:text-3xl font-ultra leading-[1.1] uppercase max-w-xl md:mb-2 text-left text-muted-brown/80">
+        {{ section.settings.subheading }}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      {%- for block in section.blocks -%}
+        <div class="group cursor-pointer" {{ block.shopify_attributes }}>
+          <div class="relative aspect-[4/5] overflow-hidden border-2 border-black mb-6 bg-black">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100' }}
+            {%- else -%}
+               <div class="absolute inset-0 w-full h-full bg-muted-brown/10"></div>
+            {%- endif -%}
+            <div class="absolute inset-0 bg-forest-green/10 group-hover:bg-transparent transition-colors"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <span class="text-vintage-cream font-ultra text-xs uppercase tracking-widest border border-vintage-cream/30 px-2 py-1">
+                {{ block.settings.badge | default: 'Premium Selection' }}
+              </span>
+            </div>
+          </div>
+          <h3 class="text-3xl font-ultra uppercase mb-3 transition-colors text-black group-hover:text-muted-brown text-left">
+            {{ block.settings.title }}
+          </h3>
+          <p class="text-lg leading-relaxed font-medium mb-4 text-black/80 text-left">
+            {{ block.settings.text }}
+          </p>
+          <div class="h-px w-12 mb-4 group-hover:w-full transition-all duration-500 bg-muted-brown"></div>
+          <p class="text-xs uppercase tracking-widest font-bold opacity-60 leading-loose text-black text-left">
+            {{ block.settings.caption }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="mt-24 pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8 border-black/10">
+      <div class="flex items-center gap-4 text-muted-brown">
+        <div class="w-12 h-12 rounded-full border flex items-center justify-center font-ultra text-2xl border-muted-brown">
+          *
+        </div>
+        <p class="font-ultra uppercase tracking-tighter text-xl text-black">
+          Freshly Brewed & <span>Handcrafted</span>
+        </p>
+      </div>
+      <a href="{{ section.settings.btn_url | default: '#' }}" class="px-10 py-4 font-ultra uppercase text-lg transition-colors bg-black text-vintage-cream hover:bg-forest-green cursor-pointer no-underline">
+        {{ section.settings.btn_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offerings High",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Our Offerings" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Savor herbal teas, fresh foods, and wellness drinks in a peaceful setting." },
+    { "type": "text", "id": "btn_text", "label": "Button Text", "default": "Explore Menu" },
+    { "type": "url", "id": "btn_url", "label": "Button URL" }
+  ],
+  "blocks": [
+    {
+      "type": "offering",
+      "name": "Offering",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "badge", "label": "Badge", "default": "Premium Selection" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Herbal Teas" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Handcrafted blends brewed fresh to soothe and energize your day." },
+        { "type": "textarea", "id": "caption", "label": "Caption", "default": "A clean, calming café interior with natural light, wooden tables, and green plants." }
+      ]
+    }
+  ],
+  "presets": [
+    { 
+      "name": "Offerings High",
+      "blocks": [
+        { "type": "offering", "settings": { "title": "Herbal Teas" } },
+        { "type": "offering", "settings": { "title": "Healthy Drinks" } },
+        { "type": "offering", "settings": { "title": "Fresh Foods" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{%- if section.settings.show_announcement -%}
+  <div class="w-full bg-forest-green py-3 border-y border-forest-green/30 overflow-hidden relative z-50 flex items-center">
+    <div class="flex animate-marquee whitespace-nowrap">
+      {%- for i in (1..20) -%}
+        <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-vintage-cream mx-10">
+          {{ section.settings.text | escape }}
+        </span>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement High",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "FREE SHIPPING ON ORDERS OVER $100 — SHOP WELLNESS NOW"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement High"
+    }
+  ]
+}
+{% endschema %}

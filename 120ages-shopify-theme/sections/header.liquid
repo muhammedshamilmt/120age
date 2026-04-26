@@ -1,0 +1,72 @@
+<nav class="relative w-full z-50 bg-vintage-cream border-b-2 border-muted-brown/20 header-high">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Heading -->
+    <a href="{{ routes.root_url }}" class="font-ultra text-3xl md:text-4xl text-muted-brown tracking-tight hover:opacity-80 transition-opacity no-underline">
+      {{ shop.name }}
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="hidden md:flex items-center space-x-8">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest no-underline">
+          {{ link.title | uppercase }}
+        </a>
+      {%- endfor -%}
+    </div>
+
+    <!-- CTA / Cart -->
+    <div class="flex items-center space-x-6">
+      <a href="{{ routes.cart_url }}" id="cart-btn" class="group flex items-center gap-2 font-ultra text-xs text-muted-brown border-2 border-muted-brown px-4 py-2 hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 relative cursor-pointer z-50 no-underline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+          <path d="M3 6h18" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span>BAG (<span id="cart-count">{{ cart.item_count }}</span>)</span>
+      </a>
+      <button id="mobile-menu-btn" class="md:hidden text-muted-brown cursor-pointer bg-transparent border-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-vintage-cream border-b-2 border-muted-brown/20 p-4 z-40">
+    <div class="flex flex-col space-y-4">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center no-underline">
+          {{ link.title | uppercase }}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header High",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header High"
+    }
+  ]
+}
+{% endschema %}

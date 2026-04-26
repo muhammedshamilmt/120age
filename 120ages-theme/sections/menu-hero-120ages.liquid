@@ -1,0 +1,23 @@
+<section class="pt-32 pb-16 bg-vintage-cream text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h1 class="font-ultra text-6xl md:text-8xl text-muted-brown mb-6 tracking-tight uppercase">
+      {{ section.settings.title }}
+    </h1>
+    <p class="font-ultra text-lg md:text-xl text-forest-green uppercase tracking-widest">
+      {{ section.settings.tagline }}
+    </p>
+    <div class="mt-8 flex justify-center">
+      <div class="h-1 w-24 bg-forest-green/30"></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Menu Hero High",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Menu" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Nourishing Your Soul, One Sip at a Time" }
+  ]
+}
+{% endschema %}

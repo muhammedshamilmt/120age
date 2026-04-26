@@ -1,0 +1,99 @@
+<section class="py-24 bg-[#1A1A1A] text-vintage-cream overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col items-center mb-16 px-0 text-center">
+      <span class="font-ultra text-forest-green text-sm tracking-[0.3em] uppercase mb-4">
+        {{ section.settings.subheading }}
+      </span>
+      <h2 class="text-5xl md:text-7xl font-ultra uppercase leading-none">
+        {{ section.settings.title_part_1 }} <span class="text-vintage-cream/30 italic">{{ section.settings.title_part_2 }}</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+      {%- for block in section.blocks -%}
+        <div class="relative p-10 border border-vintage-cream/20 flex flex-col justify-between group hover:bg-vintage-cream/5 transition-colors duration-500 text-left" {{ block.shopify_attributes }}>
+          <div class="absolute -top-4 -left-4 text-6xl font-ultra text-forest-green opacity-50">
+            "
+          </div>
+          
+          <p class="text-xl md:text-2xl font-ultra leading-relaxed mb-12 relative z-10">
+            {{ block.settings.text }}
+          </p>
+
+          <div>
+            <h4 class="text-2xl font-ultra text-vintage-cream uppercase tracking-tight">
+              {{ block.settings.author }}
+            </h4>
+            <p class="text-sm font-ultra text-forest-green tracking-widest uppercase opacity-80">
+              {{ block.settings.label }}
+            </p>
+          </div>
+
+          <!-- Decorative Corner -->
+          <div class="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-forest-green/30 transition-all group-hover:w-full group-hover:h-full group-hover:opacity-10"></div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Kind Words High",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Voice of the People"
+    },
+    {
+      "type": "text",
+      "id": "title_part_1",
+      "label": "Title Part 1",
+      "default": "Kind"
+    },
+    {
+      "type": "text",
+      "id": "title_part_2",
+      "label": "Title Part 2",
+      "default": "Words"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Kind Word",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "The atmosphere here is unlike any other. It truly feels like stepping back in time to a simpler, more mindful era."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Eleanor Rigby"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Regular Patron"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Kind Words High",
+      "blocks": [
+        { "type": "testimonial", "settings": { "author": "Eleanor Rigby", "label": "Regular Patron" } },
+        { "type": "testimonial", "settings": { "author": "Arthur Dent", "label": "Tea Enthusiast" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

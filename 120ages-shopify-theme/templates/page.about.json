@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "hero": {
+      "type": "about-hero-high",
+      "settings": {
+        "subheading": "Established 2026",
+        "title_line_1": "Our",
+        "title_line_2": "Story",
+        "quote": "A journey of a thousand sips begins with a single leaf.",
+        "bottom_label": "Crafting Moments"
+      }
+    },
+    "kind_words": {
+      "type": "about-testimonials-high",
+      "settings": {
+        "subheading": "Voice of the People",
+        "title_part_1": "Kind",
+        "title_part_2": "Words"
+      },
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "author": "Eleanor Rigby", "label": "Regular Patron", "text": "The atmosphere here is unlike any other. It truly feels like stepping back in time to a simpler, more mindful era." } },
+        "t2": { "type": "testimonial", "settings": { "author": "Arthur Dent", "label": "Tea Enthusiast", "text": "Their herbal blends are masterfully crafted. You can taste the quality and the care in every single cup." } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "moments": {
+      "type": "about-gallery-high",
+      "settings": {
+        "subheading": "The Gallery",
+        "title_line_1": "Shared",
+        "title_line_2": "Moments"
+      },
+      "blocks": {
+        "m1": { "type": "moment", "settings": { "caption": "Captured Archive № 2024" } },
+        "m2": { "type": "moment", "settings": { "caption": "Captured Archive № 2025" } },
+        "m3": { "type": "moment", "settings": { "caption": "Captured Archive № 2026" } },
+        "m4": { "type": "moment", "settings": { "caption": "Captured Archive № 2027" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "place": {
+      "type": "about-place-high",
+      "settings": {
+        "subheading": "Visit Us",
+        "title_line_1": "Our",
+        "title_line_2": "Place",
+        "text": "Nestled in a quiet corner, our café invites you to unwind and nourish your body and mind.",
+        "address": "123 Herbal Lane",
+        "hours": "8am - 8pm"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "kind_words",
+    "moments",
+    "place"
+  ]
+}

@@ -1,0 +1,56 @@
+<section class="py-20 bg-vintage-cream">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category' -%}
+          <div class="space-y-12">
+            <h2 class="font-ultra text-3xl text-forest-green border-b-2 border-forest-green/20 pb-4 uppercase tracking-wider text-left">
+              {{ block.settings.title }}
+            </h2>
+            <div class="space-y-10">
+              {%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+              {%- for item in items -%}
+                {%- assign parts = item | split: '|' -%}
+                <div class="group text-left">
+                  <div class="flex justify-between items-baseline mb-2">
+                    <h3 class="font-ultra text-xl md:text-2xl text-muted-brown group-hover:text-forest-green transition-colors duration-300 uppercase">
+                      {{ parts[0] | strip }}
+                    </h3>
+                    <span class="font-ultra text-xl text-forest-green">
+                      {{ parts[1] | strip }}
+                    </span>
+                  </div>
+                  <p class="text-muted-brown/70 font-medium leading-relaxed mb-2">
+                    {{ parts[2] | strip }}
+                  </p>
+                  {%- if parts[3] != blank -%}
+                    <p class="text-sm italic text-muted-brown/50 border-l-2 border-muted-brown/20 pl-4 mt-2">
+                      {{ parts[3] | strip }}
+                    </p>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Menu List High",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Category Title" },
+        { "type": "textarea", "id": "items", "label": "Items (Name | Price | Description | Optional Hint)", "info": "One per line" }
+      ]
+    }
+  ]
+}
+{% endschema %}

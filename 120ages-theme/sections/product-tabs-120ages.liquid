@@ -1,0 +1,149 @@
+<section class="py-16 px-6 md:px-12 lg:px-24 bg-vintage-cream border-t border-muted-brown/10">
+  <div class="max-w-7xl mx-auto">
+    <!-- Tab Nav -->
+    <div class="flex flex-wrap gap-0 border-b-2 border-muted-brown/10 mb-12 overflow-x-auto no-scrollbar">
+      {%- assign tabs = "Description,Benefits,Storage,How to Use,FAQs" | split: "," -%}
+      {%- for tab in tabs -%}
+        <button class="tab-btn {% if forloop.first %}active text-muted-brown border-muted-brown{% else %}text-muted-brown/40 border-transparent{% endif %} font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer bg-transparent" data-tab="{{ tab | handle }}">
+          {{ tab }}
+        </button>
+      {%- endfor -%}
+    </div>
+
+    <!-- Description -->
+    <div class="tab-panel active block text-left" id="tab-description">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6">
+          <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown">What makes this<br />Blend Special?</h3>
+          <div class="text-muted-brown/70 text-lg leading-relaxed font-medium">
+             {{ product.description }}
+          </div>
+          <div class="grid grid-cols-3 gap-6 pt-4 border-t border-muted-brown/10">
+            <div>
+              <p class="font-ultra text-3xl text-muted-brown">100%</p>
+              <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Natural</p>
+            </div>
+            <div>
+              <p class="font-ultra text-3xl text-muted-brown">Vegan</p>
+              <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Friendly</p>
+            </div>
+            <div>
+              <p class="font-ultra text-3xl text-muted-brown">Pure</p>
+              <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Source</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative aspect-[4/3] border-2 border-muted-brown/10 overflow-hidden bg-white">
+           {%- if product.images[1] -%}{{ product.images[1] | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover' }}{%- else -%}{{ 'image' | placeholder_svg_tag: 'absolute inset-0 w-full h-full' }}{%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits (Static for now, can be metafields) -->
+    <div class="tab-panel hidden text-left" id="tab-benefits">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {%- assign benefit_titles = "Immunity Boost,Anti-Inflammatory,Heart Health,Gut & Digestion,Skin & Beauty,Stress Relief" | split: "," -%}
+        {%- for title in benefit_titles -%}
+          <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+            <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">{{ title }}</h4>
+            <p class="text-muted-brown/60 text-sm leading-relaxed">Potent natural compounds that work in harmony with your body's rhythm.</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="tab-panel hidden text-left" id="tab-storage">
+       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+              <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown">Storing Your<br />Goods Right</h3>
+              <div class="space-y-6">
+                 <div class="flex gap-5 items-start">
+                    <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">1</div>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed"><strong class="font-ultra uppercase text-muted-brown block mb-1">Airtight Container</strong> Store in an airtight glass or ceramic container to prevent moisture and oxidation.</p>
+                 </div>
+                 <div class="flex gap-5 items-start">
+                    <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">2</div>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed"><strong class="font-ultra uppercase text-muted-brown block mb-1">Cool & Dry Place</strong> Keep away from heat sources. A pantry or kitchen cabinet away from the stove is ideal.</p>
+                 </div>
+              </div>
+            </div>
+            <div class="relative aspect-square border-2 border-muted-brown/10 overflow-hidden bg-white">
+                {%- if product.images[2] -%}{{ product.images[2] | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover' }}{%- else -%}{{ 'collection-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full' }}{%- endif -%}
+            </div>
+       </div>
+    </div>
+
+    <!-- How to Use -->
+    <div class="tab-panel hidden text-left" id="tab-how-to-use">
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {%- assign steps = "Step 1,Step 2,Step 3,Step 4" | split: "," -%}
+          {%- for step in steps -%}
+             <div class="bg-vintage-cream border-2 border-muted-brown/15 p-8 space-y-4">
+                <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase">0{{ forloop.index }}</span>
+                <h4 class="font-ultra text-2xl uppercase leading-none text-muted-brown">{{ step }}</h4>
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Follow our traditional methodology for the best results and experience.</p>
+             </div>
+          {%- endfor -%}
+       </div>
+    </div>
+
+    <!-- FAQs -->
+    <div class="tab-panel hidden text-left" id="tab-faqs">
+       <div class="max-w-3xl space-y-0">
+          <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown mb-10">Frequently Asked<br /><span class="text-forest-green">Questions</span></h3>
+          {%- for i in (1..4) -%}
+             <div class="faq-item border-tl border-t-2 border-muted-brown/10 {% if forloop.last %}border-b-2{% endif %}">
+                <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group bg-transparent border-none">
+                  <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">Common Question About {{ product.title }}?</span>
+                  <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+                </button>
+                <div class="faq-answer hidden pb-6">
+                  <p class="text-muted-brown/60 text-sm leading-relaxed">Our premium blends are sourced ethically and processed with minimal intervention to ensure you get the purest experience possible.</p>
+                </div>
+             </div>
+          {%- endfor -%}
+       </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active', 'text-muted-brown', 'border-muted-brown');
+        b.classList.add('text-muted-brown/40', 'border-transparent');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      
+      btn.classList.add('active', 'text-muted-brown', 'border-muted-brown');
+      btn.classList.remove('text-muted-brown/40', 'border-transparent');
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !answer.classList.contains('hidden');
+      
+      if (isOpen) {
+        answer.classList.add('hidden');
+        icon.textContent = '+';
+      } else {
+        answer.classList.remove('hidden');
+        icon.textContent = '−';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Tabs High",
+  "settings": []
+}
+{% endschema %}

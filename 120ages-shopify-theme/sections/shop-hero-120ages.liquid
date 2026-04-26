@@ -1,0 +1,70 @@
+<section class="shop-hero">
+  <div class="container--narrow">
+    <div class="shop-hero__content text-center">
+      {%- if section.settings.subheading != blank -%}
+        <span class="section-subheading">{{ section.settings.subheading | escape }}</span>
+      {%- endif -%}
+      <h1 class="shop-hero__title h-font">{{ section.settings.title | escape }}</h1>
+      {%- if section.settings.text != blank -%}
+        <div class="shop-hero__text">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .shop-hero {
+    padding: 6rem 0 4rem;
+    background-color: var(--background-color);
+    border-bottom: 1px solid rgba(158, 117, 86, 0.1);
+  }
+  .shop-hero__title {
+    font-size: 4.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .shop-hero__text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    color: rgba(45, 45, 45, 0.7);
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .shop-hero__title {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Shop Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "CURATED WELLNESS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "THE SHOP"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Explore our highly vetted selection of longevity-focused supplements, high-performance skincare, and daily ritual essentials.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop Hero"
+    }
+  ]
+}
+{% endschema %}

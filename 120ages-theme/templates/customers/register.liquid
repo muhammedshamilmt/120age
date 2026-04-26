@@ -1,0 +1,52 @@
+<section class="min-h-[80vh] flex items-center justify-center px-6 py-20 bg-vintage-cream">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-12">
+      <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-3 block">Join Us</span>
+      <h1 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tighter text-muted-brown">Create Account</h1>
+    </div>
+
+    {%- form 'create_customer' -%}
+      {%- if form.errors -%}
+        <div class="border-2 border-red-300 bg-red-50 p-4 mb-6">
+          <p class="font-ultra text-xs uppercase tracking-widest text-red-500">{{ form.errors | default_errors }}</p>
+        </div>
+      {%- endif -%}
+
+      <div class="space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="FirstName" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 block mb-2">First Name</label>
+            <input type="text" name="customer[first_name]" id="FirstName" autocomplete="given-name"
+              class="w-full bg-transparent border-b-2 border-muted-brown/20 py-4 font-ultra uppercase text-base text-muted-brown focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/20"
+              placeholder="Jane" />
+          </div>
+          <div>
+            <label for="LastName" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 block mb-2">Last Name</label>
+            <input type="text" name="customer[last_name]" id="LastName" autocomplete="family-name"
+              class="w-full bg-transparent border-b-2 border-muted-brown/20 py-4 font-ultra uppercase text-base text-muted-brown focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/20"
+              placeholder="Doe" />
+          </div>
+        </div>
+        <div>
+          <label for="RegisterEmail" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 block mb-2">Email</label>
+          <input type="email" name="customer[email]" id="RegisterEmail" autocomplete="email" autocorrect="off" autocapitalize="off"
+            class="w-full bg-transparent border-b-2 border-muted-brown/20 py-4 font-ultra uppercase text-lg text-muted-brown focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/20"
+            placeholder="your@email.com" />
+        </div>
+        <div>
+          <label for="RegisterPassword" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 block mb-2">Password</label>
+          <input type="password" name="customer[password]" id="RegisterPassword" autocomplete="new-password"
+            class="w-full bg-transparent border-b-2 border-muted-brown/20 py-4 font-ultra uppercase text-lg text-muted-brown focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/20"
+            placeholder="Min. 5 characters" />
+        </div>
+        <button type="submit" class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-5 uppercase tracking-[0.3em] hover:bg-forest-green transition-colors border-none cursor-pointer">
+          Create Account
+        </button>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="{{ routes.account_login_url }}" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 hover:text-muted-brown transition-colors no-underline">Already have an account? Sign in</a>
+      </div>
+    {%- endform -%}
+  </div>
+</section>

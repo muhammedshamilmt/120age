@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>120ages - Privacy Policy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-ultra: "Ultra", serif;
+      --color-muted-brown: #9E7556;
+      --color-forest-green: #50A845;
+      --color-vintage-cream: #FFEAD3;
+    }
+    
+    @layer base {
+      ul, ol {
+        list-style: revert;
+      }
+      body {
+        @apply bg-[#FFEAD3] text-[#2D2D2D];
+      }
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+
+    .ultra-regular {
+      font-family: var(--font-ultra), serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-vintage-cream text-foreground overflow-x-hidden min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="relative w-full z-50 bg-vintage-cream border-b-2 border-muted-brown/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo / Heading -->
+      <a href="index.html"
+        class="font-ultra text-3xl md:text-4xl text-muted-brown tracking-tight hover:opacity-80 transition-opacity">
+        120ages
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="menu.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">MENU</a>
+        <a href="about.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">ABOUT</a>
+        <a href="wellness.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">WELLNESS</a>
+        <a href="shop.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">SHOP</a>
+        <a href="privacy.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">PRIVACY</a>
+      </div>
+
+      <!-- CTA / Cart -->
+      <div class="flex items-center space-x-6">
+        <button id="cart-btn"
+          class="group flex items-center gap-2 font-ultra text-xs text-muted-brown border-2 border-muted-brown px-4 py-2 hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 relative cursor-pointer z-50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span>BAG (<span id="cart-count">0</span>)</span>
+          <span id="cart-badge"
+            class="hidden absolute -top-2 -right-2 w-5 h-5 bg-forest-green text-white text-[10px] flex items-center justify-center rounded-full border-2 border-vintage-cream font-bold group-hover:scale-110 transition-transform">
+            0
+          </span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-muted-brown cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-full left-0 w-full bg-vintage-cream border-b-2 border-muted-brown/20 p-4 z-40">
+      <div class="flex flex-col space-y-4">
+        <a href="menu.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">MENU</a>
+        <a href="about.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">ABOUT</a>
+        <a href="wellness.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">WELLNESS</a>
+        <a href="index.html#shop"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">SHOP</a>
+        <a href="privacy.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">PRIVACY</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bg-vintage-cream text-muted-brown">
+    <section class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-24">
+          <span class="font-ultra text-xs tracking-[0.5em] text-forest-green uppercase mb-4 block">
+            LEGAL DOCUMENT
+          </span>
+          <h1 class="font-ultra text-5xl md:text-7xl uppercase leading-none tracking-tighter mb-8">
+            Privacy Matters
+          </h1>
+          <p class="font-ultra text-sm md:text-base tracking-widest uppercase opacity-60 max-w-2xl mx-auto">
+            Your data is safe with 120ages. Clear, simple privacy policies tailored for you.
+          </p>
+          <div class="mt-8 font-ultra text-[10px] tracking-[0.3em] uppercase opacity-40">
+            Last Updated: January 28, 2026
+          </div>
+        </div>
+
+        <div class="space-y-16">
+          <div class="grid gap-16">
+
+            <!-- Section 1 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">01</span>
+                Welcome to 120 AGES!
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  These terms and conditions outline the rules and regulations for the use of 120 AGES’s Website,
+                  located at https://120ages.com/.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  By accessing this website, we assume you accept these terms and conditions. Do not continue to use 120
+                  AGES if you do not agree to take all of the terms and conditions stated on this page.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">02</span>
+                Cookies
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  The website uses cookies to help personalize your online experience. By accessing 120 AGES, you agree
+                  to use the required cookies.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used
+                  to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only
+                  be read by a web server in the domain that issued the cookie to you.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We may use cookies to collect, store, and track information for statistical or marketing purposes to
+                  operate our website. You have the ability to accept or decline optional cookies. There are some
+                  required cookies that are necessary for the operation of our website. These cookies do not require
+                  your consent as they always work. Please keep in mind that by accepting required cookies, you also
+                  accept third-party cookies, which might be used via third-party provided services if you use such
+                  services on our website, for example, a video display window provided by third parties and integrated
+                  into our website.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">03</span>
+                License
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  Unless otherwise stated, 120 AGES and/or its licensors own the intellectual property rights for all
+                  material on 120 AGES. All intellectual property rights are reserved. You may access this from 120 AGES
+                  for your own personal use subjected to restrictions set in these terms and conditions.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  You must not:
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Copy or republish material from 120 AGES
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Sell, rent, or sub-license material from 120 AGES
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Reproduce, duplicate, or copy material from 120 AGES
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Redistribute content from 120 AGES
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  This Agreement shall begin on the date hereof.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">04</span>
+                Comments
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  Parts of this website offer users an opportunity to post and exchange opinions and information in
+                  certain areas of the website. 120 AGES does not filter, edit, publish, or review Comments before their
+                  presence on the website. Comments do not reflect the views and opinions of 120 AGES, its agents,
+                  and/or affiliates. Comments reflect the views and opinions of the person who posts their views and
+                  opinions.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  To the extent permitted by applicable laws, 120 AGES shall not be liable for the Comments or any
+                  liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of
+                  and/or appearance of the Comments on this website.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  120 AGES reserves the right to monitor all Comments and remove any Comments that can be considered
+                  inappropriate, offensive, or causes breach of these Terms and Conditions.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  You warrant and represent that:
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • You are entitled to post the Comments on our website and have all necessary licenses and consents to
+                  do so.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • The Comments do not invade any intellectual property right, including without limitation copyright,
+                  patent, or trademark of any third party.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • The Comments do not contain any defamatory, libelous, offensive, indecent, or otherwise unlawful
+                  material, which is an invasion of privacy.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • The Comments will not be used to solicit or promote business or custom or present commercial
+                  activities or unlawful activity.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  You hereby grant 120 AGES a non-exclusive license to use, reproduce, edit, and authorize others to
+                  use, reproduce, and edit any of your Comments in any and all forms, formats, or media.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">05</span>
+                Hyperlinking to our Content
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  The following organizations may link to our Website without prior written approval:
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Government agencies
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Search engines
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • News organizations
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Online directory distributors may link to our Website in the same manner as they hyperlink to the
+                  Websites of other listed businesses
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping
+                  malls, and charity fundraising groups which may not hyperlink to our Website
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  These organizations may link to our home page, to publications, or to other Website information so
+                  long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,
+                  endorsement, or approval of the linking party and its products and/or services; and (c) fits within
+                  the context of the linking party’s site.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We may consider and approve other link requests from the following types of organizations:
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Commonly-known consumer and/or business information sources
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Dot.com community sites
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Associations or other groups representing charities
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Online directory distributors
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Internet portals
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Accounting, law, and consulting firms
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Educational institutions and trade associations
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We will approve link requests from these organizations if we decide that: (a) the link would not make
+                  us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have
+                  any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates
+                  the absence of 120 AGES; and (d) the link is in the context of general resource information.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">06</span>
+                Content Liability
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We shall not be held responsible for any content that appears on your Website. You agree to protect
+                  and defend 120 AGES against all claims that are raised on your Website. No link(s) should appear on
+                  any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise
+                  violates, or advocates the infringement or other violation of, any third party rights.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">07</span>
+                Reservation of Rights
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We reserve the right to request that you remove all links or any particular link to our Website. You
+                  approve to immediately remove all links to our Website upon request. We also reserve the right to
+                  amend these terms and conditions and its linking policy at any time. By continuously linking to our
+                  Website, you agree to be bound to and follow these linking terms and conditions.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">08</span>
+                Removal of links from our website
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  If you find any link on our Website that is offensive for any reason, you are free to contact and
+                  inform us at any moment. We will consider requests to remove links, but we are not obligated to do so
+                  or to respond to you directly.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  We do not ensure that the information on this website is correct. We do not warrant its completeness
+                  or accuracy, nor do we promise to ensure that the website remains available or that the material on
+                  the website is kept up to date.
+                </p>
+              </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="space-y-6">
+              <h2 class="font-ultra text-2xl uppercase tracking-widest flex items-center gap-4">
+                <span class="text-forest-green text-sm">09</span>
+                Disclaimer
+              </h2>
+              <div class="h-0.5 bg-muted-brown/10 w-full"></div>
+              <div class="space-y-4">
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  To the maximum extent permitted by applicable law, we exclude all representations, warranties, and
+                  conditions relating to our website and the use of this website. Nothing in this disclaimer will:
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Limit or exclude our or your liability for death or personal injury
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Limit or exclude our or your liability for fraud or fraudulent misrepresentation
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Limit any of our or your liabilities in any way that is not permitted under applicable law
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  • Exclude any of our or your liabilities that may not be excluded under applicable law
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer:
+                  (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the
+                  disclaimer, including liabilities arising in contract, in tort, and for breach of statutory duty.
+                </p>
+                <p class="text-muted-brown/70 leading-relaxed text-lg">
+                  As long as the website and the information and services on the website are provided free of charge,
+                  120 AGES will not be liable for any loss or damage of any nature.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-24 p-12 bg-muted-brown/5 border-2 border-muted-brown/10 text-center space-y-6">
+            <h3 class="font-ultra text-xl uppercase tracking-widest">Questions?</h3>
+            <p class="text-muted-brown/60 max-w-md mx-auto">
+              If you have any questions about these Terms & Conditions or our Privacy Policy, please contact us at:
+            </p>
+            <a href="mailto:hello@120ages.com"
+              class="inline-block font-ultra text-lg text-forest-green border-b-2 border-forest-green hover:text-muted-brown hover:border-muted-brown transition-all">
+              hello@120ages.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-vintage-cream px-6 py-16 md:px-12 md:py-24 lg:px-24 border-t border-vintage-cream/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-4xl font-ultra uppercase tracking-tighter mb-4 text-vintage-cream">Visit us! 120 Ages</h3>
+          <p class="text-xl font-ultra text-muted-brown uppercase mb-12 tracking-wide">
+            Sip Healthy. Live Longer.
+          </p>
+
+          <div class="space-y-8">
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Email</h4>
+              <a href="mailto:hello@120ages.com"
+                class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                hello@120ages.com
+              </a>
+            </div>
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Phone</h4>
+              <a href="tel:+919020480880"
+                class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                +91-9020480880
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple Contact Form -->
+        <div class="flex flex-col justify-end">
+          <div class="space-y-6 max-w-md w-full ml-auto">
+            <div class="relative group">
+              <input type="text" placeholder="Your Name"
+                class="w-full bg-transparent border-b-2 border-vintage-cream/20 py-4 font-ultra uppercase text-lg focus:outline-none focus:border-muted-brown transition-colors placeholder:text-vintage-cream/20" />
+            </div>
+            <button
+              class="w-full md:w-auto bg-forest-green text-vintage-cream px-12 py-5 font-ultra uppercase text-sm tracking-[0.2em] hover:bg-muted-brown transition-colors cursor-pointer">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Branding Section -->
+      <div class="pt-16 flex flex-col items-center">
+        <div class="relative w-full text-center overflow-hidden">
+          <h2
+            class="text-[12vw] md:text-[13vw] font-ultra uppercase leading-none tracking-tighter text-vintage-cream selection:bg-forest-green opacity-100 select-none whitespace-nowrap [-webkit-text-stroke:6px_white]">
+            120 Ages
+          </h2>
+
+          <div
+            class="flex flex-col md:flex-row justify-between items-center w-full mt-12 gap-4 border-t border-vintage-cream/10 pt-8">
+            <p class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40">
+              © <span id="current-year"></span> 120 AGES • ALL RIGHTS RESERVED • <a href="privacy.html"
+                class="hover:text-forest-green transition-colors">PRIVACY</a>
+            </p>
+
+            <div class="flex gap-8">
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">LON</span>
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">NYC</span>
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">PAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

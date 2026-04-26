@@ -1,0 +1,68 @@
+<section class="py-20 px-6 md:px-12 lg:px-24 bg-white border-t-2 border-muted-brown/10">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-12">
+      <h2 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tight text-muted-brown">
+        You May<br /><span class="text-forest-green">Also Like</span>
+      </h2>
+      <a href="{{ routes.all_products_collection_url }}" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/60 hover:text-muted-brown transition-colors border-b border-muted-brown/30 pb-1 no-underline">View All</a>
+    </div>
+    
+    <div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+      {%- if recommendations.performed -%}
+        {%- if recommendations.products_count > 0 -%}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {%- for recommendation in recommendations.products -%}
+              {% render 'product-card', product: recommendation %}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 opacity-20">
+          {%- for i in (1..4) -%}
+            <div class="aspect-[3/4] bg-muted-brown/10 animate-pulse"></div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const handleIntersection = (entries, observer) => {
+      if (!entries[0].isIntersecting) return;
+      observer.unobserve(productRecommendationsSection);
+      const url = productRecommendationsSection.dataset.url;
+
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+          const html = document.createElement('div');
+          html.innerHTML = text;
+          const recommendations = html.querySelector('.product-recommendations');
+          if (recommendations && recommendations.innerHTML.trim().length) {
+            productRecommendationsSection.innerHTML = recommendations.innerHTML;
+          }
+        })
+        .catch(e => console.error(e));
+    };
+
+    const productRecommendationsSection = document.querySelector('.product-recommendations');
+    const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 400px 0px'});
+    observer.observe(productRecommendationsSection);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "You May Also Like"
+    }
+  ]
+}
+{% endschema %}

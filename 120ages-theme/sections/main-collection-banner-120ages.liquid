@@ -1,0 +1,32 @@
+<section class="pt-24 pb-16 px-6 border-b-2 border-muted-brown/10 shadow-[0_4px_6px_-1px_rgba(158,117,86,0.05)] relative z-10 bg-vintage-cream">
+  <div class="max-w-7xl mx-auto text-center">
+    <span class="font-ultra text-xs tracking-[0.5em] text-forest-green uppercase mb-4 block">
+      {{ section.settings.subheading | default: 'EST. 2026' }}
+    </span>
+    <h1 class="font-ultra text-5xl md:text-7xl lg:text-8xl text-muted-brown uppercase leading-none tracking-tighter mb-8 shadow-text">
+       {%- if collection.handle == 'all' -%}
+          Curated Goods
+       {%- else -%}
+          {{ collection.title }}
+       {%- endif -%}
+    </h1>
+    {%- if collection.description != blank -%}
+      <div class="max-w-2xl mx-auto text-muted-brown/70 text-lg leading-relaxed font-medium">
+        {{ collection.description }}
+      </div>
+    {%- else -%}
+       <p class="max-w-2xl mx-auto text-muted-brown/70 text-lg leading-relaxed font-medium">
+          Discover our collection of artisanal blends, heritage accessories, and wellness essentials designed for a life well-lived.
+       </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Hero High",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "EST. 2026" }
+  ]
+}
+{% endschema %}

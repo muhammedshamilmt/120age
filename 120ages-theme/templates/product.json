@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-120ages",
+      "disabled": false,
+      "settings": {}
+    },
+    "tabs": {
+      "type": "product-tabs-120ages",
+      "disabled": false,
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations-120ages",
+      "disabled": false,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "tabs",
+    "recommendations"
+  ]
+}

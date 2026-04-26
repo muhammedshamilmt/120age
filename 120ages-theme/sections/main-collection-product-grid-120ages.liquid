@@ -1,0 +1,46 @@
+<section class="py-24 px-6 relative z-0 bg-vintage-cream" id="CollectionProductGrid">
+  <div class="max-w-7xl mx-auto">
+    <!-- Simple Filter/Sort UI -->
+    <div class="flex flex-wrap justify-between items-center gap-4 mb-16 border-b-2 border-muted-brown/10 pb-8">
+      <div class="flex flex-wrap gap-8">
+        <a href="{{ collection.url }}" class="font-ultra text-[10px] tracking-widest text-muted-brown hover:text-forest-green transition-colors uppercase no-underline">ALL</a>
+        {%- for tag in collection.all_tags limit: 4 -%}
+          <a href="{{ collection.url }}/{{ tag | handle }}" class="font-ultra text-[10px] tracking-widest text-muted-brown/40 hover:text-muted-brown transition-colors uppercase no-underline">{{ tag }}</a>
+        {%- endfor -%}
+      </div>
+      <div class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase">
+        Showing {{ collection.products_count }} Products
+      </div>
+    </div>
+
+    {%- paginate collection.products by 12 -%}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <div class="mt-20 flex justify-center border-t-2 border-muted-brown/10 pt-12">
+          {{ paginate | default_pagination: next: 'Next →', previous: '← Prev' }}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+<style>
+  .pagination .page, .pagination .next, .pagination .prev {
+    @apply font-ultra text-xs tracking-widest text-muted-brown mx-2 hover:text-forest-green transition-colors;
+  }
+  .pagination .current {
+    @apply text-forest-green border-b-2 border-forest-green pb-1;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Grid High",
+  "settings": []
+}
+{% endschema %}

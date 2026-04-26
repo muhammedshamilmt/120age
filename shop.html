@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>120ages - Shop</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme {
+      --font-ultra: "Ultra", serif;
+      --color-muted-brown: #9E7556;
+      --color-forest-green: #50A845;
+      --color-vintage-cream: #FFEAD3;
+    }
+    
+    @layer base {
+      ul, ol {
+        list-style: revert;
+      }
+      body {
+        @apply bg-[#FFEAD3] text-[#2D2D2D];
+      }
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+
+    .ultra-regular {
+      font-family: var(--font-ultra), serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-vintage-cream text-foreground overflow-x-hidden min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="relative w-full z-50 bg-vintage-cream border-b-2 border-muted-brown/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-ultra text-3xl md:text-4xl text-muted-brown tracking-tight hover:opacity-80 transition-opacity">
+        120ages
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="menu.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">MENU</a>
+        <a href="about.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">ABOUT</a>
+        <a href="wellness.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">WELLNESS</a>
+        <a href="shop.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">SHOP</a>
+        <a href="privacy.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">PRIVACY</a>
+      </div>
+
+      <div class="flex items-center space-x-6">
+        <button id="cart-btn" class="group flex items-center gap-2 font-ultra text-xs text-muted-brown border-2 border-muted-brown px-4 py-2 hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 relative cursor-pointer z-50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span>BAG (<span id="cart-count">0</span>)</span>
+          <span id="cart-badge" class="hidden absolute -top-2 -right-2 w-5 h-5 bg-forest-green text-white text-[10px] flex items-center justify-center rounded-full border-2 border-vintage-cream font-bold group-hover:scale-110 transition-transform">
+            0
+          </span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-muted-brown cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-vintage-cream border-b-2 border-muted-brown/20 p-4 z-40">
+        <div class="flex flex-col space-y-4">
+            <a href="menu.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">MENU</a>
+            <a href="about.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">ABOUT</a>
+            <a href="wellness.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">WELLNESS</a>
+            <a href="shop.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">SHOP</a>
+            <a href="privacy.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">PRIVACY</a>
+        </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 px-6 border-b-2 border-muted-brown/10 shadow-[0_4px_6px_-1px_rgba(158,117,86,0.05)] relative z-10">
+      <div class="max-w-7xl mx-auto text-center">
+        <span class="font-ultra text-xs tracking-[0.5em] text-forest-green uppercase mb-4 block">
+          EST. 2026
+        </span>
+        <h1 class="font-ultra text-5xl md:text-7xl lg:text-8xl text-muted-brown uppercase leading-none tracking-tighter mb-8">
+          Curated Goods
+        </h1>
+        <p class="max-w-2xl mx-auto text-muted-brown/70 text-lg leading-relaxed font-medium">
+          Discover our collection of artisanal blends, heritage accessories, and wellness essentials designed for a life well-lived.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter / Sort Bar -->
+    <section class="py-8 px-6 border-b-2 border-muted-brown/10">
+      <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+        <div class="flex flex-wrap gap-8">
+          <button class="font-ultra text-[10px] tracking-widest text-muted-brown transition-colors uppercase cursor-pointer">ALL</button>
+          <button class="font-ultra text-[10px] tracking-widest text-muted-brown/40 hover:text-muted-brown transition-colors uppercase cursor-pointer">HERBAL TEAS</button>
+          <button class="font-ultra text-[10px] tracking-widest text-muted-brown/40 hover:text-muted-brown transition-colors uppercase cursor-pointer">WELLNESS</button>
+          <button class="font-ultra text-[10px] tracking-widest text-muted-brown/40 hover:text-muted-brown transition-colors uppercase cursor-pointer">HOME</button>
+          <button class="font-ultra text-[10px] tracking-widest text-muted-brown/40 hover:text-muted-brown transition-colors uppercase cursor-pointer">ACCESSORIES</button>
+        </div>
+        <div class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase">
+          Showing 4 Products
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="py-24 px-6 relative z-0">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+          
+          <!-- Product Card 1 -->
+          <a href="product.html" class="group flex flex-col space-y-6 cursor-pointer">
+            <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/5 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=800" alt="Eternal Rest Blend" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-forest-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="flex justify-between items-start border-b border-muted-brown/20 pb-4">
+              <div>
+                <span class="font-ultra text-[10px] tracking-[0.3em] text-forest-green uppercase mb-2 block">Herbal Teas</span>
+                <h3 class="font-ultra text-2xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Eternal Rest Blend</h3>
+              </div>
+              <p class="font-ultra text-xl text-muted-brown">
+                $24.00
+              </p>
+            </div>
+            <button class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors  add-to-cart-btn">
+              Add to Bag
+            </button>
+          </a>
+
+          <!-- Product Card 2 -->
+          <a href="product.html" class="group flex flex-col space-y-6 cursor-pointer">
+            <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/5 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?w=800" alt="Daily Defense Drops" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-forest-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="flex justify-between items-start border-b border-muted-brown/20 pb-4">
+              <div>
+                <span class="font-ultra text-[10px] tracking-[0.3em] text-forest-green uppercase mb-2 block">Wellness</span>
+                <h3 class="font-ultra text-2xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Daily Defense Drops</h3>
+              </div>
+              <p class="font-ultra text-xl text-muted-brown">
+                $38.00
+              </p>
+            </div>
+            <button class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">
+              Add to Bag
+            </button>
+          </a>
+
+          <!-- Product Card 3 -->
+          <a href="product.html" class="group flex flex-col space-y-6 cursor-pointer">
+            <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/5 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1600868735282-3cc1d50c1822?w=800" alt="Sandalwood Cones" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-forest-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="flex justify-between items-start border-b border-muted-brown/20 pb-4">
+              <div>
+                <span class="font-ultra text-[10px] tracking-[0.3em] text-forest-green uppercase mb-2 block">Home</span>
+                <h3 class="font-ultra text-2xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Sandalwood Cones</h3>
+              </div>
+              <p class="font-ultra text-xl text-muted-brown">
+                $18.00
+              </p>
+            </div>
+            <button class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">
+              Add to Bag
+            </button>
+          </a>
+
+          <!-- Product Card 4 -->
+          <a href="product.html" class="group flex flex-col space-y-6 cursor-pointer">
+            <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/5 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800" alt="Hand-thrown Clay Mug" class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-forest-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="flex justify-between items-start border-b border-muted-brown/20 pb-4">
+              <div>
+                <span class="font-ultra text-[10px] tracking-[0.3em] text-forest-green uppercase mb-2 block">Accessories</span>
+                <h3 class="font-ultra text-2xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Hand-thrown Clay Mug</h3>
+              </div>
+              <p class="font-ultra text-xl text-muted-brown">
+                $42.00
+              </p>
+            </div>
+            <button class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">
+              Add to Bag
+            </button>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Explore Collections Section -->
+  <section id="explore-collections" class="bg-[#1A1A1A] text-vintage-cream px-6 py-20 md:px-12 md:py-28 lg:px-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-3 block">Curated For You</span>
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-ultra uppercase leading-[0.85] tracking-tighter">
+            Explore<br /><span class="text-muted-brown">Collections</span>
+          </h2>
+        </div>
+        <p class="text-lg font-medium opacity-70 max-w-sm leading-relaxed">
+          Each collection is thoughtfully curated around a single intention — to help you live well, longer.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Collection 1 -->
+        <a href="shop.html" class="group relative aspect-[3/4] overflow-hidden border border-vintage-cream/10 block">
+          <img src="https://images.unsplash.com/photo-1544787210-2211d7e8653e?q=80&w=800" alt="Herbal Teas Collection"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase mb-2 block">12 Products</span>
+            <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight mb-3">Herbal Teas</h3>
+            <div class="h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+          </div>
+        </a>
+        <!-- Collection 2 -->
+        <a href="shop.html" class="group relative aspect-[3/4] overflow-hidden border border-vintage-cream/10 block lg:translate-y-8">
+          <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?q=80&w=800" alt="Wellness Collection"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase mb-2 block">8 Products</span>
+            <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight mb-3">Wellness</h3>
+            <div class="h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+          </div>
+        </a>
+        <!-- Collection 3 -->
+        <a href="shop.html" class="group relative aspect-[3/4] overflow-hidden border border-vintage-cream/10 block">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=800" alt="Accessories Collection"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase mb-2 block">6 Products</span>
+            <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight mb-3">Accessories</h3>
+            <div class="h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+          </div>
+        </a>
+        <!-- Collection 4 -->
+        <a href="shop.html" class="group relative aspect-[3/4] overflow-hidden border border-vintage-cream/10 block lg:translate-y-8">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800" alt="Fresh Foods Collection"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase mb-2 block">10 Products</span>
+            <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight mb-3">Fresh Foods</h3>
+            <div class="h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section id="new-arrivals" class="bg-vintage-cream px-6 py-20 md:px-12 md:py-28 lg:px-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b-2 border-muted-brown/10 pb-10">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-3 block">Just Landed</span>
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+            New<br />Arrivals
+          </h2>
+        </div>
+        <a href="shop.html" class="self-end font-ultra text-xs tracking-widest uppercase text-muted-brown border-b-2 border-muted-brown pb-1 hover:text-forest-green hover:border-forest-green transition-colors">
+          View All →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- New Arrival 1 -->
+        <a href="product.html" class="group flex flex-col gap-5 cursor-pointer">
+          <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=800" alt="Morning Ritual Blend"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            <div class="absolute top-3 left-3 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1">New</div>
+          </div>
+          <div class="border-b border-muted-brown/20 pb-4">
+            <span class="font-ultra text-[9px] tracking-[0.3em] text-forest-green uppercase mb-1 block">Herbal Teas</span>
+            <div class="flex justify-between items-baseline">
+              <h3 class="font-ultra text-xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Morning Ritual</h3>
+              <span class="font-ultra text-lg text-muted-brown">$26.00</span>
+            </div>
+          </div>
+          <button class="w-full font-ultra text-xs text-vintage-cream bg-muted-brown py-3 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+        </a>
+        <!-- New Arrival 2 -->
+        <a href="product.html" class="group flex flex-col gap-5 cursor-pointer">
+          <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" alt="Clarity Tonic"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            <div class="absolute top-3 left-3 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1">New</div>
+          </div>
+          <div class="border-b border-muted-brown/20 pb-4">
+            <span class="font-ultra text-[9px] tracking-[0.3em] text-forest-green uppercase mb-1 block">Wellness</span>
+            <div class="flex justify-between items-baseline">
+              <h3 class="font-ultra text-xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Clarity Tonic</h3>
+              <span class="font-ultra text-lg text-muted-brown">$34.00</span>
+            </div>
+          </div>
+          <button class="w-full font-ultra text-xs text-vintage-cream bg-muted-brown py-3 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+        </a>
+        <!-- New Arrival 3 -->
+        <a href="product.html" class="group flex flex-col gap-5 cursor-pointer">
+          <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600868735282-3cc1d50c1822?w=800" alt="Cedar Incense Set"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            <div class="absolute top-3 left-3 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1">New</div>
+          </div>
+          <div class="border-b border-muted-brown/20 pb-4">
+            <span class="font-ultra text-[9px] tracking-[0.3em] text-forest-green uppercase mb-1 block">Home</span>
+            <div class="flex justify-between items-baseline">
+              <h3 class="font-ultra text-xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Cedar Incense Set</h3>
+              <span class="font-ultra text-lg text-muted-brown">$22.00</span>
+            </div>
+          </div>
+          <button class="w-full font-ultra text-xs text-vintage-cream bg-muted-brown py-3 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+        </a>
+        <!-- New Arrival 4 -->
+        <a href="product.html" class="group flex flex-col gap-5 cursor-pointer">
+          <div class="relative aspect-[3/4] bg-white border-2 border-muted-brown/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800" alt="Golden Hour Blend"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            <div class="absolute top-3 left-3 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-2 py-1">New</div>
+          </div>
+          <div class="border-b border-muted-brown/20 pb-4">
+            <span class="font-ultra text-[9px] tracking-[0.3em] text-forest-green uppercase mb-1 block">Herbal Teas</span>
+            <div class="flex justify-between items-baseline">
+              <h3 class="font-ultra text-xl text-muted-brown uppercase leading-none tracking-tight group-hover:text-forest-green transition-colors">Golden Hour Blend</h3>
+              <span class="font-ultra text-lg text-muted-brown">$28.00</span>
+            </div>
+          </div>
+          <button class="w-full font-ultra text-xs text-vintage-cream bg-muted-brown py-3 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers Section -->
+  <section id="best-sellers" class="bg-black text-vintage-cream px-6 py-20 md:px-12 md:py-28 lg:px-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-3 block">Community Favourites</span>
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-ultra uppercase leading-[0.85] tracking-tighter">
+            Best<br /><span class="text-muted-brown">Sellers</span>
+          </h2>
+        </div>
+        <p class="text-base font-medium opacity-60 max-w-xs leading-relaxed">
+          The blends and goods our community keeps coming back for.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Best Seller Featured (large) -->
+        <a href="product.html" class="group relative aspect-[4/3] lg:aspect-auto lg:row-span-2 overflow-hidden border border-vintage-cream/10 block">
+          <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d51c?q=80&w=1200" alt="Eternal Rest Blend"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute top-4 left-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1">#1 Best Seller</div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <span class="font-ultra text-[9px] tracking-[0.4em] text-forest-green uppercase mb-2 block">Herbal Teas</span>
+            <h3 class="font-ultra text-4xl uppercase leading-none tracking-tight mb-2">Eternal Rest<br />Blend</h3>
+            <div class="flex items-center justify-between mt-4">
+              <span class="font-ultra text-2xl text-muted-brown">$24.00</span>
+              <button class="font-ultra text-xs text-vintage-cream bg-muted-brown px-6 py-3 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Best Seller 2 -->
+        <a href="product.html" class="group relative aspect-[16/9] overflow-hidden border border-vintage-cream/10 block">
+          <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?w=800" alt="Daily Defense Drops"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute top-4 left-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1">#2 Best Seller</div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+            <div>
+              <span class="font-ultra text-[9px] tracking-[0.4em] text-forest-green uppercase mb-1 block">Wellness</span>
+              <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight">Daily Defense Drops</h3>
+            </div>
+            <div class="text-right">
+              <span class="font-ultra text-xl text-muted-brown block mb-2">$38.00</span>
+              <button class="font-ultra text-[10px] text-vintage-cream bg-muted-brown px-4 py-2 uppercase tracking-widest hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Best Seller 3 -->
+        <a href="product.html" class="group relative aspect-[16/9] overflow-hidden border border-vintage-cream/10 block">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800" alt="Hand-thrown Clay Mug"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
+          <div class="absolute top-4 left-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1">#3 Best Seller</div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+            <div>
+              <span class="font-ultra text-[9px] tracking-[0.4em] text-forest-green uppercase mb-1 block">Accessories</span>
+              <h3 class="font-ultra text-2xl uppercase leading-none tracking-tight">Hand-thrown Clay Mug</h3>
+            </div>
+            <div class="text-right">
+              <span class="font-ultra text-xl text-muted-brown block mb-2">$42.00</span>
+              <button class="font-ultra text-[10px] text-vintage-cream bg-muted-brown px-4 py-2 uppercase tracking-widest hover:bg-forest-green transition-colors add-to-cart-btn">Add to Bag</button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bottom CTA strip -->
+      <div class="mt-16 pt-12 border-t border-vintage-cream/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="font-ultra text-sm uppercase tracking-[0.3em] opacity-50">Trusted by 1,000+ wellness seekers</p>
+        <a href="shop.html" class="font-ultra text-sm uppercase tracking-widest text-vintage-cream border-2 border-vintage-cream px-10 py-4 hover:bg-vintage-cream hover:text-black transition-colors">
+          Shop All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-vintage-cream px-6 py-16 md:px-12 md:py-24 lg:px-24 border-t border-vintage-cream/10 relative z-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+          <div>
+            <h3 class="text-4xl font-ultra uppercase tracking-tighter mb-4 text-vintage-cream">Visit us! 120 Ages</h3>
+            <p class="text-xl font-ultra text-muted-brown uppercase mb-12 tracking-wide">
+              Sip Healthy. Live Longer.
+            </p>
+            
+            <div class="space-y-8">
+              <div>
+                <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Email</h4>
+                <a href="mailto:hello@120ages.com" class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                  hello@120ages.com
+                </a>
+              </div>
+              <div>
+                <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Phone</h4>
+                <a href="tel:+919020480880" class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                  +91-9020480880
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-end">
+            <div class="space-y-6 max-w-md w-full ml-auto">
+              <div class="relative group">
+                <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b-2 border-vintage-cream/20 py-4 font-ultra uppercase text-lg focus:outline-none focus:border-muted-brown transition-colors placeholder:text-vintage-cream/20" />
+              </div>
+              <button class="w-full md:w-auto bg-forest-green text-vintage-cream px-12 py-5 font-ultra uppercase text-sm tracking-[0.2em] hover:bg-muted-brown transition-colors cursor-pointer">
+                Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-16 flex flex-col items-center">
+            <div class="relative w-full text-center overflow-hidden">
+              <h2 class="text-[12vw] md:text-[13vw] font-ultra uppercase leading-none tracking-tighter text-vintage-cream selection:bg-forest-green opacity-100 select-none whitespace-nowrap [-webkit-text-stroke:6px_white]">
+                120 Ages
+              </h2>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center w-full mt-12 gap-4 border-t border-vintage-cream/10 pt-8">
+                <p class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40">
+                  © <span id="current-year"></span> 120 AGES • ALL RIGHTS RESERVED • <a href="privacy.html" class="hover:text-forest-green transition-colors">PRIVACY</a>
+                </p>
+
+              <div class="flex gap-8">
+                <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">LON</span>
+                <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">NYC</span>
+                <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">PAR</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Add event listeners specific to shop page (Prevent default link behavior when Add To Cart is clicked)
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.addToCart(1);
+      });
+    });
+  </script>
+</body>
+</html>

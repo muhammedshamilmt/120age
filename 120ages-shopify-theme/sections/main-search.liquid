@@ -1,0 +1,53 @@
+<section class="bg-vintage-cream min-h-screen">
+  <!-- Search Header -->
+  <div class="pt-24 pb-16 px-6 border-b-2 border-muted-brown/10 shadow-[0_4px_6px_-1px_rgba(158,117,86,0.05)] relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="font-ultra text-4xl md:text-6xl text-muted-brown uppercase leading-none tracking-tighter mb-12">Search Results</h1>
+      <form action="{{ routes.search_url }}" method="get" class="relative group">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="What are you looking for?" class="w-full bg-transparent border-b-2 border-muted-brown/30 py-4 font-ultra uppercase text-xl md:text-2xl focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/20 text-muted-brown" />
+        <button type="submit" class="absolute right-0 top-1/2 -translate-y-1/2 text-muted-brown hover:text-forest-green transition-colors cursor-pointer bg-transparent border-none">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="py-20 px-6 max-w-7xl mx-auto">
+    {%- if search.performed -%}
+      <div class="mb-12 flex justify-between items-center border-b border-muted-brown/10 pb-6">
+        <span class="font-ultra text-[11px] tracking-widest text-muted-brown uppercase">
+          {%- if search.results_count > 0 -%}
+            Found {{ search.results_count }} Results for "{{ search.terms }}"
+          {%- else -%}
+            No results found for "{{ search.terms }}"
+          {%- endif -%}
+        </span>
+        {%- if search.results_count == 0 -%}
+          <a href="{{ routes.all_products_collection_url }}" class="font-ultra text-[11px] tracking-widest text-forest-green uppercase border-b border-forest-green pb-1 no-underline">Browse All Products →</a>
+        {%- endif -%}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {% render 'product-card', product: item %}
+          {%- else -%}
+             <a href="{{ item.url }}" class="group block border-2 border-muted-brown/5 p-8 bg-white/50 hover:bg-white hover:border-muted-brown/20 transition-all duration-500 no-underline">
+                 <span class="font-ultra text-[9px] tracking-[0.3em] text-forest-green uppercase mb-2 block">Information</span>
+                 <h3 class="font-ultra text-2xl text-muted-brown uppercase mb-4 group-hover:text-forest-green transition-colors leading-tight">{{ item.title }}</h3>
+                 <p class="text-muted-brown/60 text-base leading-relaxed line-clamp-3">{{ item.content | strip_html | truncate: 160 }}</p>
+                 <div class="mt-8 font-ultra text-[10px] tracking-widest text-muted-brown uppercase border-b-2 border-muted-brown/10 pb-1 group-hover:border-muted-brown transition-all w-fit">Read More →</div>
+             </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Results High",
+  "settings": []
+}
+{% endschema %}

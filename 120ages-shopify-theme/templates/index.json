@@ -1,0 +1,138 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "NOURISH YOUR BEING — RITUALS — COMMUNITY — FRESHLY BREWED — HANDCRAFTED — "
+      }
+    },
+    "hero": {
+      "type": "hero-120ages",
+      "settings": {
+        "est_text": "EST. 2026",
+        "title_line_1": "Sip Healthy",
+        "title_line_2": "Live Longer"
+      }
+    },
+    "story": {
+       "type": "editorial-story-120ages",
+       "settings": {
+         "title_line_1": "Welcome to",
+         "title_line_2": "120 Ages",
+         "quote": "A peaceful spot where herbal teas and nourishing foods come together to refresh your body and soul.",
+         "est_text": "EST. 2026"
+       },
+       "blocks": {
+         "stat1": { "type": "stat", "settings": { "value": "150+", "label": "Herbal Blends" } },
+         "stat2": { "type": "stat", "settings": { "value": "15", "label": "Master Curators" } }
+       },
+       "block_order": ["stat1", "stat2"]
+    },
+    "collections": {
+      "type": "featured-collections-120ages",
+      "settings": {
+        "title": "Explore Collections"
+      },
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "subheading": "Sip & Restore" } },
+        "c2": { "type": "collection", "settings": { "subheading": "Mind & Body" } },
+        "c3": { "type": "collection", "settings": { "subheading": "Live Well" } },
+        "c4": { "type": "collection", "settings": { "subheading": "Carry It" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    },
+    "new_arrivals": {
+      "type": "top-sellers-120ages",
+      "settings": {
+        "subheading": "Just Dropped",
+        "title": "New Arrivals",
+        "products_to_show": 3
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers-high",
+      "settings": {
+        "subheading": "Fan Favourites",
+        "title": "Best Sellers",
+        "products_to_show": 4
+      }
+    },
+    "wellness": {
+      "type": "gallery-120ages",
+      "settings": {
+        "title_line_1": "Heritage of",
+        "title_line_2": "Wellness",
+        "subheading": "Step into a sanctuary where ancient wisdom meets healing.",
+        "description": "<p>A place where the value of time is measured in health, and every ingredient tells a story of tradition. Reclaiming the rhythm of nature, one nourishing sip at a time.</p>",
+        "bottom_quote": "Health isn't a goal — it's a feeling.",
+        "bottom_label": "120 AGES & CO."
+      },
+      "blocks": {
+        "b1": { "type": "image", "settings": { "label": "Herbal Roots", "sub_label": "Hand-picked" } },
+        "b2": { "type": "image", "settings": { "label": "Golden Brew", "sub_label": "Ancient Recipe" } },
+        "b3": { "type": "image", "settings": { "label": "Quiet Moments", "sub_label": "Healing Space" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "offerings": {
+      "type": "offerings-high",
+      "settings": {
+        "title": "Our Offerings",
+        "subheading": "Savor herbal teas, fresh foods, and wellness drinks in a peaceful setting.",
+        "btn_text": "Explore Menu"
+      },
+      "blocks": {
+        "o1": { "type": "offering", "settings": { "title": "Herbal Teas", "text": "Handcrafted blends brewed fresh to soothe and energize your day.", "caption": "A clean, calming café interior with natural light, wooden tables, and green plants." } },
+        "o2": { "type": "offering", "settings": { "title": "Healthy Drinks", "text": "Refreshing blends made with natural ingredients to boost your wellness.", "caption": "Cold-pressed juices and tonics served in vintage glassware." } },
+        "o3": { "type": "offering", "settings": { "title": "Fresh Foods", "text": "Nutritious bowls and snacks crafted daily from fresh, wholesome produce.", "caption": "Colorful smoothie bowls topped with seeds, nuts, and fresh fruit in a bright café setting." } }
+      },
+      "block_order": ["o1", "o2", "o3"]
+    },
+    "reviews": {
+      "type": "reviews-high",
+      "settings": {
+        "subheading": "What They Say",
+        "title": "Reviews",
+        "rating": "5.0",
+        "count_label": "4 Reviews"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "author": "Sarah K.", "text": "The Classic Herbal Blend has become my morning ritual. Absolutely divine — earthy, calming, and full of character.", "product": "Classic Herbal Blend" } },
+        "r2": { "type": "review", "settings": { "author": "Marcus T.", "text": "Wild Mountain Honey is unlike anything I've tasted. You can feel the difference of something truly unprocessed.", "product": "Wild Mountain Honey" } }
+      },
+      "block_order": ["r1", "r2"]
+    },
+    "journal": {
+      "type": "blog-posts-120ages",
+      "settings": {
+        "subheading": "Stories & Guides",
+        "title": "From The Journal"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter-cta-120ages",
+      "settings": {
+        "title": "Join Our Circle",
+        "btn_text": "Send"
+      }
+    },
+    "split_testimonial": {
+      "type": "testimonial-split-120ages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "announcement",
+    "story",
+    "collections",
+    "new_arrivals",
+    "best_sellers",
+    "wellness",
+    "offerings",
+    "reviews",
+    "journal",
+    "split_testimonial",
+    "newsletter"
+  ]
+}

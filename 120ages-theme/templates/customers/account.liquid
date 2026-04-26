@@ -1,0 +1,71 @@
+<section class="py-16 px-6 md:px-12 lg:px-24 bg-vintage-cream min-h-[70vh]">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b-2 border-muted-brown/10 pb-10">
+      <div>
+        <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-3 block">My Account</span>
+        <h1 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tighter text-muted-brown">
+          {{ customer.first_name }} {{ customer.last_name }}
+        </h1>
+        <p class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/40 mt-2">{{ customer.email }}</p>
+      </div>
+      <a href="{{ routes.account_logout_url }}" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 hover:text-muted-brown transition-colors border-b border-muted-brown/30 pb-1 no-underline">Sign Out</a>
+    </div>
+
+    <!-- Order History -->
+    <div>
+      <h2 class="font-ultra text-2xl uppercase tracking-tight text-muted-brown mb-8">Order History</h2>
+      {%- if customer.orders.size > 0 -%}
+        <div class="space-y-4">
+          {%- for order in customer.orders -%}
+            <a href="{{ order.customer_url }}" class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-2 border-muted-brown/10 hover:border-muted-brown transition-colors p-6 no-underline group">
+              <div class="space-y-1">
+                <span class="font-ultra text-[9px] tracking-widest uppercase text-forest-green block">Order {{ order.name }}</span>
+                <p class="font-ultra text-lg uppercase text-muted-brown group-hover:text-forest-green transition-colors">{{ order.created_at | date: "%B %d, %Y" }}</p>
+              </div>
+              <div class="flex items-center gap-8">
+                <div>
+                  <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40 block mb-1">Items</span>
+                  <span class="font-ultra text-sm uppercase text-muted-brown">{{ order.line_items.size }}</span>
+                </div>
+                <div>
+                  <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40 block mb-1">Total</span>
+                  <span class="font-ultra text-sm uppercase text-muted-brown">{{ order.total_price | money }}</span>
+                </div>
+                <div>
+                  <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40 block mb-1">Status</span>
+                  <span class="font-ultra text-[9px] tracking-widest uppercase px-2 py-1 {% if order.financial_status == 'paid' %}bg-forest-green/10 text-forest-green{% else %}bg-muted-brown/10 text-muted-brown{% endif %}">{{ order.financial_status }}</span>
+                </div>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="text-center py-20 border-2 border-muted-brown/10">
+          <p class="font-ultra text-2xl text-muted-brown/30 uppercase mb-4">No orders yet</p>
+          <a href="{{ routes.all_products_collection_url }}" class="inline-block font-ultra text-sm text-vintage-cream bg-muted-brown px-10 py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors no-underline">Start Shopping</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Address -->
+    <div class="mt-16 pt-12 border-t-2 border-muted-brown/10">
+      <div class="flex items-end justify-between mb-8">
+        <h2 class="font-ultra text-2xl uppercase tracking-tight text-muted-brown">Default Address</h2>
+        <a href="{{ routes.account_addresses_url }}" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 hover:text-muted-brown transition-colors border-b border-muted-brown/30 pb-1 no-underline">Manage Addresses</a>
+      </div>
+      {%- if customer.default_address -%}
+        <address class="not-italic font-medium text-muted-brown/70 leading-relaxed space-y-1">
+          <p class="font-ultra uppercase text-muted-brown">{{ customer.default_address.name }}</p>
+          <p>{{ customer.default_address.address1 }}</p>
+          {%- if customer.default_address.address2 != blank -%}<p>{{ customer.default_address.address2 }}</p>{%- endif -%}
+          <p>{{ customer.default_address.city }}, {{ customer.default_address.province }} {{ customer.default_address.zip }}</p>
+          <p>{{ customer.default_address.country }}</p>
+        </address>
+      {%- else -%}
+        <p class="text-muted-brown/40 font-medium">No address saved yet.</p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>

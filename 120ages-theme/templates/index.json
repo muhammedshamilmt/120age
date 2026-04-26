@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "PURE SOURCE • ETHICALLY HARVESTED • TRADITIONALLY CRAFTED • SIP HEALTHY LIVE LONGER •"
+      }
+    },
+    "hero": {
+      "type": "hero-120ages",
+      "settings": {}
+    },
+    "announcement_ticker": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "NOURISH YOUR BEING • RITUALS • COMMUNITY • FRESHLY BREWED • HANDCRAFTED •"
+      }
+    },
+    "editorial": {
+      "type": "editorial-story-120ages",
+      "settings": {}
+    },
+    "featured_collections": {
+      "type": "featured-collections-120ages",
+      "settings": {
+        "title": "Explore Collections",
+        "link_text": "View All →",
+        "link_url": "/collections/all"
+      },
+      "blocks": {
+        "col1": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbal-teas",
+            "subheading": "Sip & Restore"
+          }
+        },
+        "col2": {
+          "type": "collection",
+          "settings": {
+            "collection": "wellness",
+            "subheading": "Mind & Body"
+          }
+        },
+        "col3": {
+          "type": "collection",
+          "settings": {
+            "collection": "home",
+            "subheading": "Live Well"
+          }
+        },
+        "col4": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "subheading": "Carry It"
+          }
+        }
+      },
+      "block_order": ["col1", "col2", "col3", "col4"]
+    },
+    "collection_list": {
+      "type": "collection-list-120ages",
+      "settings": {
+        "title_1": "Our",
+        "title_2": "Collections",
+        "subheading": "Crafted with Intention"
+      },
+      "blocks": {
+        "cl1": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbal-teas"
+          }
+        },
+        "cl2": {
+          "type": "collection",
+          "settings": {
+            "collection": "wellness"
+          }
+        },
+        "cl3": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": ["cl1", "cl2", "cl3"]
+    },
+    "top_sellers": {
+      "type": "top-sellers-120ages",
+      "settings": {
+        "subheading": "Just Dropped",
+        "title": "New Arrivals",
+        "collection": "all",
+        "products_to_show": 3
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers-high",
+      "settings": {
+        "subheading": "Fan Favourites",
+        "title": "Best Sellers",
+        "collection": "all",
+        "products_to_show": 4
+      }
+    },
+    "gallery": {
+      "type": "gallery-120ages",
+      "settings": {}
+    },
+    "offerings": {
+      "type": "offerings-high",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-high",
+      "settings": {}
+    },
+    "blog_posts": {
+      "type": "blog-posts-120ages",
+      "settings": {}
+    },
+    "testimonial": {
+      "type": "testimonial-split-120ages",
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter-cta-120ages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "hero",
+    "announcement_ticker",
+    "editorial",
+    "featured_collections",
+    "collection_list",
+    "top_sellers",
+    "best_sellers",
+    "gallery",
+    "offerings",
+    "reviews",
+    "blog_posts",
+    "testimonial",
+    "newsletter"
+  ]
+}

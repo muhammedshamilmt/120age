@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>120ages - Lakadong Turmeric Powder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-ultra: "Ultra", serif;
+      --color-muted-brown: #9E7556;
+      --color-forest-green: #50A845;
+      --color-vintage-cream: #FFEAD3;
+    }
+    @layer base {
+      ul, ol { list-style: revert; }
+      body { @apply bg-[#FFEAD3] text-[#2D2D2D]; }
+    }
+    .ultra-regular {
+      font-family: var(--font-ultra), serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .tab-btn.active {
+      border-bottom-color: #9E7556;
+      color: #9E7556;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .size-btn.selected {
+      background-color: #9E7556;
+      color: #FFEAD3;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-vintage-cream text-foreground overflow-x-hidden min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="relative w-full z-50 bg-vintage-cream border-b-2 border-muted-brown/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-ultra text-3xl md:text-4xl text-muted-brown tracking-tight hover:opacity-80 transition-opacity">120ages</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="menu.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">MENU</a>
+        <a href="about.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">ABOUT</a>
+        <a href="wellness.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">WELLNESS</a>
+        <a href="shop.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">SHOP</a>
+        <a href="privacy.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">PRIVACY</a>
+      </div>
+      <div class="flex items-center space-x-6">
+        <button id="cart-btn" class="group flex items-center gap-2 font-ultra text-xs text-muted-brown border-2 border-muted-brown px-4 py-2 hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 relative cursor-pointer z-50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span>BAG (<span id="cart-count">0</span>)</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-muted-brown cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-vintage-cream border-b-2 border-muted-brown/20 p-4 z-40">
+      <div class="flex flex-col space-y-4">
+        <a href="menu.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">MENU</a>
+        <a href="about.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">ABOUT</a>
+        <a href="wellness.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">WELLNESS</a>
+        <a href="shop.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">SHOP</a>
+        <a href="privacy.html" class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">PRIVACY</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── BREADCRUMB ── -->
+    <div class="px-6 md:px-12 lg:px-24 pt-8 pb-0">
+      <div class="max-w-7xl mx-auto">
+        <a href="shop.html" class="inline-flex items-center gap-2 font-ultra text-[10px] tracking-[0.3em] text-muted-brown/60 hover:text-muted-brown transition-colors uppercase">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Shop
+        </a>
+      </div>
+    </div>
+
+    <!-- ── PRODUCT HERO ── -->
+    <section class="py-12 px-6 md:px-12 lg:px-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+          <!-- Image Gallery -->
+          <div class="space-y-4 sticky top-8">
+            <div class="relative aspect-square bg-white border-2 border-muted-brown/10 overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?q=80&w=1200" alt="Lakadong Turmeric Powder"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div class="absolute top-4 left-4 bg-forest-green text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1.5">High Curcumin</div>
+              <div class="absolute top-4 right-4 bg-muted-brown text-vintage-cream font-ultra text-[9px] tracking-widest uppercase px-3 py-1.5">5 sold in 15 hrs</div>
+            </div>
+            <!-- Thumbnails -->
+            <div class="grid grid-cols-4 gap-3">
+              <div class="aspect-square border-2 border-muted-brown overflow-hidden cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?q=80&w=400" class="w-full h-full object-cover" alt="thumb 1" />
+              </div>
+              <div class="aspect-square border-2 border-muted-brown/20 overflow-hidden cursor-pointer hover:border-muted-brown transition-colors">
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=400" class="w-full h-full object-cover" alt="thumb 2" />
+              </div>
+              <div class="aspect-square border-2 border-muted-brown/20 overflow-hidden cursor-pointer hover:border-muted-brown transition-colors">
+                <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=400" class="w-full h-full object-cover" alt="thumb 3" />
+              </div>
+              <div class="aspect-square border-2 border-muted-brown/20 overflow-hidden cursor-pointer hover:border-muted-brown transition-colors">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=400" class="w-full h-full object-cover" alt="thumb 4" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Details -->
+          <div class="space-y-8">
+
+            <!-- Category & Title -->
+            <div class="space-y-3">
+              <div class="flex flex-wrap gap-2">
+                <span class="font-ultra text-[9px] tracking-[0.4em] text-forest-green uppercase border border-forest-green px-2 py-1">Spices</span>
+                <span class="font-ultra text-[9px] tracking-[0.4em] text-muted-brown/60 uppercase border border-muted-brown/20 px-2 py-1">Immunity Boosting</span>
+                <span class="font-ultra text-[9px] tracking-[0.4em] text-muted-brown/60 uppercase border border-muted-brown/20 px-2 py-1">Diabetic Friendly</span>
+              </div>
+              <h1 class="font-ultra text-4xl md:text-5xl lg:text-6xl text-muted-brown uppercase leading-[0.9] tracking-tight">
+                Lakadong<br />Turmeric<br /><span class="text-forest-green">Powder</span>
+              </h1>
+              <p class="font-ultra text-xs tracking-widest text-muted-brown/50 uppercase">High Curcumin Haldi</p>
+            </div>
+
+            <!-- Rating -->
+            <div class="flex items-center gap-3">
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="w-4 h-4 fill-muted-brown" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <span class="font-ultra text-xs text-muted-brown/60 tracking-widest uppercase">43 Reviews</span>
+              <span class="w-1 h-1 bg-muted-brown/30 rounded-full"></span>
+              <span class="font-ultra text-xs text-forest-green tracking-widest uppercase">In Stock</span>
+            </div>
+
+            <!-- Price -->
+            <div class="border-t border-b border-muted-brown/10 py-6">
+              <p class="font-ultra text-4xl text-muted-brown">Rs. 240.00</p>
+              <p class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase mt-1">Inclusive of all taxes (GST 5%)</p>
+            </div>
+
+            <!-- Size Selector -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-ultra text-xs tracking-[0.3em] text-muted-brown uppercase">Size</h3>
+                <span id="selected-size-label" class="font-ultra text-xs text-forest-green tracking-widest uppercase">100g selected</span>
+              </div>
+              <div class="flex flex-wrap gap-3" id="size-options">
+                <button class="size-btn selected font-ultra text-xs tracking-widest uppercase px-5 py-3 border-2 border-muted-brown transition-all duration-200 cursor-pointer" data-size="100g">100g</button>
+                <button class="size-btn font-ultra text-xs tracking-widest uppercase px-5 py-3 border-2 border-muted-brown/30 hover:border-muted-brown transition-all duration-200 cursor-pointer" data-size="350g">350g</button>
+                <button class="size-btn font-ultra text-xs tracking-widest uppercase px-5 py-3 border-2 border-muted-brown/30 hover:border-muted-brown transition-all duration-200 cursor-pointer" data-size="150g (Jar)">150g (Jar)</button>
+                <button class="size-btn font-ultra text-xs tracking-widest uppercase px-5 py-3 border-2 border-muted-brown/30 hover:border-muted-brown transition-all duration-200 cursor-pointer" data-size="300g (Jar)">300g (Jar)</button>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="space-y-3 pt-2">
+              <button onclick="window.addToCart(1)" class="w-full font-ultra text-sm text-vintage-cream bg-muted-brown py-5 uppercase tracking-[0.3em] hover:bg-forest-green transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(80,168,69,0.4)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 cursor-pointer">
+                Add to Cart
+              </button>
+              <button class="w-full font-ultra text-sm text-muted-brown bg-transparent border-2 border-muted-brown py-5 uppercase tracking-[0.3em] hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 cursor-pointer">
+                Buy it Now
+              </button>
+            </div>
+
+            <!-- Meta Info -->
+            <div class="space-y-3 pt-2 border-t border-muted-brown/10">
+              <div class="flex gap-3 items-start">
+                <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Type</span>
+                <span class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase">Spices</span>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Categories</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-ultra text-[9px] tracking-widest text-muted-brown/70 uppercase border border-muted-brown/20 px-2 py-0.5">Diabetic Friendly</span>
+                  <span class="font-ultra text-[9px] tracking-widest text-muted-brown/70 uppercase border border-muted-brown/20 px-2 py-0.5">Immunity Boosting</span>
+                  <span class="font-ultra text-[9px] tracking-widest text-muted-brown/70 uppercase border border-muted-brown/20 px-2 py-0.5">Seven Sisters</span>
+                  <span class="font-ultra text-[9px] tracking-widest text-muted-brown/70 uppercase border border-muted-brown/20 px-2 py-0.5">Women's Health</span>
+                </div>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="font-ultra text-[10px] tracking-widest text-muted-brown/40 uppercase w-24 flex-shrink-0 pt-0.5">Tags</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase">#NorthEastSpices</span>
+                  <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase">#ImmunityBooster</span>
+                  <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase">#WomensHealth</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREQUENTLY BOUGHT TOGETHER -->
+    <section class="py-16 px-6 md:px-12 lg:px-24 bg-white border-t-2 border-muted-brown/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-10">
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-2 block">Bundle & Save</span>
+          <h2 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tight text-muted-brown">Frequently Bought<br /><span class="text-forest-green">Together</span></h2>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+          <div class="flex flex-col sm:flex-row gap-6 items-center flex-1">
+            <!-- Item 1 -->
+            <div class="group text-center space-y-3 flex-1">
+              <div class="relative aspect-square border-2 border-vintage-cream/10 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?q=80&w=600" alt="Lakadong Turmeric" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                <div class="absolute top-2 left-2 bg-muted-brown text-vintage-cream font-ultra text-[8px] tracking-widest uppercase px-2 py-0.5">This Item</div>
+              </div>
+              <p class="font-ultra text-sm uppercase tracking-tight">Lakadong Turmeric Powder</p>
+              <p class="font-ultra text-lg text-muted-brown">Rs. 240.00</p>
+            </div>
+            <div class="font-ultra text-3xl text-muted-brown/40 flex-shrink-0">+</div>
+            <!-- Item 2 -->
+            <div class="group text-center space-y-3 flex-1">
+              <div class="relative aspect-square border-2 border-vintage-cream/10 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=600" alt="Khapli Atta" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+              </div>
+              <p class="font-ultra text-sm uppercase tracking-tight">Khapli Atta - Emmer Wheat Flour</p>
+              <div class="flex items-center justify-center gap-2">
+                <p class="font-ultra text-lg text-muted-brown">Rs. 315.00</p>
+                <p class="font-ultra text-sm text-muted-brown/40 line-through">Rs. 350.00</p>
+              </div>
+            </div>
+          </div>
+          <!-- Bundle CTA -->
+          <div class="lg:w-72 border-2 border-muted-brown/20 bg-vintage-cream p-8 space-y-6 flex-shrink-0 w-full">
+            <div class="space-y-2">
+              <p class="font-ultra text-[10px] tracking-widest text-muted-brown/50 uppercase">Bundle Total</p>
+              <div class="flex items-baseline gap-3">
+                <p class="font-ultra text-3xl text-muted-brown">Rs. 555.00</p>
+                <p class="font-ultra text-lg text-muted-brown/40 line-through">Rs. 590.00</p>
+              </div>
+              <p class="font-ultra text-[10px] tracking-widest text-forest-green uppercase">You save Rs. 35.00</p>
+            </div>
+            <div class="space-y-2">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" checked class="w-4 h-4 accent-muted-brown" />
+                <span class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/70">Lakadong Turmeric 100g</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" checked class="w-4 h-4 accent-muted-brown" />
+                <span class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/70">Khapli Atta 1.5kg</span>
+              </label>
+            </div>
+            <button onclick="window.addToCart(2)" class="w-full font-ultra text-xs text-vintage-cream bg-muted-brown py-4 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors cursor-pointer">
+              Add Selected to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PRODUCT INFO TABS -->
+    <section class="py-16 px-6 md:px-12 lg:px-24 bg-vintage-cream">
+      <div class="max-w-7xl mx-auto">
+        <!-- Tab Nav -->
+        <div class="flex flex-wrap gap-0 border-b-2 border-muted-brown/10 mb-12 overflow-x-auto">
+          <button class="tab-btn active font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 border-transparent text-muted-brown/40 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer" data-tab="description">Description</button>
+          <button class="tab-btn font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 border-transparent text-muted-brown/40 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer" data-tab="benefits">Benefits</button>
+          <button class="tab-btn font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 border-transparent text-muted-brown/40 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer" data-tab="storage">Storage</button>
+          <button class="tab-btn font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 border-transparent text-muted-brown/40 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer" data-tab="howtouse">How to Use</button>
+          <button class="tab-btn font-ultra text-[10px] tracking-[0.3em] uppercase px-6 py-4 border-b-2 border-transparent text-muted-brown/40 hover:text-muted-brown transition-colors whitespace-nowrap cursor-pointer" data-tab="faqs">FAQs</button>
+        </div>
+
+        <!-- Description -->
+        <div class="tab-panel active" id="tab-description">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+              <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown">What is Lakadong<br />Turmeric Powder?</h3>
+              <p class="text-muted-brown/70 text-lg leading-relaxed font-medium">
+                Lakadong Turmeric is a high-curcumin variety of turmeric grown in Meghalaya, known for its bright color, strong flavor, and exceptional medicinal properties. It contains up to <strong class="text-muted-brown">12% curcumin</strong> — compared to the 2–3% found in regular turmeric — making it significantly more potent.
+              </p>
+              <p class="text-muted-brown/70 text-lg leading-relaxed font-medium">
+                Sourced directly from the Seven Sisters region of Northeast India, each batch is stone-ground to preserve its natural oils and active compounds.
+              </p>
+              <div class="grid grid-cols-3 gap-6 pt-4 border-t border-muted-brown/10">
+                <div>
+                  <p class="font-ultra text-3xl text-muted-brown">12%</p>
+                  <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Curcumin Content</p>
+                </div>
+                <div>
+                  <p class="font-ultra text-3xl text-muted-brown">100%</p>
+                  <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Natural & Pure</p>
+                </div>
+                <div>
+                  <p class="font-ultra text-3xl text-muted-brown">NE</p>
+                  <p class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/50 mt-1">Origin: Meghalaya</p>
+                </div>
+              </div>
+            </div>
+            <div class="relative aspect-[4/3] border-2 border-muted-brown/10 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=1200" alt="Turmeric Description" class="absolute inset-0 w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="tab-panel" id="tab-benefits">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Immunity Boost</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">Potent antioxidant and antimicrobial properties strengthen your body's natural defenses.</p>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Anti-Inflammatory</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">High curcumin content reduces inflammation in joints, providing relief from arthritis and improving mobility.</p>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Heart Health</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">Supports cardiovascular health and helps regulate blood sugar — ideal for diabetic-friendly diets.</p>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v6l4 2"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Gut & Digestion</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">Stimulates bile production and supports healthy digestion and gut microbiome balance.</p>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Skin & Beauty</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">Antibacterial properties help with acne, scars, and overall skin brightening when used topically or consumed.</p>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-8 space-y-4 hover:border-muted-brown transition-colors group">
+              <div class="w-10 h-10 border-2 border-forest-green flex items-center justify-center">
+                <svg class="w-5 h-5 text-forest-green" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 7 4 2 6M12 12C12 7 17 4 22 6"/></svg>
+              </div>
+              <h4 class="font-ultra text-xl uppercase text-muted-brown group-hover:text-forest-green transition-colors">Women's Wellness</h4>
+              <p class="text-muted-brown/60 text-sm leading-relaxed">Supports hormonal balance and reduces menstrual discomfort through its natural anti-inflammatory action.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Storage -->
+        <div class="tab-panel" id="tab-storage">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+              <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown">Storing Your<br />Turmeric Right</h3>
+              <div class="space-y-6">
+                <div class="flex gap-5 items-start">
+                  <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">1</div>
+                  <div>
+                    <p class="font-ultra text-sm uppercase tracking-widest text-muted-brown mb-1">Airtight Container</p>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed">Store in an airtight glass or ceramic container to prevent moisture and oxidation.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">2</div>
+                  <div>
+                    <p class="font-ultra text-sm uppercase tracking-widest text-muted-brown mb-1">Cool & Dry Place</p>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed">Keep away from heat sources. A pantry or kitchen cabinet away from the stove is ideal.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">3</div>
+                  <div>
+                    <p class="font-ultra text-sm uppercase tracking-widest text-muted-brown mb-1">Away from Sunlight</p>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed">Direct sunlight degrades curcumin. Store in a dark spot to maintain potency and vibrant color.</p>
+                  </div>
+                </div>
+                <div class="flex gap-5 items-start">
+                  <div class="w-8 h-8 border-2 border-muted-brown flex items-center justify-center flex-shrink-0 font-ultra text-muted-brown text-sm">4</div>
+                  <div>
+                    <p class="font-ultra text-sm uppercase tracking-widest text-muted-brown mb-1">Shelf Life</p>
+                    <p class="text-muted-brown/60 text-sm leading-relaxed">Best consumed within 12 months of opening. Properly stored, it retains full potency for up to 2 years.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative aspect-square border-2 border-muted-brown/10 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=1200" alt="Storage" class="absolute inset-0 w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        <!-- How to Use -->
+        <div class="tab-panel" id="tab-howtouse">
+          <div class="space-y-10">
+            <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown">Ways to Use<br /><span class="text-forest-green">Lakadong Turmeric</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="bg-vintage-cream border-2 border-muted-brown/15 p-8 space-y-4">
+                <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase">01</span>
+                <h4 class="font-ultra text-2xl uppercase leading-none text-muted-brown">Golden Milk</h4>
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Add ½ tsp to warm milk with black pepper and honey for a classic anti-inflammatory drink.</p>
+              </div>
+              <div class="bg-vintage-cream border-2 border-muted-brown/15 p-8 space-y-4">
+                <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase">02</span>
+                <h4 class="font-ultra text-2xl uppercase leading-none text-muted-brown">Cooking</h4>
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Use in curries, dals, rice, and soups. A little goes a long way — start with ¼ tsp per serving.</p>
+              </div>
+              <div class="bg-vintage-cream border-2 border-muted-brown/15 p-8 space-y-4">
+                <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase">03</span>
+                <h4 class="font-ultra text-2xl uppercase leading-none text-muted-brown">Herbal Tea</h4>
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Steep ½ tsp in hot water with ginger and lemon for a powerful morning wellness ritual.</p>
+              </div>
+              <div class="bg-vintage-cream border-2 border-muted-brown/15 p-8 space-y-4">
+                <span class="font-ultra text-[10px] tracking-[0.4em] text-forest-green uppercase">04</span>
+                <h4 class="font-ultra text-2xl uppercase leading-none text-muted-brown">Smoothies</h4>
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Blend into smoothies or juices for a nutritious, anti-inflammatory boost without altering taste much.</p>
+              </div>
+            </div>
+            <div class="border-2 border-muted-brown/10 p-6 flex gap-4 items-start">
+              <span class="text-forest-green font-ultra text-2xl flex-shrink-0">*</span>
+              <p class="text-muted-brown/70 text-sm leading-relaxed font-medium">
+                <strong class="text-muted-brown font-ultra uppercase text-xs tracking-widest">Pro tip:</strong> Always pair turmeric with black pepper (piperine) — it increases curcumin absorption by up to 2000%.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="tab-panel" id="tab-faqs">
+          <div class="max-w-3xl space-y-0">
+            <h3 class="font-ultra text-3xl md:text-4xl uppercase leading-tight text-muted-brown mb-10">Frequently Asked<br /><span class="text-forest-green">Questions</span></h3>
+            <div class="faq-item border-t-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">How is Lakadong different from regular turmeric?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Lakadong Turmeric contains up to 12% curcumin, compared to the 2–3% found in regular turmeric, making it significantly more potent in its health benefits and flavor.</p>
+              </div>
+            </div>
+            <div class="faq-item border-t-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">Can it be used for cooking?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Yes, it's perfect for curries, golden milk, herbal teas, and any dish that calls for turmeric. Its intense color and flavor mean you need less than regular turmeric.</p>
+              </div>
+            </div>
+            <div class="faq-item border-t-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">How does it support joint health?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">The high curcumin content helps reduce inflammation in joints, providing relief from conditions like arthritis and improving mobility over consistent use.</p>
+              </div>
+            </div>
+            <div class="faq-item border-t-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">Can it be used in skincare?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Yes. Its antibacterial and anti-inflammatory properties help with acne, scars, and overall skin brightening. Mix with honey or yogurt for a face mask.</p>
+              </div>
+            </div>
+            <div class="faq-item border-t-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">Is it safe for children?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Yes, in moderate amounts. It can help boost immunity and support overall health in children. Consult a pediatrician for specific dosage guidance.</p>
+              </div>
+            </div>
+            <div class="faq-item border-t-2 border-b-2 border-muted-brown/10">
+              <button class="faq-btn w-full flex justify-between items-center py-6 text-left cursor-pointer group">
+                <span class="font-ultra text-sm uppercase tracking-widest text-muted-brown group-hover:text-forest-green transition-colors pr-8">What is the recommended daily intake?</span>
+                <span class="font-ultra text-2xl text-muted-brown/40 flex-shrink-0 faq-icon">+</span>
+              </button>
+              <div class="faq-answer hidden pb-6">
+                <p class="text-muted-brown/60 text-sm leading-relaxed">Generally ½ to 1 teaspoon (1–3g) per day is recommended for adults. Always pair with black pepper to maximize curcumin absorption. Consult a healthcare provider for therapeutic doses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- YOU MAY ALSO LIKE -->
+    <section class="py-20 px-6 md:px-12 lg:px-24 bg-white border-t-2 border-muted-brown/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-12">
+          <h2 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tight text-muted-brown">You May<br /><span class="text-forest-green">Also Like</span></h2>
+          <a href="shop.html" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/60 hover:text-muted-brown transition-colors border-b border-muted-brown/30 pb-1">View All</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="product.html" class="group space-y-4 block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10">
+              <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?w=800" alt="Daily Defense Drops" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            </div>
+            <div class="border-b border-muted-brown/10 pb-4">
+              <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase block mb-1">Wellness</span>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-ultra text-sm uppercase text-muted-brown group-hover:text-forest-green transition-colors">Daily Defense Drops</h3>
+                <p class="font-ultra text-sm text-muted-brown">$38.00</p>
+              </div>
+            </div>
+          </a>
+          <a href="product.html" class="group space-y-4 block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10">
+              <img src="https://images.unsplash.com/photo-1600868735282-3cc1d50c1822?w=800" alt="Sandalwood Cones" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            </div>
+            <div class="border-b border-muted-brown/10 pb-4">
+              <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase block mb-1">Home</span>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-ultra text-sm uppercase text-muted-brown group-hover:text-forest-green transition-colors">Sandalwood Cones</h3>
+                <p class="font-ultra text-sm text-muted-brown">$18.00</p>
+              </div>
+            </div>
+          </a>
+          <a href="product.html" class="group space-y-4 block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10">
+              <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800" alt="Clay Mug" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            </div>
+            <div class="border-b border-muted-brown/10 pb-4">
+              <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase block mb-1">Accessories</span>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-ultra text-sm uppercase text-muted-brown group-hover:text-forest-green transition-colors">Hand-thrown Clay Mug</h3>
+                <p class="font-ultra text-sm text-muted-brown">$42.00</p>
+              </div>
+            </div>
+          </a>
+          <a href="product.html" class="group space-y-4 block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10">
+              <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800" alt="Golden Hour Blend" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            </div>
+            <div class="border-b border-muted-brown/10 pb-4">
+              <span class="font-ultra text-[9px] tracking-widest text-forest-green uppercase block mb-1">Herbal Teas</span>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-ultra text-sm uppercase text-muted-brown group-hover:text-forest-green transition-colors">Golden Hour Blend</h3>
+                <p class="font-ultra text-sm text-muted-brown">$28.00</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-vintage-cream px-6 py-16 md:px-12 md:py-24 lg:px-24 border-t-2 border-muted-brown/15">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+        <div>
+          <h3 class="text-4xl font-ultra uppercase tracking-tighter mb-4 text-muted-brown">Visit us! 120 Ages</h3>
+          <p class="text-xl font-ultra text-forest-green uppercase mb-12 tracking-wide">Sip Healthy. Live Longer.</p>
+          <div class="space-y-8">
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-muted-brown/40 mb-2">Email</h4>
+              <a href="mailto:hello@120ages.com" class="text-2xl font-ultra uppercase hover:text-forest-green transition-colors block text-muted-brown">hello@120ages.com</a>
+            </div>
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-muted-brown/40 mb-2">Phone</h4>
+              <a href="tel:+919020480880" class="text-2xl font-ultra uppercase hover:text-forest-green transition-colors block text-muted-brown">+91-9020480880</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-end">
+          <div class="space-y-6 max-w-md w-full ml-auto">
+            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b-2 border-muted-brown/30 py-4 font-ultra uppercase text-lg focus:outline-none focus:border-muted-brown transition-colors placeholder:text-muted-brown/30 text-muted-brown" />
+            <button class="w-full md:w-auto bg-muted-brown text-vintage-cream px-12 py-5 font-ultra uppercase text-sm tracking-[0.2em] hover:bg-forest-green transition-colors cursor-pointer">Send Message</button>
+          </div>
+        </div>
+      </div>
+      <div class="pt-16 flex flex-col items-center border-t-2 border-muted-brown/10">
+        <div class="relative w-full text-center overflow-hidden">
+          <h2 class="text-[12vw] md:text-[13vw] font-ultra uppercase leading-none tracking-tighter text-muted-brown select-none whitespace-nowrap opacity-10">120 Ages</h2>
+          <div class="flex flex-col md:flex-row justify-between items-center w-full mt-8 gap-4">
+            <p class="font-ultra text-[10px] uppercase tracking-[0.4em] text-muted-brown/40">
+              &copy; <span id="current-year"></span> 120 AGES &bull; ALL RIGHTS RESERVED &bull; <a href="privacy.html" class="hover:text-forest-green transition-colors">PRIVACY</a>
+            </p>
+            <div class="flex gap-8">
+              <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-muted-brown/40 hover:text-forest-green transition-colors cursor-default">LON</span>
+              <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-muted-brown/40 hover:text-forest-green transition-colors cursor-default">NYC</span>
+              <span class="font-ultra text-[10px] uppercase tracking-[0.4em] text-muted-brown/40 hover:text-forest-green transition-colors cursor-default">PAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Size selector
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        document.getElementById('selected-size-label').textContent = btn.dataset.size + ' selected';
+      });
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // FAQs accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = !answer.classList.contains('hidden');
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+        if (!isOpen) {
+          answer.classList.remove('hidden');
+          icon.textContent = '−';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

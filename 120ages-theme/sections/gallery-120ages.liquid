@@ -1,0 +1,82 @@
+<section class="bg-black text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24 overflow-hidden">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-24">
+      <div class="max-w-3xl text-left">
+        <h2 class="text-5xl md:text-7xl lg:text-[120px] font-ultra uppercase leading-[0.85] tracking-tighter">
+          {{ section.settings.title_line_1 }}<br />
+          <span class="text-forest-green">{{ section.settings.title_line_2 }}</span>
+        </h2>
+      </div>
+      <div class="lg:max-w-md lg:mt-4 text-left">
+        <p class="text-2xl md:text-3xl lg:text-4xl font-ultra leading-[1.1] uppercase mb-6">
+          {{ section.settings.subheading }}
+        </p>
+        <div class="text-lg opacity-80 leading-relaxed font-medium">
+          {{ section.settings.description }}
+        </div>
+      </div>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mt-12 px-4 md:px-0">
+      {%- for block in section.blocks -%}
+        <div class="relative aspect-[4/5] overflow-hidden border-2 border-vintage-cream/30 transition-all duration-500 hover:scale-[1.02] hover:z-10 bg-black group shadow-2xl {% if forloop.index == 1 %}-rotate-3 lg:-translate-y-8{% elsif forloop.index == 2 %}rotate-2 lg:translate-y-4{% else %}-rotate-2 lg:-translate-y-4{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+             {{ block.settings.image | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700' }}
+          {%- else -%}
+             {%- if forloop.index == 1 -%}<img src="https://images.unsplash.com/photo-1544787210-2213d84ad2f2?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Herbal Tea Steam" />
+             {%- elsif forloop.index == 2 -%}<img src="https://images.unsplash.com/photo-1594631252845-29fc4586d51c?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Vintage Pharmacy Bottles" />
+             {%- else -%}<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Fresh Herbal Bowl" />
+             {%- endif -%}
+          {%- endif -%}
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+          <div class="absolute top-4 left-4 text-vintage-cream font-ultra text-xl">*</div>
+          <div class="absolute top-4 right-4 text-vintage-cream font-ultra text-lg uppercase tracking-widest bg-black/40 backdrop-blur-sm px-3 py-1">
+            {{ block.settings.label }}
+          </div>
+          <div class="absolute bottom-6 right-6 text-right z-10">
+            <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 mb-1">{{ block.settings.sub_label }}</p>
+            <p class="text-sm font-ultra uppercase">imperfectly perfect</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="mt-32 flex flex-col items-end text-right">
+      <h3 class="text-4xl md:text-6xl lg:text-7xl font-ultra uppercase leading-none max-w-2xl text-right">
+        {{ section.settings.bottom_quote | replace: ' — ', '<br />' }}
+      </h3>
+      <p class="mt-4 text-sm md:text-base font-ultra tracking-widest opacity-60">
+        {{ section.settings.bottom_label }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wellness Experience High",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "title_line_1", "label": "Title Line 1", "default": "Heritage of" },
+    { "type": "text", "id": "title_line_2", "label": "Title Line 2", "default": "Wellness" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Step into a sanctuary where ancient wisdom meets healing." },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>A place where the value of time is measured in health, and every ingredient tells a story of tradition.</p>" },
+    { "type": "text", "id": "bottom_quote", "label": "Bottom Quote", "default": "Health isn't a goal — it's a feeling." },
+    { "type": "text", "id": "bottom_label", "label": "Bottom Label", "default": "120 AGES & CO." }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Herbal Roots" },
+        { "type": "text", "id": "sub_label", "label": "Sub Label", "default": "Hand-picked" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Wellness Experience High" }
+  ]
+}
+{% endschema %}

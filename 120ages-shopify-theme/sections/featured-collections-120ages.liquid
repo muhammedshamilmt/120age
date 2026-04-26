@@ -1,0 +1,91 @@
+<section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <h2 class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+        {{ section.settings.title | replace: ' ', '<br />' }}
+      </h2>
+      {%- if section.settings.link_text != blank -%}
+        <a href="{{ section.settings.link_url }}" class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1">
+          {{ section.settings.link_text }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {%- for block in section.blocks -%}
+        {%- assign collection = block.settings.collection -%}
+        <a href="{{ collection.url | default: '#' }}" class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-colors block" {{ block.shopify_attributes }}>
+          {%- if collection.image != blank -%}
+            {{ collection.image | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105' }}
+          {%- else -%}
+            {{ 'collection-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105' }}
+          {%- endif -%}
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 md:p-6 text-left">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              {{ block.settings.subheading }}
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">
+              {{ collection.title | default: "New Collection" }}
+            </h3>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collections High",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Explore Collections"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "View All →"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Sip & Restore"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collections High",
+      "blocks": [
+        { "type": "collection", "settings": { "subheading": "Sip & Restore" } },
+        { "type": "collection", "settings": { "subheading": "Mind & Body" } },
+        { "type": "collection", "settings": { "subheading": "Live Well" } },
+        { "type": "collection", "settings": { "subheading": "Carry It" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

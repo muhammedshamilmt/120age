@@ -1,0 +1,65 @@
+<section class="bg-[#1A1A1A] text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24 overflow-hidden">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Side: Image with Border -->
+      <div class="relative aspect-square lg:aspect-[4/5] border-2 border-vintage-cream/30 p-4">
+        <div class="relative w-full h-full border border-vintage-cream/20 overflow-hidden text-left">
+          {%- if section.settings.image != blank -%}
+             {{ section.settings.image | image_url: width: 1200 | image_tag: class: 'absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000' }}
+          {%- else -%}
+             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200" alt="Vintage Tea House" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+          {%- endif -%}
+          <div class="absolute inset-0 bg-black/10"></div>
+        </div>
+        <div class="absolute top-8 left-8 text-forest-green font-ultra text-2xl drop-shadow-lg">*</div>
+      </div>
+
+      <!-- Right Side: Content -->
+      <div class="flex flex-col justify-between h-full py-8 text-left">
+        <div>
+          <h2 class="text-5xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter mb-12">
+            {{ section.settings.title_line_1 }} <br />
+            <span class="text-forest-green">{{ section.settings.title_line_2 }}</span>
+          </h2>
+
+          <div class="max-w-xl space-y-8">
+            <p class="text-2xl md:text-3xl lg:text-4xl font-ultra leading-[1.1] uppercase">
+              "{{ section.settings.quote }}"
+            </p>
+
+            <div class="text-lg opacity-70 leading-relaxed font-medium">
+              {{ section.settings.description }}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 text-right">
+          <p class="text-sm md:text-base font-ultra tracking-widest uppercase opacity-80 mb-2">
+            {{ section.settings.bottom_label }}
+          </p>
+          <h4 class="text-3xl md:text-5xl font-ultra text-muted-brown uppercase">
+            {{ section.settings.author }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split Testimonial High",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Section Image" },
+    { "type": "text", "id": "title_line_1", "label": "Title Line 1", "default": "Soothe" },
+    { "type": "text", "id": "title_line_2", "label": "Title Line 2", "default": "The Soul" },
+    { "type": "text", "id": "quote", "label": "Main Quote", "default": "The herbal teas here soothe my soul—perfect spot to unwind after a busy day." },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Experience the quiet luxury of traditional wellness. Every cup is brewed with memory, patience, and the finest hand-picked botanicals from our heritage gardens.</p>" },
+    { "type": "text", "id": "bottom_label", "label": "Bottom Label", "default": "Every sip is a journey back to yourself." },
+    { "type": "text", "id": "author", "label": "Author Name", "default": "Justin M." }
+  ],
+  "presets": [
+    { "name": "Split Testimonial High" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,71 @@
+<section class="bg-[#1A1A1A] text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+  <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
+    <div class="max-w-4xl text-left">
+      <h2 class="text-5xl md:text-7xl lg:text-9xl font-ultra uppercase leading-[0.9] tracking-tighter">
+        {{ section.settings.title_line_1 }}<br />
+        <span class="text-forest-green">{{ section.settings.title_line_2 }}</span>
+      </h2>
+    </div>
+    <div class="lg:max-w-md lg:text-right self-end lg:mb-4 text-left md:text-right">
+      <div class="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed opacity-90 italic">
+        "{{ section.settings.quote }}"
+      </div>
+      <div class="mt-4 flex items-center lg:justify-end gap-2 text-muted-brown font-ultra tracking-widest uppercase">
+        <div class="h-px w-8 bg-muted-brown hidden lg:block"></div>
+        <span>{{ section.settings.est_text }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative w-full aspect-[16/9] md:aspect-[21/9] border-4 border-vintage-cream/20 overflow-hidden group">
+    {%- if section.settings.featured_image != blank -%}
+      {{ section.settings.featured_image | image_url: width: 2000 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105' }}
+    {%- else -%}
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="About Image" />
+    {%- endif -%}
+    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+  </div>
+
+  <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-12 border-t border-vintage-cream/10 pt-16">
+    {%- for block in section.blocks -%}
+      <div class="flex flex-col gap-2 text-left" {{ block.shopify_attributes }}>
+        <span class="text-6xl md:text-7xl font-ultra text-muted-brown">{{ block.settings.value }}</span>
+        <span class="text-sm md:text-base uppercase tracking-[0.3em] font-bold opacity-70">{{ block.settings.label }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story Section High",
+  "settings": [
+    { "type": "text", "id": "title_line_1", "label": "Title Line 1", "default": "Welcome to" },
+    { "type": "text", "id": "title_line_2", "label": "Title Line 2", "default": "120 Ages" },
+    { "type": "text", "id": "quote", "label": "Quote", "default": "A peaceful spot where herbal teas and nourishing foods come together." },
+    { "type": "text", "id": "est_text", "label": "Estabilshed Text", "default": "EST. 2026" },
+    { "type": "image_picker", "id": "featured_image", "label": "Featured Image" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "150+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Herbal Blends" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Section High",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "150+", "label": "Herbal Blends" } },
+        { "type": "stat", "settings": { "value": "15", "label": "Master Curators" } },
+        { "type": "stat", "settings": { "value": "Loved", "label": "Locally" } },
+        { "type": "stat", "settings": { "value": "5 Stars", "label": "Review Average" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "hero": {
+      "type": "shop-hero-120ages",
+      "settings": {}
+    },
+    "categories": {
+      "type": "collection-cards-120ages",
+      "blocks": {
+        "cat1": { "type": "collection", "settings": {} },
+        "cat2": { "type": "collection", "settings": {} }
+      },
+      "block_order": ["cat1", "cat2"]
+    },
+    "top_sellers": {
+      "type": "top-sellers-120ages",
+      "settings": {
+        "title": "CURATED FAVORITES"
+      }
+    },
+    "editorial_banner": {
+      "type": "editorial-banner-120ages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "top_sellers",
+    "editorial_banner"
+  ]
+}

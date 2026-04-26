@@ -1,0 +1,26 @@
+<section class="section-spacing">
+  <div class="container">
+    <h1 class="h-font text-5xl mb-16 text-center">COLLECTIONS</h1>
+    <div class="products-grid">
+      {%- for collection in collections -%}
+        <div class="collection-card group">
+          <a href="{{ collection.url }}">
+            <div class="product-card__image-wrapper aspect-[4/5] mb-4 overflow-hidden border border-muted-brown/10">
+              {%- if collection.featured_image -%}
+                {{ collection.featured_image | image_url: width: 800 | image_tag: class: 'transition-transform duration-700 group-hover:scale-105' }}
+              {%- endif -%}
+            </div>
+            <h3 class="h-font text-2xl text-center uppercase">{{ collection.title }}</h3>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections List",
+  "settings": []
+}
+{% endschema %}

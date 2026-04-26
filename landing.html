@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>120ages - Sip Healthy Live Longer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-ultra: "Ultra", serif;
+      --color-muted-brown: #9E7556;
+      --color-forest-green: #50A845;
+      --color-vintage-cream: #FFEAD3;
+    }
+    
+    @layer base {
+      ul, ol {
+        list-style: revert;
+      }
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+
+    .ultra-regular {
+      font-family: var(--font-ultra), serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
+  <!-- External styles reference for standard css if hosted -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-vintage-cream text-foreground overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="relative w-full z-50 bg-vintage-cream border-b-2 border-muted-brown/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo / Heading -->
+      <a href="/"
+        class="font-ultra text-3xl md:text-4xl text-muted-brown tracking-tight hover:opacity-80 transition-opacity">
+        120ages
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#menu"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">MENU</a>
+        <a href="about.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">ABOUT</a>
+        <a href="wellness.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">WELLNESS</a>
+        <a href="shop.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">SHOP</a>
+        <a href="privacy.html"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest">PRIVACY</a>
+      </div>
+
+      <!-- CTA / Cart -->
+      <div class="flex items-center space-x-6">
+        <button id="cart-btn"
+          class="group flex items-center gap-2 font-ultra text-xs text-muted-brown border-2 border-muted-brown px-4 py-2 hover:bg-muted-brown hover:text-vintage-cream transition-all duration-300 relative cursor-pointer z-50">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span>BAG (<span id="cart-count">0</span>)</span>
+          <span id="cart-badge"
+            class="hidden absolute -top-2 -right-2 w-5 h-5 bg-forest-green text-white text-[10px] flex items-center justify-center rounded-full border-2 border-vintage-cream font-bold group-hover:scale-110 transition-transform">
+            0
+          </span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden text-muted-brown cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-full left-0 w-full bg-vintage-cream border-b-2 border-muted-brown/20 p-4 z-40">
+      <div class="flex flex-col space-y-4">
+        <a href="#menu"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">MENU</a>
+        <a href="#about"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">ABOUT</a>
+        <a href="#wellness"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">WELLNESS</a>
+        <a href="#shop"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">SHOP</a>
+        <a href="#privacy"
+          class="font-ultra text-sm text-muted-brown/80 hover:text-muted-brown transition-colors tracking-widest text-center">PRIVACY</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden bg-vintage-cream">
+    <!-- Global Background Logo -->
+    <div
+      class="absolute inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center z-0 overflow-hidden">
+      <img
+        src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/df78dac5-7d8d-47bd-994b-90e733dd5e67/image-1769497755900.png?width=1200&height=1200&resize=contain"
+        alt="Background Logo Texture" class="w-full h-full object-contain scale-125 md:scale-150 rotate-12" />
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 relative flex items-center justify-center overflow-hidden">
+      <!-- Decorative elements -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none opacity-10">
+        <div class="absolute inset-0 border-[40px] border-forest-green rounded-full animate-pulse"></div>
+        <div class="absolute inset-20 border-[20px] border-forest-green rounded-full"></div>
+      </div>
+
+      <!-- Central Graphic Placeholder -->
+      <div class="relative z-10 text-center flex justify-center mt-8">
+        <div
+          class="w-64 h-64 md:w-96 md:h-96 border-4 border-muted-brown rounded-full flex items-center justify-center relative bg-vintage-cream shadow-[20px_20px_0px_0px_rgba(158,117,86,0.1)] overflow-hidden">
+          <img
+            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/df78dac5-7d8d-47bd-994b-90e733dd5e67/image-1769497755900.png?width=8000&height=8000&resize=contain"
+            alt="120 Ages Logo" class="w-4/5 h-4/5 object-contain select-none" />
+        </div>
+        <div
+          class="absolute top-0 right-0 md:-right-[-32px] bg-forest-green text-vintage-cream p-4 rotate-12 font-ultra text-xl border-2 border-vintage-cream">
+          EST. 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Title at the Bottom -->
+    <div class="relative w-full p-6 md:p-12 z-20">
+      <div class="flex flex-col items-center relative">
+        <h1
+          class="text-[13vw] md:text-[11vw] lg:text-[11vw] xl:text-[10vw] leading-[0.85] font-ultra text-[#1A1A1A] uppercase tracking-[-0.05em] text-center ultra-regular drop-shadow-sm [-webkit-text-stroke:6px_white]">
+          Sip Healthy<br />
+          <span class="ml-[5vw] lg:ml-[3vw]">Live Longer</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- TickerBand -->
+  <div
+    class="w-full bg-forest-green py-6 border-y-4 border-forest-green/30 overflow-hidden relative z-20 shadow-2xl flex">
+    <div class="flex animate-marquee whitespace-nowrap" id="ticker-content">
+      <!-- Injected by script.js -->
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="bg-[#1A1A1A] text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <!-- Top Header Layout -->
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
+      <div class="max-w-4xl">
+        <h2 class="text-5xl md:text-7xl lg:text-9xl font-ultra uppercase leading-[0.9] tracking-tighter">
+          Welcome to<br />
+          <span class="text-forest-green">120 Ages</span>
+        </h2>
+      </div>
+      <div class="lg:max-w-md lg:text-right self-end lg:mb-4">
+        <p class="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed opacity-90 italic">
+          "A peaceful spot where herbal teas and nourishing foods come together to refresh your body and soul."
+        </p>
+        <div class="mt-4 flex items-center lg:justify-end gap-2 text-muted-brown font-ultra tracking-widest">
+          <div class="h-px w-8 bg-muted-brown hidden lg:block"></div>
+          <span>EST. 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large Featured Image -->
+    <div class="relative w-full aspect-[16/9] md:aspect-[21/9] border-4 border-vintage-cream/20 overflow-hidden group">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=2000"
+        alt="Vintage Cafe Interior"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-12 border-t border-vintage-cream/10 pt-16">
+      <div class="flex flex-col gap-2">
+        <span class="text-6xl md:text-7xl font-ultra text-muted-brown">150+</span>
+        <span class="text-sm md:text-base uppercase tracking-[0.3em] font-bold opacity-70">Herbal Blends</span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-6xl md:text-7xl font-ultra text-muted-brown">15</span>
+        <span class="text-sm md:text-base uppercase tracking-[0.3em] font-bold opacity-70">Master Curators</span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-sm md:text-base uppercase tracking-[0.3em] font-bold opacity-70 mb-4">Community Choice</span>
+        <span class="text-4xl md:text-5xl font-ultra uppercase leading-none">Loved<br />Locally</span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-6 h-6 fill-forest-green" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <svg class="w-6 h-6 fill-forest-green" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <svg class="w-6 h-6 fill-forest-green" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <svg class="w-6 h-6 fill-forest-green" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <svg class="w-6 h-6 fill-forest-green" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+        </div>
+        <span class="text-4xl md:text-5xl font-ultra uppercase">5 Stars</span>
+        <span class="text-sm uppercase tracking-[0.3em] font-bold opacity-70">Review Average</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Collections Section -->
+  <section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <h2
+          class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+          Explore <br /> Collections
+        </h2>
+        <a href="shop.html"
+          class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1">
+          View All →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <!-- Collection 1 -->
+        <a href="shop.html"
+          class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-colors block">
+          <img src="https://images.unsplash.com/photo-1544787210-2211d7e8653e?q=80&w=800" alt="Herbal Teas"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 md:p-6">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              Sip & Restore
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">
+              Herbal Teas
+            </h3>
+          </div>
+        </a>
+        <!-- Collection 2 -->
+        <a href="shop.html"
+          class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-colors block">
+          <img src="https://images.unsplash.com/photo-1591871937453-3efae5979ef2?q=80&w=800" alt="Wellness"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 md:p-6">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              Mind & Body
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">
+              Wellness
+            </h3>
+          </div>
+        </a>
+        <!-- Collection 3 -->
+        <a href="shop.html"
+          class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-colors block">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=800" alt="Home Goods"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 md:p-6">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              Live Well
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">
+              Home Goods
+            </h3>
+          </div>
+        </a>
+        <!-- Collection 4 -->
+        <a href="shop.html"
+          class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-colors block">
+          <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800" alt="Accessories"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 md:p-6">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              Carry It
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">
+              Accessories
+            </h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="bg-[#1A1A1A] px-6 py-20 md:px-12 md:py-32 lg:px-24 overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-forest-green block mb-4">
+            Just Dropped
+          </span>
+          <h2
+            class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-vintage-cream">
+            New <br /> Arrivals
+          </h2>
+        </div>
+        <a href="shop.html"
+          class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-vintage-cream/40 text-vintage-cream/60 hover:text-forest-green hover:border-forest-green transition-colors pb-1">
+          Shop All →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <a href="product.html?id=1" class="group block">
+          <div
+            class="relative aspect-square overflow-hidden border border-vintage-cream/10 group-hover:border-forest-green/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=800" alt="Eternal Rest Blend"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4 flex flex-col gap-2">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                New
+              </span>
+            </div>
+            <div class="absolute bottom-0 right-0 bg-vintage-cream/10 backdrop-blur-sm px-3 py-2">
+              <span class="font-ultra text-vintage-cream text-sm">$24.00</span>
+            </div>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green block mb-1">
+                Herbal Tea
+              </span>
+              <h3
+                class="font-ultra text-lg uppercase text-vintage-cream group-hover:text-forest-green transition-colors leading-tight">
+                Eternal Rest Blend
+              </h3>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30 mt-1">
+              01
+            </span>
+          </div>
+        </a>
+        <!-- Product 2 -->
+        <a href="product.html?id=2" class="group block">
+          <div
+            class="relative aspect-square overflow-hidden border border-vintage-cream/10 group-hover:border-forest-green/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?w=800" alt="Daily Defense Drops"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4 flex flex-col gap-2">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                New
+              </span>
+              <span
+                class="bg-muted-brown text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase rounded-full">
+                15% OFF
+              </span>
+            </div>
+            <div class="absolute bottom-0 right-0 bg-vintage-cream/10 backdrop-blur-sm px-3 py-2">
+              <span class="font-ultra text-vintage-cream text-sm">$38.00</span>
+            </div>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green block mb-1">
+                Wellness
+              </span>
+              <h3
+                class="font-ultra text-lg uppercase text-vintage-cream group-hover:text-forest-green transition-colors leading-tight">
+                Daily Defense Drops
+              </h3>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30 mt-1">
+              02
+            </span>
+          </div>
+        </a>
+        <!-- Product 3 -->
+        <a href="product.html?id=3" class="group block">
+          <div
+            class="relative aspect-square overflow-hidden border border-vintage-cream/10 group-hover:border-forest-green/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1600868735282-3cc1d50c1822?w=800" alt="Sandalwood Cones"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4 flex flex-col gap-2">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                New
+              </span>
+            </div>
+            <div class="absolute bottom-0 right-0 bg-vintage-cream/10 backdrop-blur-sm px-3 py-2">
+              <span class="font-ultra text-vintage-cream text-sm">$18.00</span>
+            </div>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green block mb-1">
+                Home Goods
+              </span>
+              <h3
+                class="font-ultra text-lg uppercase text-vintage-cream group-hover:text-forest-green transition-colors leading-tight">
+                Sandalwood Cones
+              </h3>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30 mt-1">
+              03
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers Section -->
+  <section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-forest-green block mb-4">
+            Fan Favourites
+          </span>
+          <h2
+            class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+            Best <br /> Sellers
+          </h2>
+        </div>
+        <a href="shop.html"
+          class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1">
+          Shop All →
+        </a>
+      </div>
+
+      <div class="space-y-0 divide-y-2 divide-muted-brown/10">
+        <!-- Best Seller 1 -->
+        <a href="product.html?id=2"
+          class="group flex items-center gap-6 md:gap-10 py-6 hover:bg-muted-brown/5 px-2 transition-colors">
+          <span class="font-ultra text-[10px] tracking-widest text-muted-brown/30 w-6 shrink-0">
+            01
+          </span>
+          <div class="relative w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden border border-muted-brown/10">
+            <img src="https://images.unsplash.com/photo-1608500218890-c4f8664fdc6c?w=200" alt="Daily Defense Drops"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green block mb-1">
+              Wellness
+            </span>
+            <h3
+              class="font-ultra text-lg md:text-2xl uppercase text-muted-brown group-hover:text-forest-green transition-colors truncate">
+              Daily Defense Drops
+            </h3>
+          </div>
+          <span
+            class="hidden md:block bg-muted-brown text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase rounded-full shrink-0">
+            15% OFF
+          </span>
+          <span class="font-ultra text-lg md:text-2xl text-muted-brown shrink-0">
+            $38.00
+          </span>
+          <span
+            class="font-ultra text-[10px] tracking-widest text-muted-brown/30 group-hover:text-muted-brown transition-colors shrink-0">
+            →
+          </span>
+        </a>
+        <!-- Best Seller 2 -->
+        <a href="product.html?id=4"
+          class="group flex items-center gap-6 md:gap-10 py-6 hover:bg-muted-brown/5 px-2 transition-colors">
+          <span class="font-ultra text-[10px] tracking-widest text-muted-brown/30 w-6 shrink-0">
+            02
+          </span>
+          <div class="relative w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden border border-muted-brown/10">
+            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200" alt="Hand-thrown Clay Mug"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green block mb-1">
+              Home Goods
+            </span>
+            <h3
+              class="font-ultra text-lg md:text-2xl uppercase text-muted-brown group-hover:text-forest-green transition-colors truncate">
+              Hand-thrown Clay Mug
+            </h3>
+          </div>
+          <span class="font-ultra text-lg md:text-2xl text-muted-brown shrink-0">
+            $42.00
+          </span>
+          <span
+            class="font-ultra text-[10px] tracking-widest text-muted-brown/30 group-hover:text-muted-brown transition-colors shrink-0">
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="wellness" class="bg-black text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24 overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-24">
+        <div class="max-w-3xl">
+          <h2 class="text-5xl md:text-7xl lg:text-[120px] font-ultra uppercase leading-[0.85] tracking-tighter">
+            Heritage of <br />
+            <span class="text-forest-green">Wellness</span>
+          </h2>
+        </div>
+        <div class="lg:max-w-md lg:mt-4">
+          <p class="text-2xl md:text-3xl lg:text-4xl font-ultra leading-[1.1] uppercase mb-6">
+            Step into a sanctuary where ancient wisdom meets healing.
+          </p>
+          <p class="text-lg opacity-80 leading-relaxed font-medium">
+            A place where the value of time is measured in health, and every ingredient tells a story of tradition.
+            Reclaiming the rhythm of nature, one nourishing sip at a time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Overlapping Tilted Images -->
+      <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mt-12 px-4 md:px-0">
+        <!-- Item 1 -->
+        <div
+          class="relative aspect-[4/5] overflow-hidden border-2 border-vintage-cream/30 transition-all duration-500 hover:scale-[1.02] hover:z-10 bg-black group shadow-2xl -rotate-3 lg:-translate-y-8">
+          <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d51c?q=80&w=800" alt="Herbal Roots"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+          <div class="absolute top-4 left-4 text-vintage-cream font-ultra text-xl">*</div>
+          <div
+            class="absolute top-4 right-4 text-vintage-cream font-ultra text-lg uppercase tracking-widest bg-black/40 backdrop-blur-sm px-3 py-1">
+            Herbal Roots</div>
+          <div class="absolute bottom-6 right-6 text-right z-10">
+            <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 mb-1">Hand-picked</p>
+            <p class="text-sm font-ultra uppercase">imperfectly perfect</p>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div
+          class="relative aspect-[4/5] overflow-hidden border-2 border-vintage-cream/30 transition-all duration-500 hover:scale-[1.02] hover:z-10 bg-black group shadow-2xl rotate-2 lg:translate-y-4">
+          <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?q=80&w=800" alt="Golden Brew"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+          <div class="absolute top-4 left-4 text-vintage-cream font-ultra text-xl">*</div>
+          <div
+            class="absolute top-4 right-4 text-vintage-cream font-ultra text-lg uppercase tracking-widest bg-black/40 backdrop-blur-sm px-3 py-1">
+            Golden Brew</div>
+          <div class="absolute bottom-6 right-6 text-right z-10">
+            <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 mb-1">Ancient Recipe</p>
+            <p class="text-sm font-ultra uppercase">imperfectly perfect</p>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div
+          class="relative aspect-[4/5] overflow-hidden border-2 border-vintage-cream/30 transition-all duration-500 hover:scale-[1.02] hover:z-10 bg-black group shadow-2xl -rotate-2 lg:-translate-y-4">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800" alt="Quiet Moments"
+            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+          <div class="absolute top-4 left-4 text-vintage-cream font-ultra text-xl">*</div>
+          <div
+            class="absolute top-4 right-4 text-vintage-cream font-ultra text-lg uppercase tracking-widest bg-black/40 backdrop-blur-sm px-3 py-1">
+            Quiet Moments</div>
+          <div class="absolute bottom-6 right-6 text-right z-10">
+            <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 mb-1">Healing Space</p>
+            <p class="text-sm font-ultra uppercase">imperfectly perfect</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-32 flex flex-col items-end text-right">
+        <h3 class="text-4xl md:text-6xl lg:text-7xl font-ultra uppercase leading-none max-w-2xl">
+          Health isn't a goal — <br />
+          <span class="text-forest-green">it's a feeling.</span>
+        </h3>
+        <p class="mt-4 text-sm md:text-base font-ultra tracking-widest opacity-60">
+          120 AGES & CO.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offerings Section -->
+  <section id="menu" class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12">
+        <h2
+          class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+          Our <br /> Offerings
+        </h2>
+        <p
+          class="text-xl md:text-2xl lg:text-3xl font-ultra leading-[1.1] uppercase max-w-xl md:mb-2 text-left text-muted-brown/80">
+          Savor herbal teas, fresh foods, and wellness drinks in a peaceful setting.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Offering 1 -->
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[4/5] overflow-hidden border-2 border-black mb-6 bg-black">
+            <img src="https://images.unsplash.com/photo-1544787210-2211d7e8653e?q=80&w=800" alt="Herbal Teas"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+            <div class="absolute inset-0 bg-forest-green/10 group-hover:bg-transparent transition-colors"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <span
+                class="text-vintage-cream font-ultra text-xs uppercase tracking-widest border border-vintage-cream/30 px-2 py-1">
+                Premium Selection
+              </span>
+            </div>
+          </div>
+          <h3 class="text-3xl font-ultra uppercase mb-3 transition-colors text-black group-hover:text-muted-brown">
+            Herbal Teas
+          </h3>
+          <p class="text-lg leading-relaxed font-medium mb-4 text-black/80">
+            Handcrafted blends brewed fresh to soothe and energize your day.
+          </p>
+          <div class="h-px w-12 mb-4 group-hover:w-full transition-all duration-500 bg-muted-brown"></div>
+          <p class="text-xs uppercase tracking-widest font-bold opacity-60 leading-loose text-black">
+            A clean, calming café interior with natural light, wooden tables, and green plants.
+          </p>
+        </div>
+        <!-- Offering 2 -->
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[4/5] overflow-hidden border-2 border-black mb-6 bg-black">
+            <img src="https://images.unsplash.com/photo-1622597467825-f82876fbba5e?q=80&w=800" alt="Healthy Drinks"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+            <div class="absolute inset-0 bg-forest-green/10 group-hover:bg-transparent transition-colors"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <span
+                class="text-vintage-cream font-ultra text-xs uppercase tracking-widest border border-vintage-cream/30 px-2 py-1">
+                Premium Selection
+              </span>
+            </div>
+          </div>
+          <h3 class="text-3xl font-ultra uppercase mb-3 transition-colors text-black group-hover:text-muted-brown">
+            Healthy Drinks
+          </h3>
+          <p class="text-lg leading-relaxed font-medium mb-4 text-black/80">
+            Refreshing blends made with natural ingredients to boost your wellness.
+          </p>
+          <div class="h-px w-12 mb-4 group-hover:w-full transition-all duration-500 bg-muted-brown"></div>
+          <p class="text-xs uppercase tracking-widest font-bold opacity-60 leading-loose text-black">
+            Cold-pressed juices and tonics served in vintage glassware.
+          </p>
+        </div>
+        <!-- Offering 3 -->
+        <div class="group cursor-pointer">
+          <div class="relative aspect-[4/5] overflow-hidden border-2 border-black mb-6 bg-black">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800" alt="Fresh Foods"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+            <div class="absolute inset-0 bg-forest-green/10 group-hover:bg-transparent transition-colors"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <span
+                class="text-vintage-cream font-ultra text-xs uppercase tracking-widest border border-vintage-cream/30 px-2 py-1">
+                Premium Selection
+              </span>
+            </div>
+          </div>
+          <h3 class="text-3xl font-ultra uppercase mb-3 transition-colors text-black group-hover:text-muted-brown">
+            Fresh Foods
+          </h3>
+          <p class="text-lg leading-relaxed font-medium mb-4 text-black/80">
+            Nutritious bowls and snacks crafted daily from fresh, wholesome produce.
+          </p>
+          <div class="h-px w-12 mb-4 group-hover:w-full transition-all duration-500 bg-muted-brown"></div>
+          <p class="text-xs uppercase tracking-widest font-bold opacity-60 leading-loose text-black">
+            Colorful smoothie bowls topped with seeds, nuts, and fresh fruit in a bright café setting.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-24 pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8 border-black/10">
+        <div class="flex items-center gap-4 text-muted-brown">
+          <div
+            class="w-12 h-12 rounded-full border flex items-center justify-center font-ultra text-2xl border-muted-brown">
+            *
+          </div>
+          <p class="font-ultra uppercase tracking-tighter text-xl text-black">
+            Freshly Brewed & <span>Handcrafted</span>
+          </p>
+        </div>
+        <button
+          class="px-10 py-4 font-ultra uppercase text-lg transition-colors bg-black text-vintage-cream hover:bg-forest-green cursor-pointer">
+          Explore Menu
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="bg-[#1A1A1A] px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-forest-green block mb-4">
+            What They Say
+          </span>
+          <h2
+            class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-vintage-cream">
+            Reviews
+          </h2>
+        </div>
+        <div class="flex items-center gap-3 self-start md:self-end">
+          <span class="font-ultra text-5xl text-vintage-cream">5.0</span>
+          <div>
+            <div class="flex gap-1 mb-1">
+              <span class="text-forest-green text-lg">★</span>
+              <span class="text-forest-green text-lg">★</span>
+              <span class="text-forest-green text-lg">★</span>
+              <span class="text-forest-green text-lg">★</span>
+              <span class="text-forest-green text-lg">★</span>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/40">
+              4 Reviews
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Review 1 -->
+        <div class="border border-vintage-cream/10 p-6 md:p-8 hover:border-forest-green/40 transition-colors">
+          <div class="flex gap-0.5 mb-4">
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+          </div>
+          <p class="font-ultra text-lg md:text-xl uppercase text-vintage-cream leading-snug mb-6">
+            "The Classic Herbal Blend has become my morning ritual. Absolutely divine — earthy, calming, and full of
+            character."
+          </p>
+          <div class="flex items-center justify-between border-t border-vintage-cream/10 pt-4">
+            <div>
+              <span class="font-ultra text-sm uppercase text-vintage-cream block">Sarah K.</span>
+              <span class="font-ultra text-[9px] tracking-widest uppercase text-forest-green">Classic Herbal
+                Blend</span>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30">March 2026</span>
+          </div>
+        </div>
+        <!-- Review 2 -->
+        <div class="border border-vintage-cream/10 p-6 md:p-8 hover:border-forest-green/40 transition-colors">
+          <div class="flex gap-0.5 mb-4">
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+            <span class="text-forest-green text-sm">★</span>
+          </div>
+          <p class="font-ultra text-lg md:text-xl uppercase text-vintage-cream leading-snug mb-6">
+            "Wild Mountain Honey is unlike anything I've tasted. You can feel the difference of something truly
+            unprocessed."
+          </p>
+          <div class="flex items-center justify-between border-t border-vintage-cream/10 pt-4">
+            <div>
+              <span class="font-ultra text-sm uppercase text-vintage-cream block">Marcus T.</span>
+              <span class="font-ultra text-[9px] tracking-widest uppercase text-forest-green">Wild Mountain Honey</span>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30">February 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blogs Section -->
+  <section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-forest-green block mb-4">
+            Stories & Guides
+          </span>
+          <h2
+            class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+            From The <br /> Journal
+          </h2>
+        </div>
+        <button
+          class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1">
+          All Posts →
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Post 1 -->
+        <article class="group cursor-pointer">
+          <div
+            class="relative aspect-[4/3] overflow-hidden border-2 border-muted-brown/10 group-hover:border-muted-brown/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d517?q=80&w=800" alt="Post Title"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                Wellness
+              </span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 mb-3">
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">Mar 28, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-muted-brown/20"></span>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">4 min read</span>
+          </div>
+          <h3
+            class="font-ultra text-xl md:text-2xl uppercase text-muted-brown group-hover:text-forest-green transition-colors leading-tight mb-3">
+            The Ancient Art of Herbal Brewing
+          </h3>
+          <p class="text-muted-brown/60 text-sm leading-relaxed line-clamp-2">Discover how mountain communities have
+            been
+            crafting healing teas for centuries — and how you can bring that ritual home.</p>
+          <div class="mt-4 h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+        </article>
+        <!-- Post 2 -->
+        <article class="group cursor-pointer">
+          <div
+            class="relative aspect-[4/3] overflow-hidden border-2 border-muted-brown/10 group-hover:border-muted-brown/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800" alt="Post Title"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                Lifestyle
+              </span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 mb-3">
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">Mar 14, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-muted-brown/20"></span>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">5 min read</span>
+          </div>
+          <h3
+            class="font-ultra text-xl md:text-2xl uppercase text-muted-brown group-hover:text-forest-green transition-colors leading-tight mb-3">
+            Why Slow Mornings Change Everything
+          </h3>
+          <p class="text-muted-brown/60 text-sm leading-relaxed line-clamp-2">A warm cup, a quiet room, and no rush. We
+            explore the science and soul behind intentional morning routines.</p>
+          <div class="mt-4 h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+        </article>
+        <!-- Post 3 -->
+        <article class="group cursor-pointer">
+          <div
+            class="relative aspect-[4/3] overflow-hidden border-2 border-muted-brown/10 group-hover:border-muted-brown/40 transition-colors mb-5">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=800" alt="Post Title"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+            <div class="absolute top-4 left-4">
+              <span
+                class="bg-forest-green text-vintage-cream px-3 py-1 font-ultra text-[9px] tracking-widest uppercase">
+                Sourcing
+              </span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 mb-3">
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">Feb 22, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-muted-brown/20"></span>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-muted-brown/40">3 min read</span>
+          </div>
+          <h3
+            class="font-ultra text-xl md:text-2xl uppercase text-muted-brown group-hover:text-forest-green transition-colors leading-tight mb-3">
+            From Hive to Jar: Our Honey Story
+          </h3>
+          <p class="text-muted-brown/60 text-sm leading-relaxed line-clamp-2">We trace the journey of our Wild Mountain
+            Honey from remote high-altitude hives to your table — untouched and unfiltered.</p>
+          <div class="mt-4 h-px w-8 bg-muted-brown group-hover:w-full transition-all duration-500"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="bg-[#1A1A1A] text-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24 overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Side: Image with Border -->
+        <div class="relative aspect-square lg:aspect-[4/5] border-2 border-vintage-cream/30 p-4">
+          <div class="relative w-full h-full border border-vintage-cream/20 overflow-hidden">
+            <img
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1769493948735.png?width=1200&height=1200&resize=contain"
+              alt="Vintage Tea House"
+              class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+            <div class="absolute inset-0 bg-black/10"></div>
+          </div>
+          <div class="absolute top-8 left-8 text-vintage-cream font-ultra text-2xl drop-shadow-lg">*</div>
+        </div>
+
+        <!-- Right Side: Content -->
+        <div class="flex flex-col justify-between h-full py-8">
+          <div>
+            <h2 class="text-5xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter mb-12">
+              Soothe <br />
+              <span class="text-forest-green">The Soul</span>
+            </h2>
+
+            <div class="max-w-xl space-y-8">
+              <p class="text-2xl md:text-3xl lg:text-4xl font-ultra leading-[1.1] uppercase">
+                "The herbal teas here soothe my soul—perfect spot to unwind after a busy day."
+              </p>
+
+              <p class="text-lg opacity-70 leading-relaxed font-medium">
+                Experience the quiet luxury of traditional wellness. Every cup is brewed with memory, patience, and the
+                finest hand-picked botanicals from our heritage gardens.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-16 text-right">
+            <p class="text-sm md:text-base font-ultra tracking-widest uppercase opacity-80 mb-2">
+              Every sip is a journey back to yourself.
+            </p>
+            <h4 class="text-3xl md:text-5xl font-ultra text-muted-brown uppercase">
+              Justin M.
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="bg-muted-brown px-6 py-20 md:px-12 md:py-32 lg:px-24 text-vintage-cream relative overflow-hidden min-h-[70vh] flex items-center">
+    <!-- Decorative Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+      <div class="absolute top-10 left-10 text-[150px] font-ultra rotate-12">*</div>
+      <div class="absolute bottom-10 right-10 text-[150px] font-ultra -rotate-12">*</div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-ultra uppercase leading-[0.85] tracking-tighter mb-8">
+        Join <br /> Our Circle
+      </h2>
+
+      <div
+        class="mt-12 bg-vintage-cream p-8 md:p-10 border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] max-w-2xl mx-auto">
+        <form class="flex flex-col md:flex-row items-end gap-6" onsubmit="event.preventDefault();">
+          <div class="flex-1 w-full text-left">
+            <label class="block text-black font-ultra uppercase text-xs mb-3 tracking-widest">
+              Your Name
+            </label>
+            <input type="text" placeholder="Enter your name"
+              class="w-full bg-transparent border-b-2 border-black py-3 text-xl font-ultra text-black placeholder:text-black/30 focus:outline-none focus:border-forest-green transition-colors uppercase" />
+          </div>
+          <button type="submit"
+            class="w-full md:w-auto px-10 py-4 bg-black text-vintage-cream font-ultra uppercase text-lg hover:bg-forest-green transition-colors border-2 border-black cursor-pointer">
+            Send
+          </button>
+        </form>
+
+        <div class="mt-8 flex justify-between items-center border-t border-black/10 pt-6">
+          <p class="text-black/60 font-ultra text-[8px] uppercase tracking-[0.2em]">
+            EST. 2026 • HANDCRAFTED WELLNESS
+          </p>
+          <div class="flex gap-1.5">
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-8 text-vintage-cream/80 font-medium uppercase tracking-[0.3em] text-[10px]">
+        Be the first to receive our seasonal blends & stories.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-vintage-cream px-6 py-16 md:px-12 md:py-24 lg:px-24 border-t border-vintage-cream/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-4xl font-ultra uppercase tracking-tighter mb-4 text-vintage-cream">Visit us! 120 Ages</h3>
+          <p class="text-xl font-ultra text-muted-brown uppercase mb-12 tracking-wide">
+            Sip Healthy. Live Longer.
+          </p>
+
+          <div class="space-y-8">
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Email</h4>
+              <a href="mailto:hello@120ages.com"
+                class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                hello@120ages.com
+              </a>
+            </div>
+            <div>
+              <h4 class="font-ultra uppercase text-xs tracking-[0.3em] text-vintage-cream/40 mb-2">Phone</h4>
+              <a href="tel:+919020480880"
+                class="text-2xl font-ultra uppercase hover:text-muted-brown transition-colors block">
+                +91-9020480880
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple Contact Form -->
+        <div class="flex flex-col justify-end">
+          <div class="space-y-6 max-w-md w-full ml-auto">
+            <div class="relative group">
+              <input type="text" placeholder="Your Name"
+                class="w-full bg-transparent border-b-2 border-vintage-cream/20 py-4 font-ultra uppercase text-lg focus:outline-none focus:border-muted-brown transition-colors placeholder:text-vintage-cream/20" />
+            </div>
+            <button
+              class="w-full md:w-auto bg-forest-green text-vintage-cream px-12 py-5 font-ultra uppercase text-sm tracking-[0.2em] hover:bg-muted-brown transition-colors cursor-pointer">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Branding Section -->
+      <div class="pt-16 flex flex-col items-center">
+        <div class="relative w-full text-center overflow-hidden">
+          <h2
+            class="text-[12vw] md:text-[13vw] font-ultra uppercase leading-none tracking-tighter text-vintage-cream selection:bg-forest-green opacity-100 select-none whitespace-nowrap [-webkit-text-stroke:6px_white]">
+            120 Ages
+          </h2>
+
+          <div
+            class="flex flex-col md:flex-row justify-between items-center w-full mt-12 gap-4 border-t border-vintage-cream/10 pt-8">
+            <p class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40">
+              © <span id="current-year"></span> 120 AGES • ALL RIGHTS RESERVED • <a href="#privacy"
+                class="hover:text-forest-green transition-colors">PRIVACY</a>
+            </p>
+
+            <div class="flex gap-8">
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">LON</span>
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">NYC</span>
+              <span
+                class="font-ultra text-[10px] uppercase tracking-[0.4em] text-vintage-cream/40 cursor-default hover:text-forest-green transition-colors">PAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<section class="py-24 px-6 md:px-12 lg:px-24 bg-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+      <div class="max-w-4xl">
+        {%- if section.settings.subheading != blank -%}
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-4 block">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        <h2 class="font-ultra text-5xl md:text-7xl lg:text-9xl text-muted-brown uppercase leading-[0.85] tracking-tighter">
+          {{ section.settings.title_1 }}<br />
+          <span class="text-forest-green">{{ section.settings.title_2 }}</span>
+        </h2>
+      </div>
+      <div class="md:text-right">
+        <p class="font-ultra text-sm md:text-base text-muted-brown/60 uppercase tracking-[0.3em] mb-4">{{ section.settings.description }}</p>
+        <a href="{{ section.settings.link_url | default: routes.all_products_collection_url }}" class="font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1 no-underline">
+          {{ section.settings.link_text | default: 'View All →' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+      {%- for block in section.blocks -%}
+        {%- assign col = collections[block.settings.collection] -%}
+
+        {%- comment -%} Image priority: block override → collection image → first product image → placeholder {%- endcomment -%}
+        {%- if block.settings.image != blank -%}
+          {%- assign card_image_url = block.settings.image | image_url: width: 800 -%}
+          {%- assign has_image = true -%}
+        {%- elsif col.image != blank -%}
+          {%- assign card_image_url = col.image | image_url: width: 800 -%}
+          {%- assign has_image = true -%}
+        {%- elsif col.products.first.featured_image != blank -%}
+          {%- assign card_image_url = col.products.first.featured_image | image_url: width: 800 -%}
+          {%- assign has_image = true -%}
+        {%- else -%}
+          {%- assign has_image = false -%}
+        {%- endif -%}
+
+        {%- assign card_title = block.settings.custom_title | default: col.title | default: 'Collection' -%}
+        {%- assign card_url = col.url | default: block.settings.fallback_url | default: routes.all_products_collection_url -%}
+        {%- assign card_count = col.all_products_count | default: 0 -%}
+
+        <a href="{{ card_url }}"
+          class="group block no-underline relative overflow-hidden bg-vintage-cream border-2 border-muted-brown/10 hover:border-muted-brown transition-all duration-500"
+          {{ block.shopify_attributes }}>
+
+          <div class="aspect-[4/5] relative overflow-hidden">
+            {%- if has_image -%}
+              <img
+                src="{{ card_image_url }}"
+                alt="{{ card_title }}"
+                class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+                loading="lazy"
+                width="800"
+                height="1000"
+              />
+            {%- else -%}
+              <div class="absolute inset-0 bg-muted-brown/5 flex items-center justify-center">
+                <span class="font-ultra text-8xl text-muted-brown/10 uppercase">{{ card_title | slice: 0 }}</span>
+              </div>
+            {%- endif -%}
+
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+
+            <div class="absolute bottom-8 left-8 right-8 z-10">
+              <span class="font-ultra text-[10px] text-vintage-cream bg-forest-green px-3 py-1 mb-3 inline-block uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                {{ block.settings.cta_text | default: 'Explore' }}
+              </span>
+              <h3 class="font-ultra text-3xl text-vintage-cream uppercase leading-none tracking-tight group-hover:-translate-y-1 transition-transform duration-500">
+                {{ card_title }}
+              </h3>
+            </div>
+          </div>
+
+          <div class="p-8 flex justify-between items-center bg-white border-t-2 border-muted-brown/10 group-hover:bg-vintage-cream transition-colors duration-500">
+            <div>
+              {%- if block.settings.subheading != blank -%}
+                <span class="font-ultra text-[9px] tracking-widest uppercase text-forest-green block mb-1">{{ block.settings.subheading }}</span>
+              {%- endif -%}
+              <span class="font-ultra text-[10px] text-muted-brown/40 uppercase tracking-[0.4em]">
+                {{ card_count }} Product{% if card_count != 1 %}s{% endif %}
+              </span>
+            </div>
+            <div class="w-10 h-10 border border-muted-brown/20 flex items-center justify-center group-hover:border-muted-brown group-hover:bg-muted-brown transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted-brown/40 group-hover:text-vintage-cream transition-colors">
+                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      {%- else -%}
+        <div class="col-span-3 text-center py-16 border-2 border-dashed border-muted-brown/20">
+          <p class="font-ultra text-muted-brown/30 uppercase tracking-widest text-sm">Add collection blocks in the theme editor</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our Collections",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Crafted with Intention" },
+    { "type": "text", "id": "title_1", "label": "Title Line 1", "default": "Our" },
+    { "type": "text", "id": "title_2", "label": "Title Line 2 (green)", "default": "Collections" },
+    { "type": "text", "id": "description", "label": "Description", "default": "Each blend tells a story." },
+    { "type": "text", "id": "link_text", "label": "Link Text", "default": "View All →" },
+    { "type": "url", "id": "link_url", "label": "Link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Override Image (optional)" },
+        { "type": "text", "id": "custom_title", "label": "Override Title (optional)" },
+        { "type": "text", "id": "subheading", "label": "Category Label", "default": "Herbal" },
+        { "type": "text", "id": "cta_text", "label": "Hover CTA Text", "default": "Explore Blend" },
+        { "type": "url", "id": "fallback_url", "label": "Fallback URL (if no collection set)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Our Collections",
+      "blocks": [
+        { "type": "collection", "settings": { "subheading": "Herbal", "cta_text": "Explore Blend" } },
+        { "type": "collection", "settings": { "subheading": "Wellness", "cta_text": "Explore Blend" } },
+        { "type": "collection", "settings": { "subheading": "Accessories", "cta_text": "Explore Blend" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,182 @@
+<div id="CartDrawer" class="cart-drawer">
+  <div id="CartDrawerOverlay" class="cart-drawer__overlay"></div>
+  <div class="cart-drawer__inner">
+    <div class="cart-drawer__header">
+      <h2 class="h-font text-2xl">YOUR BAG</h2>
+      <button type="button" class="cart-drawer__close" id="CartDrawerClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div id="CartDrawerContent" class="cart-drawer__content">
+      {%- if cart.item_count == 0 -%}
+        <div class="cart-drawer__empty text-center py-20">
+          <p class="mb-8 opacity-60">YOUR BAG IS CURRENTLY EMPTY</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--outline">START SHOPPING</a>
+        </div>
+      {%- else -%}
+        <div class="cart-drawer__items">
+          {%- for item in cart.items -%}
+            <div class="cart-drawer__item" data-id="{{ item.id }}">
+              <div class="cart-drawer__item-image">
+                {%- if item.image -%}
+                  {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy' }}
+                {%- endif -%}
+              </div>
+              <div class="cart-drawer__item-info">
+                <h3 class="h-font text-sm mb-1">{{ item.product.title }}</h3>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="text-xs opacity-60 mb-2">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <div class="cart-drawer__item-price">
+                  {{ item.final_line_price | money }}
+                </div>
+                <div class="cart-drawer__item-qty qty-selector-mini mt-4">
+                  <button type="button" class="qty-btn-mini" data-action="decrement">-</button>
+                  <input type="number" value="{{ item.quantity }}" class="qty-input-mini" data-id="{{ item.key }}">
+                  <button type="button" class="qty-btn-mini" data-action="increment">+</button>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal flex justify-between mb-6">
+          <span class="h-font">SUBTOTAL</span>
+          <span class="h-font">{{ cart.total_price | money }}</span>
+        </div>
+        <p class="text-xs opacity-60 mb-8">Shipping and taxes calculated at checkout.</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn--wide">CHECKOUT</button>
+        </form>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    visibility: hidden;
+    transition: visibility 0.4s;
+  }
+  .cart-drawer--active {
+    visibility: visible;
+  }
+  .cart-drawer__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .cart-drawer--active .cart-drawer__overlay {
+    opacity: 1;
+  }
+  .cart-drawer__inner {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    background-color: var(--background-color);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .cart-drawer--active .cart-drawer__inner {
+    right: 0;
+  }
+  
+  .cart-drawer__header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(158, 117, 86, 0.1);
+  }
+  .cart-drawer__close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+  
+  .cart-drawer__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+  }
+  
+  .cart-drawer__item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(158, 117, 86, 0.05);
+  }
+  .cart-drawer__item-image {
+    width: 80px;
+    height: 100px;
+    background-color: #fff;
+  }
+  .cart-drawer__item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cart-drawer__item-info {
+    flex: 1;
+  }
+  
+  .qty-selector-mini {
+    display: flex;
+    border: 1px solid rgba(158, 117, 86, 0.2);
+    width: fit-content;
+  }
+  .qty-btn-mini {
+    background: transparent;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .qty-input-mini {
+    width: 2.5rem;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 0.875rem;
+  }
+  
+  .cart-drawer__footer {
+    padding: 2rem;
+    border-top: 1px solid rgba(158, 117, 86, 0.1);
+    background-color: #fcf9f6;
+  }
+  
+  .py-20 { padding: 5rem 0; }
+  .text-xs { font-size: 0.75rem; }
+  .text-sm { font-size: 0.875rem; }
+</style>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": []
+}
+{% endschema %}

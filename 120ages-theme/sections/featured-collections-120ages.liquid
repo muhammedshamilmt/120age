@@ -1,0 +1,114 @@
+<section class="bg-vintage-cream px-6 py-20 md:px-12 md:py-32 lg:px-24">
+  <div class="max-w-screen-2xl mx-auto">
+
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        {%- if section.settings.subheading != blank -%}
+          <span class="font-ultra text-[10px] tracking-[0.5em] text-forest-green uppercase mb-4 block">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        <h2 class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-muted-brown">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      <a href="{{ section.settings.link_url | default: routes.all_products_collection_url }}" class="self-start md:self-end font-ultra text-[10px] tracking-[0.3em] uppercase border-b-2 border-muted-brown text-muted-brown hover:text-forest-green hover:border-forest-green transition-colors pb-1 no-underline">
+        {{ section.settings.link_text | default: 'View All →' }}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {%- for block in section.blocks -%}
+        {%- assign col = collections[block.settings.collection] -%}
+
+        {%- comment -%} Image priority: block override → collection image → first product image → placeholder {%- endcomment -%}
+        {%- if block.settings.image != blank -%}
+          {%- assign card_image = block.settings.image -%}
+          {%- assign card_image_url = block.settings.image | image_url: width: 800 -%}
+        {%- elsif col.image != blank -%}
+          {%- assign card_image = col.image -%}
+          {%- assign card_image_url = col.image | image_url: width: 800 -%}
+        {%- elsif col.products.first.featured_image != blank -%}
+          {%- assign card_image = col.products.first.featured_image -%}
+          {%- assign card_image_url = col.products.first.featured_image | image_url: width: 800 -%}
+        {%- else -%}
+          {%- assign card_image = nil -%}
+        {%- endif -%}
+
+        {%- assign card_title = block.settings.custom_title | default: col.title | default: 'Collection' -%}
+        {%- assign card_url = col.url | default: block.settings.fallback_url | default: routes.all_products_collection_url -%}
+        {%- assign card_count = col.all_products_count -%}
+
+        <a href="{{ card_url }}"
+          class="group relative aspect-[3/4] overflow-hidden border-2 border-muted-brown/10 hover:border-muted-brown/40 transition-all duration-500 block no-underline"
+          {{ block.shopify_attributes }}>
+
+          {%- if card_image != nil -%}
+            <img
+              src="{{ card_image_url }}"
+              alt="{{ card_title }}"
+              class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+              loading="lazy"
+              width="800"
+              height="1067"
+            />
+          {%- else -%}
+            <div class="absolute inset-0 bg-muted-brown/5 flex items-center justify-center">
+              <span class="font-ultra text-6xl text-muted-brown/10 uppercase">{{ card_title | slice: 0 }}</span>
+            </div>
+          {%- endif -%}
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-left">
+            <span class="block font-ultra text-[9px] tracking-[0.3em] uppercase text-forest-green mb-1">
+              {%- if card_count > 0 -%}{{ card_count }} Products{%- else -%}{{ block.settings.subheading }}{%- endif -%}
+            </span>
+            <h3 class="font-ultra text-xl md:text-2xl uppercase text-vintage-cream leading-none">{{ card_title }}</h3>
+            <div class="h-px w-6 bg-muted-brown mt-3 group-hover:w-full transition-all duration-500"></div>
+          </div>
+        </a>
+      {%- else -%}
+        <div class="col-span-4 text-center py-16 border-2 border-dashed border-muted-brown/20">
+          <p class="font-ultra text-muted-brown/30 uppercase tracking-widest text-sm">Add collection blocks in the theme editor</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Explore Collections",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Curated For You" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Explore Collections" },
+    { "type": "text", "id": "link_text", "label": "Link Text", "default": "View All →" },
+    { "type": "url", "id": "link_url", "label": "Link URL" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Override Image (optional)" },
+        { "type": "text", "id": "custom_title", "label": "Override Title (optional)" },
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Sip & Restore" },
+        { "type": "url", "id": "fallback_url", "label": "Fallback URL (if no collection set)" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Explore Collections",
+      "blocks": [
+        { "type": "collection", "settings": { "subheading": "Sip & Restore" } },
+        { "type": "collection", "settings": { "subheading": "Mind & Body" } },
+        { "type": "collection", "settings": { "subheading": "Live Well" } },
+        { "type": "collection", "settings": { "subheading": "Carry It" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

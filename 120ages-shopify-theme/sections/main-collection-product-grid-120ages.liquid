@@ -1,0 +1,92 @@
+<!-- Filter / Sort Bar -->
+<section class="py-8 px-6 border-b-2 border-muted-brown/10 bg-vintage-cream sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+    <div class="flex flex-wrap gap-8 items-center">
+      <h2 class="font-ultra text-[13px] tracking-widest text-muted-brown uppercase">{{ collection.title }}</h2>
+      <div class="h-4 w-px bg-muted-brown/20 hidden md:block"></div>
+      <div class="hidden lg:flex flex-wrap gap-8">
+        {%- for link in linklists['main-menu'].links -%}
+          {%- if link.type == 'collection_link' -%}
+            <a href="{{ link.url }}" class="font-ultra text-[10px] tracking-widest {% if collection.handle == link.object.handle %}text-muted-brown{% else %}text-muted-brown/40{% endif %} hover:text-muted-brown transition-colors uppercase no-underline">
+              {{ link.title }}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="flex items-center gap-6">
+       <div class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase hidden sm:block">
+        {{ collection.products_count }} Products
+      </div>
+      <div class="relative group">
+        <select name="sort_by" id="SortBy" class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase bg-transparent border-2 border-muted-brown/20 px-4 py-2 focus:outline-none focus:border-muted-brown cursor-pointer appearance-none pr-8">
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected="selected"{% endif %}>
+              {{ option.name | upcase }}
+            </option>
+          {%- endfor -%}
+        </select>
+        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-brown">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Grid -->
+<section class="py-24 px-6 bg-vintage-cream min-h-screen">
+  <div class="max-w-7xl mx-auto">
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <div class="col-span-full py-32 text-center">
+            <h2 class="font-ultra text-3xl text-muted-brown uppercase mb-4">No Products Found</h2>
+            <p class="text-muted-brown/60 text-lg italic">Try selecting a different collection or check back later.</p>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <div class="mt-24 pt-12 border-t border-muted-brown/10 flex justify-center items-center gap-4">
+          {%- if paginate.previous -%}
+            <a href="{{ paginate.previous.url }}" class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase border-2 border-muted-brown/20 px-6 py-3 hover:border-muted-brown transition-colors no-underline">Prev</a>
+          {%- endif -%}
+          
+          <div class="flex items-center gap-2">
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="w-10 h-10 flex items-center justify-center font-ultra text-[10px] text-muted-brown/40 hover:text-muted-brown transition-colors no-underline">{{ part.title }}</a>
+              {%- else -%}
+                <span class="w-10 h-10 flex items-center justify-center font-ultra text-[10px] {% if part.title == paginate.current_page %}text-muted-brown border-2 border-muted-brown{% else %}text-muted-brown/20{% endif %}">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}" class="font-ultra text-[10px] tracking-widest text-muted-brown uppercase border-2 border-muted-brown/20 px-6 py-3 hover:border-muted-brown transition-colors no-underline">Next</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid High",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 6,
+      "max": 48,
+      "step": 3,
+      "default": 12,
+      "label": "Products per page"
+    }
+  ]
+}
+{% endschema %}

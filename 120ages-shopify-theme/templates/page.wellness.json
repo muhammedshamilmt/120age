@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "hero": {
+      "type": "about-hero-high",
+      "settings": {
+        "subheading": "Longevity First",
+        "title_line_1": "Heritage of",
+        "title_line_2": "Wellness",
+        "quote": "Step into a sanctuary where ancient wisdom meets healing.",
+        "bottom_label": "120 AGES"
+      }
+    },
+    "experience": {
+      "type": "gallery-120ages",
+      "settings": {
+        "title_line_1": "Rituals for",
+        "title_line_2": "Longevity",
+        "subheading": "Reconnect with the natural rhythm of your body."
+      },
+      "blocks": {
+        "m1": { "type": "image", "settings": { "label": "Morning Glow", "sub_label": "Sunrise Ritual" } },
+        "m2": { "type": "image", "settings": { "label": "Quiet Mind", "sub_label": "Silent Brew" } },
+        "m3": { "type": "image", "settings": { "label": "Nourished Soul", "sub_label": "Herbal Bath" } }
+      },
+      "block_order": ["m1", "m2", "m3"]
+    },
+    "testimonials": {
+      "type": "about-testimonials-high",
+      "settings": {
+        "subheading": "The Journey",
+        "title_part_1": "True",
+        "title_part_2": "Transformations"
+      },
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "author": "Dr. Aris", "label": "Wellness Curator", "text": "Wellness is not a destination, it is a rhythm we choose every single day." } }
+      },
+      "block_order": ["t1"]
+    }
+  },
+  "order": [
+    "hero",
+    "experience",
+    "testimonials"
+  ]
+}

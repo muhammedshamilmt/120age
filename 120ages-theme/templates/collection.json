@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner-120ages",
+      "settings": {
+        "subheading": "EST. 2026"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-120ages",
+      "settings": {}
+    },
+    "collections": {
+      "type": "featured-collections-120ages",
+      "settings": {
+        "title": "Explore Collections",
+        "link_text": "View All →",
+        "link_url": "/collections/all"
+      },
+      "blocks": {
+        "col1": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbal-teas",
+            "subheading": "Sip & Restore"
+          }
+        },
+        "col2": {
+          "type": "collection",
+          "settings": {
+            "collection": "wellness",
+            "subheading": "Mind & Body"
+          }
+        },
+        "col3": {
+          "type": "collection",
+          "settings": {
+            "collection": "home",
+            "subheading": "Live Well"
+          }
+        },
+        "col4": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "subheading": "Carry It"
+          }
+        }
+      },
+      "block_order": ["col1", "col2", "col3", "col4"]
+    },
+    "new_arrivals": {
+      "type": "top-sellers-120ages",
+      "settings": {
+        "subheading": "Just Landed",
+        "title": "New Arrivals",
+        "collection": "all",
+        "products_to_show": 3
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers-high",
+      "settings": {
+        "subheading": "Community Favourites",
+        "title": "Best Sellers",
+        "collection": "all",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collections",
+    "new_arrivals",
+    "best_sellers"
+  ]
+}

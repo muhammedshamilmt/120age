@@ -1,0 +1,96 @@
+<section class="coll-cards section-spacing">
+  <div class="container">
+    <div class="coll-cards__grid">
+      {%- for block in section.blocks -%}
+        {%- assign collection = block.settings.collection -%}
+        <div class="coll-card" {{ block.shopify_attributes }}>
+          <a href="{{ collection.url | default: '#' }}" class="coll-card__link">
+            <div class="coll-card__image">
+              {%- if collection.image != blank -%}
+                {{ collection.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag }}
+              {%- endif -%}
+            </div>
+            <div class="coll-card__info">
+              <h3 class="coll-card__title h-font">{{ collection.title | default: "Category Name" }}</h3>
+              <p class="coll-card__desc">{{ collection.description | strip_html | truncatewords: 15 }}</p>
+              <span class="view-all-link">BROWSE CATEGORY</span>
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .coll-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+  @media (max-width: 768px) {
+    .coll-cards__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  .coll-card {
+    border: 1px solid rgba(158, 117, 86, 0.2);
+    transition: transform 0.3s ease;
+  }
+  .coll-card:hover {
+    transform: translateY(-5px);
+  }
+  .coll-card__image {
+    aspect-ratio: 16/9;
+  }
+  .coll-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .coll-card__info {
+    padding: 3rem;
+    background-color: #fff;
+  }
+  .coll-card__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .coll-card__desc {
+    font-size: 1rem;
+    color: rgba(45, 45, 45, 0.7);
+    margin-bottom: 2rem;
+    min-height: 3em;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Cards",
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Cards",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

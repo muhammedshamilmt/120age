@@ -1,0 +1,20 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "tagline": "Sip Healthy. Live Longer.",
+          "email": "hello@120ages.com",
+          "phone": "+91-9020480880"
+        }
+      }
+    }
+  }
+}

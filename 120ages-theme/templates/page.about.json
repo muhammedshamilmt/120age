@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "hero": {
+      "type": "about-hero-120ages",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "about-testimonials-120ages",
+      "settings": {},
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "author": "Eleanor Rigby", "text": "The atmosphere here is unlike any other. It truly feels like stepping back in time to a simpler, more mindful era." } },
+        "t2": { "type": "testimonial", "settings": { "author": "Arthur Dent", "text": "Their herbal blends are masterfully crafted. You can taste the quality and the care in every single cup." } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "gallery": {
+      "type": "about-gallery-120ages",
+      "settings": {},
+      "blocks": {
+        "m1": { "type": "moment", "settings": { "caption": "Captured Archive № 2024" } },
+        "m2": { "type": "moment", "settings": { "caption": "Captured Archive № 2025" } },
+        "m3": { "type": "moment", "settings": { "caption": "Captured Archive № 2026" } },
+        "m4": { "type": "moment", "settings": { "caption": "Captured Archive № 2027" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "place": {
+      "type": "about-place-120ages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "testimonials",
+    "gallery",
+    "place"
+  ]
+}

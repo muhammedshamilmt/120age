@@ -1,0 +1,45 @@
+<section class="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden bg-[#1A1A1A] pt-20">
+  <div class="absolute inset-0 pointer-events-none opacity-[0.05] flex items-center justify-center z-0">
+    {%- if section.settings.bg_image != blank -%}
+      {{ section.settings.bg_image | image_url: width: 1200 | image_tag: class: 'w-full h-full object-contain scale-150 rotate-45 invert' }}
+    {%- else -%}
+      <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/df78dac5-7d8d-47bd-994b-90e733dd5e67/image-1769497755900.png?width=1200&height=1200&resize=contain" class="w-full h-full object-contain scale-150 rotate-45 invert" alt="Background Texture" />
+    {%- endif -%}
+  </div>
+
+  <div class="relative z-10 text-center px-6">
+    <span class="font-ultra text-forest-green text-sm md:text-base tracking-[0.3em] uppercase mb-4 block animate-fade-in">
+      {{ section.settings.subheading }}
+    </span>
+    <h1 class="text-[12vw] md:text-[8vw] font-ultra text-vintage-cream leading-[0.85] uppercase tracking-tighter mb-8">
+      {{ section.settings.title_line_1 }} <br />
+      <span class="text-forest-green">{{ section.settings.title_line_2 }}</span>
+    </h1>
+    
+    <div class="max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-vintage-cream/80 font-medium leading-relaxed italic">
+        "{{ section.settings.quote }}"
+      </p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full h-px bg-vintage-cream/20 flex justify-center">
+    <div class="bg-[#1A1A1A] px-4 -translate-y-1/2 font-ultra text-vintage-cream text-xs tracking-widest uppercase">
+      {{ section.settings.bottom_label }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Hero High",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Established 2026" },
+    { "type": "text", "id": "title_line_1", "label": "Title Line 1", "default": "Our" },
+    { "type": "text", "id": "title_line_2", "label": "Title Line 2", "default": "Story" },
+    { "type": "text", "id": "quote", "label": "Quote", "default": "A journey of a thousand sips begins with a single leaf." },
+    { "type": "text", "id": "bottom_label", "label": "Bottom Label", "default": "Crafting Moments" }
+  ]
+}
+{% endschema %}

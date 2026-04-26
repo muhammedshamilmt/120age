@@ -1,0 +1,30 @@
+<section class="py-16 px-6 md:px-12 lg:px-24 bg-vintage-cream min-h-[70vh]">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-12">
+      <a href="{{ routes.account_url }}" class="inline-flex items-center gap-2 font-ultra text-[10px] tracking-[0.3em] text-muted-brown/50 hover:text-muted-brown transition-colors uppercase no-underline mb-8 block">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        Back to Account
+      </a>
+      <h1 class="font-ultra text-4xl md:text-5xl uppercase leading-none tracking-tighter text-muted-brown">Your Addresses</h1>
+    </div>
+
+    {%- for address in customer.addresses -%}
+      <div class="border-2 border-muted-brown/10 p-8 mb-6 relative">
+        {%- if address == customer.default_address -%}
+          <span class="absolute top-4 right-4 font-ultra text-[9px] tracking-widest uppercase bg-forest-green text-vintage-cream px-2 py-1">Default</span>
+        {%- endif -%}
+        <address class="not-italic font-medium text-muted-brown/70 leading-relaxed space-y-1 mb-6">
+          <p class="font-ultra uppercase text-muted-brown">{{ address.name }}</p>
+          <p>{{ address.address1 }}</p>
+          {%- if address.address2 != blank -%}<p>{{ address.address2 }}</p>{%- endif -%}
+          <p>{{ address.city }}, {{ address.province }} {{ address.zip }}</p>
+          <p>{{ address.country }}</p>
+        </address>
+        <div class="flex gap-4">
+          <a href="#" class="font-ultra text-[10px] tracking-widest uppercase text-muted-brown/50 hover:text-muted-brown transition-colors no-underline border-b border-muted-brown/30 pb-0.5">Edit</a>
+          <a href="{{ address.url }}" data-method="delete" class="font-ultra text-[10px] tracking-widest uppercase text-red-400 hover:text-red-600 transition-colors no-underline border-b border-red-300 pb-0.5">Delete</a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>

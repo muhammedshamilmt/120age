@@ -1,0 +1,62 @@
+<!-- 404 Page -->
+<section class="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-vintage-cream px-6">
+
+  <!-- Decorative background watermark -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.04] flex items-center justify-center z-0">
+    <img
+      src="{{ 'logo.png' | asset_url }}"
+      alt=""
+      class="w-full h-full object-contain scale-150 rotate-12"
+    />
+  </div>
+
+  <!-- Decorative circles -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-2xl max-h-2xl pointer-events-none opacity-5">
+    <div class="absolute inset-0 border-[40px] border-muted-brown rounded-full"></div>
+    <div class="absolute inset-16 border-[20px] border-forest-green rounded-full"></div>
+  </div>
+
+  <div class="relative z-10 text-center max-w-3xl mx-auto">
+
+    <!-- Error label -->
+    <span class="font-ultra text-forest-green text-xs md:text-sm tracking-[0.4em] uppercase mb-6 block">
+      Error 404
+    </span>
+
+    <!-- Big heading -->
+    <h1 class="text-[18vw] md:text-[12vw] font-ultra text-muted-brown leading-[0.85] uppercase tracking-tighter mb-4 select-none [-webkit-text-stroke:3px_rgba(158,117,86,0.15)]">
+      404
+    </h1>
+
+    <h2 class="text-3xl md:text-5xl font-ultra text-muted-brown uppercase leading-tight tracking-tight mb-8">
+      Page Not<br /><span class="text-forest-green">Found</span>
+    </h2>
+
+    <p class="text-lg md:text-xl text-muted-brown/60 font-medium leading-relaxed italic mb-12 max-w-xl mx-auto">
+      "Looks like we've wandered off the path. This page doesn't exist or may have been moved."
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="{{ routes.root_url }}"
+        class="font-ultra text-sm text-vintage-cream bg-muted-brown px-12 py-5 uppercase tracking-[0.2em] hover:bg-forest-green transition-colors no-underline"
+      >
+        Go Home
+      </a>
+      <a
+        href="{{ routes.all_products_collection_url }}"
+        class="font-ultra text-sm text-muted-brown border-2 border-muted-brown px-12 py-5 uppercase tracking-[0.2em] hover:bg-muted-brown hover:text-vintage-cream transition-colors no-underline"
+      >
+        Browse Shop
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bottom label -->
+  <div class="absolute bottom-8 left-0 w-full flex justify-center">
+    <span class="font-ultra text-[10px] tracking-[0.5em] uppercase text-muted-brown/30">120 Ages &bull; Est. 2026</span>
+  </div>
+
+</section>

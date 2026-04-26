@@ -1,0 +1,36 @@
+{%- if section.settings.show_announcement -%}
+  <div class="w-full bg-forest-green py-6 border-y-4 border-forest-green/30 overflow-hidden relative z-20 shadow-2xl flex">
+    <div class="flex animate-marquee whitespace-nowrap">
+      {%- for i in (1..10) -%}
+        <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-vintage-cream mx-10">
+          {{ section.settings.text | escape }}
+        </span>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement High",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Ticker Text",
+      "default": "NOURISH YOUR BEING — RITUALS — COMMUNITY — FRESHLY BREWED — HANDCRAFTED — "
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement High"
+    }
+  ]
+}
+{% endschema %}

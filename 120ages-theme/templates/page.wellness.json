@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "wellness-hero-120ages",
+      "settings": {}
+    },
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
+    "offerings": {
+      "type": "offerings-high",
+      "settings": {
+         "title": "Wellness Offerings"
+      }
+    },
+    "gallery": {
+      "type": "about-gallery-120ages",
+      "settings": {
+         "title_1": "Nourishing",
+         "title_2": "Space"
+      }
+    },
+    "story": {
+       "type": "editorial-story-120ages",
+       "settings": {
+          "title_1": "Holistic",
+          "title_2": "Harmony"
+       }
+    }
+  },
+  "order": [
+    "hero",
+    "announcement",
+    "offerings",
+    "gallery",
+    "story"
+  ]
+}

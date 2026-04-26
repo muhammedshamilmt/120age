@@ -1,0 +1,122 @@
+<section class="bg-[#1A1A1A] px-6 py-20 md:px-12 md:py-32 lg:px-24">
+  <div class="max-w-screen-2xl mx-auto">
+    <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="text-left">
+        <span class="font-ultra text-[10px] tracking-[0.4em] uppercase text-forest-green block mb-4">
+          {{ section.settings.subheading }}
+        </span>
+        <h2 class="text-4xl md:text-7xl lg:text-[100px] font-ultra uppercase leading-[0.85] tracking-tighter text-vintage-cream">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      <div class="flex items-center gap-3 self-start md:self-end">
+        <span class="font-ultra text-5xl text-vintage-cream">{{ section.settings.rating }}</span>
+        <div class="text-left">
+          <div class="flex gap-1 mb-1">
+            {%- for i in (1..5) -%}
+              <span class="text-forest-green text-lg">★</span>
+            {%- endfor -%}
+          </div>
+          <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/40">
+            {{ section.settings.count_label }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {%- for block in section.blocks -%}
+        <div class="border border-vintage-cream/10 p-6 md:p-8 hover:border-forest-green/40 transition-colors text-left" {{ block.shopify_attributes }}>
+          <div class="flex gap-0.5 mb-4">
+            {%- for i in (1..5) -%}
+              <span class="text-forest-green text-sm">★</span>
+            {%- endfor -%}
+          </div>
+          <p class="font-ultra text-lg md:text-xl uppercase text-vintage-cream leading-snug mb-6">
+            "{{ block.settings.text }}"
+          </p>
+          <div class="flex items-center justify-between border-t border-vintage-cream/10 pt-4">
+            <div>
+              <span class="font-ultra text-sm uppercase text-vintage-cream block">{{ block.settings.author }}</span>
+              <span class="font-ultra text-[9px] tracking-widest uppercase text-forest-green">{{ block.settings.product }}</span>
+            </div>
+            <span class="font-ultra text-[9px] tracking-widest uppercase text-vintage-cream/30">{{ block.settings.date }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews High",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "What They Say"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Overall Rating",
+      "default": "5.0"
+    },
+    {
+      "type": "text",
+      "id": "count_label",
+      "label": "Counts Label",
+      "default": "4 Reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Absolutely divine — earthy, calming, and full of character."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Sarah K."
+        },
+        {
+          "type": "text",
+          "id": "product",
+          "label": "Product",
+          "default": "Classic Herbal Blend"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "March 2026"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews High",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

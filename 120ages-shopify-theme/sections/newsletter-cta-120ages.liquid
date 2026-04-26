@@ -1,0 +1,94 @@
+<section class="bg-muted-brown px-6 py-20 md:px-12 md:py-32 lg:px-24 text-vintage-cream relative overflow-hidden min-h-[70vh] flex items-center">
+  <!-- Decorative Background Elements -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+    <div class="absolute top-10 left-10 text-[150px] font-ultra rotate-12">*</div>
+    <div class="absolute bottom-10 right-10 text-[150px] font-ultra -rotate-12">*</div>
+  </div>
+
+  <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
+    <h2 class="text-4xl md:text-6xl lg:text-7xl font-ultra uppercase leading-[0.85] tracking-tighter mb-8">
+      {{ section.settings.title | replace: ' ', '<br />' }}
+    </h2>
+
+    <div class="mt-12 bg-vintage-cream p-8 md:p-10 border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] max-w-2xl mx-auto">
+      {%- form 'customer', id: 'newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="flex flex-col md:flex-row items-end gap-6 text-left">
+          <div class="flex-1 w-full">
+            <label class="block text-black font-ultra uppercase text-xs mb-3 tracking-widest">
+              {{ section.settings.label }}
+            </label>
+            <input type="email" name="contact[email]" placeholder="Enter your email" required
+              class="w-full bg-transparent border-b-2 border-black py-3 text-xl font-ultra text-black placeholder:text-black/30 focus:outline-none focus:border-forest-green transition-colors uppercase rounded-none" />
+          </div>
+          <button type="submit"
+            class="w-full md:w-auto px-10 py-4 bg-black text-vintage-cream font-ultra uppercase text-lg hover:bg-forest-green transition-colors border-2 border-black cursor-pointer rounded-none border-none">
+            {{ section.settings.btn_text }}
+          </button>
+        </div>
+        
+        {%- if form.posted_successfully? -%}
+           <p class="mt-4 text-forest-green font-ultra text-xs uppercase tracking-widest">Thank you for joining our circle!</p>
+        {%- endif -%}
+
+        <div class="mt-8 flex justify-between items-center border-t border-black/10 pt-6">
+          <p class="text-black/60 font-ultra text-[8px] uppercase tracking-[0.2em]">
+            {{ section.settings.small_print }}
+          </p>
+          <div class="flex gap-1.5">
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+
+    <p class="mt-8 text-vintage-cream/80 font-medium uppercase tracking-[0.3em] text-[10px]">
+      {{ section.settings.tagline }}
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Join Our Circle High",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join Our Circle"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Input Label",
+      "default": "Your Email"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Send"
+    },
+    {
+      "type": "text",
+      "id": "small_print",
+      "label": "Small Print",
+      "default": "EST. 2026 • HANDCRAFTED WELLNESS"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Be the first to receive our seasonal blends & stories."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Join Our Circle High"
+    }
+  ]
+}
+{% endschema %}

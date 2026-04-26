@@ -1,0 +1,48 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "120 Ages Premium",
+    "theme_version": "1.0.0",
+    "theme_author": "Antigravity",
+    "theme_documentation_url": "https://help.shopify.com/",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#FFEAD3"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2D2D2D"
+      },
+      {
+        "type": "color",
+        "id": "color_muted_brown",
+        "label": "Muted Brown",
+        "default": "#9E7556"
+      },
+      {
+        "type": "color",
+        "id": "color_forest_green",
+        "label": "Forest Green",
+        "default": "#50A845"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fonts are pre-configured to Ultra"
+      }
+    ]
+  }
+]

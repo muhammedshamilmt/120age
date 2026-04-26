@@ -1,0 +1,131 @@
+<section class="main-cart section-spacing">
+  <div class="container--narrow">
+    <h1 class="h-font text-5xl mb-12 text-center">YOUR BAG</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="text-center py-20">
+        <p class="mb-8 opacity-60">YOUR BAG IS CURRENTLY EMPTY</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn">START SHOPPING</a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cart-form">
+        <div class="cart-table mb-12">
+          <div class="cart-table__header">
+            <span>PRODUCT</span>
+            <span>QUANTITY</span>
+            <span class="text-right">TOTAL</span>
+          </div>
+
+          {%- for item in cart.items -%}
+            <div class="cart-table__row">
+              <div class="cart-table__product">
+                <div class="cart-table__image">
+                  {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy' }}
+                </div>
+                <div>
+                  <h3 class="h-font text-base mb-1">{{ item.product.title }}</h3>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="text-xs opacity-60">{{ item.variant.title }}</p>
+                  {%- endunless -%}
+                  <a href="{{ item.url_to_remove }}" class="cart-remove text-xs mt-2 inline-block">REMOVE</a>
+                </div>
+              </div>
+
+              <div class="cart-table__qty">
+                <div class="quantity-selector">
+                  <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="qty-input">
+                </div>
+              </div>
+
+              <div class="cart-table__total text-right h-font">
+                {{ item.final_line_price | money }}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="cart-footer">
+          <div class="cart-summary">
+            <div class="flex justify-between mb-4">
+              <span class="h-font">SUBTOTAL</span>
+              <span class="h-font text-2xl">{{ cart.total_price | money }}</span>
+            </div>
+            <p class="text-xs opacity-60 mb-8">Taxes and shipping calculated at checkout</p>
+            <div class="cart-actions">
+              <button type="submit" name="update" class="btn btn--outline mr-4">UPDATE BAG</button>
+              <button type="submit" name="checkout" class="btn">CHECKOUT</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .cart-table__header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-muted-brown);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  .cart-table__row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(158, 117, 86, 0.1);
+  }
+  .cart-table__product {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .cart-table__image {
+    width: 100px;
+    height: 125px;
+    background-color: #fff;
+  }
+  .cart-table__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cart-remove {
+    color: var(--color-muted-brown);
+    text-decoration: underline;
+  }
+  .cart-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cart-summary {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--color-muted-brown);
+    padding: 3rem;
+  }
+  .cart-actions {
+    display: flex;
+  }
+  .text-right { text-align: right; }
+  @media (max-width: 768px) {
+    .cart-table__header { display: none; }
+    .cart-table__row {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .cart-table__total { text-align: left; }
+    .cart-summary { max-width: 100%; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

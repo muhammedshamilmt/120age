@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "hero": {
+      "type": "about-hero-high",
+      "settings": {
+        "subheading": "Brewed with Intention",
+        "title_line_1": "Our",
+        "title_line_2": "Menu",
+        "quote": "Nourishing your soul, one sip at a time.",
+        "bottom_label": "Fresh Daily"
+      }
+    },
+    "offerings": {
+      "type": "offerings-high",
+      "settings": {
+        "title": "Today's Rituals",
+        "subheading": "Explore our curated selection of herbal blends and handcrafted foods."
+      },
+      "blocks": {
+        "b1": { "type": "offering", "settings": { "title": "Signature Teas", "text": "Rare herbal blends sourced from heritage gardens.", "badge": "Heritage" } },
+        "b2": { "type": "offering", "settings": { "title": "Morning Elixirs", "text": "Energizing tonics to start your day with clarity.", "badge": "Vitality" } },
+        "b3": { "type": "offering", "settings": { "title": "Artisanal Bites", "text": "Sustainably sourced, plant-based nourishment.", "badge": "Fresh" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "story": {
+      "type": "editorial-story-120ages",
+      "settings": {
+        "title_line_1": "The Art of",
+        "title_line_2": "Preparation",
+        "quote": "We believe in the slow rhythm of the harvest and the patient brew."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "offerings",
+    "story"
+  ]
+}
