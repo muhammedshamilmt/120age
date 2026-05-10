@@ -7,7 +7,7 @@
           <a href="{{ collection.url | default: '#' }}" class="coll-card__link">
             <div class="coll-card__image">
               {%- if collection.image != blank -%}
-                {{ collection.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+                {{ collection.image | image_url: width: 900 | image_tag: loading: 'lazy' }}
               {%- else -%}
                 {{ 'collection-1' | placeholder_svg_tag }}
               {%- endif -%}
@@ -44,7 +44,7 @@
     transform: translateY(-5px);
   }
   .coll-card__image {
-    aspect-ratio: 16/9;
+    aspect-ratio: 3/4;
   }
   .coll-card__image img {
     width: 100%;
